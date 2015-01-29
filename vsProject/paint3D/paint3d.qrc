@@ -1,0 +1,26 @@
+<RCC>
+  <qresource prefix="/paint3D">
+    <file>Resources/software.png</file>
+    <file>Resources/selectFace.png</file>
+    <file>Resources/planeLocator .png</file>
+    <file>Resources/brush.png</file>
+    <file>Resources/null.png</file>
+    <file>Resources/minus.png</file>
+    <file>Resources/plus.png</file>
+    <file>Resources/undo.png</file>
+    <file>Resources/paint.png</file>
+    <file>Resources/focus.png</file>
+    <file>Resources/select.png</file>
+    <file>Resources/scale.png</file>
+    <file>Resources/move.png</file>
+    <file>Resources/import.png</file>
+    <file>Resources/redo.png</file>
+    <file>Resources/copy.png</file>
+    <file>Resources/rotate.png</file>
+    <file>Resources/cut.png</file>
+    <file>Resources/new.png</file>
+    <file>Resources/open.png</file>
+    <file>Resources/paste.png</file>
+    <file>Resources/save.png</file>
+  </qresource>
+</RCC>

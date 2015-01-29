@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ManipulateCommand" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ManipulateCommand::ManipulateCommandType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>HistoryCommand.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAAEAIAAAAAABAAAAAgAEAAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaintCommand" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="PaintCommand::PixelRecord" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>HistoryCommand.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAACAAAAAAAEAAAAAAAAAAABAAAAUAAAEAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddLayerCommand" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAEFAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeleteLayerCommand" Collapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAEAAAAAAAAAAgAAAAAEFAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveUpLayerCommand" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAEAAAAAAAAAAEAAAAAAAAAACAAAAAEAAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveDownLayerCommand" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SetLayerFromImageCommand" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEEAIAAAAAAAAEAAAAAAAAAAAAAAAAEEAAAAAg=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RemoveObjectCommand" Collapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAEACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HistoryCommand.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Manipulator" Collapsed="true">
+    <Position X="9" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Manipulator::ManipulateAxis" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Manipulator.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAIABIAEIgEkEgBQQIAIAAARAAAA0kgAgAAEgAAABA=</HashCode>
+      <FileName>Manipulator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RotateManipulator" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAEAAAAAAAggAQAIEAAAABAAIgAEgAAAAAAAABAA=</HashCode>
+      <FileName>RotateManipulator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScaleManipulator" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAwAQAIAAAAAJACAEAAgAAAAAAEABAA=</HashCode>
+      <FileName>ScaleManipulator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TranslateManipulator" Collapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIIAYAwAQAIAAAAABAAIAAAgAEAAAQAABAA=</HashCode>
+      <FileName>TranslateManipulator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TriangleProjData" Collapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAAAAAAACAAAgAAAAAAAAUAEAEACAAAFAAAAAAA=</HashCode>
+      <FileName>Brush.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Brush" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Brush::BrushMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Brush.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="Brush::PaintPosition" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Brush.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="Brush::GeometryInfoBuffer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Brush.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QiAAAwIozQKgxMognsNGyr5kIgEI0SAIABMggoZZkDg=</HashCode>
+      <FileName>Brush.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaintThread" Collapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgAAAgAAAAEgOAAAAAAAgAAQAAAAAAAAgAAAAAQ=</HashCode>
+      <FileName>Brush.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Canvas" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIdAIBEkIgQkiERAQQ4QAwASDAAgMQMIwCAAhUQQgLE=</HashCode>
+      <FileName>Canvas.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoordMapper" Collapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAIgAAgAAQEQAEBAggAAgYBMAAAI=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CanvasSeamFiller" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIEQggAAAEAABEQAQAAAAAAAAAgAAAIAAQQEAAAAAIA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Painter" Collapsed="true">
+    <Position X="6.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAhAAgAEAAAAAAAAQAIYIAAAQAgACABAAAAACACA=</HashCode>
+      <FileName>Painter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurfacePainter" Collapsed="true">
+    <Position X="6.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAgAAAAAAAEAAAAAQIAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Painter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaintPicker" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>PaintPicker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PurePaintPicker" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQUAIkCA4AAAiwAQlIRAAAAEAgAhQCCAIAAIAAEwAA=</HashCode>
+      <FileName>PaintPicker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImagePicker" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>PaintPicker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlanePicker" Collapsed="true">
+    <Position X="1.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>PaintPicker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stroke" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Stroke::StrokeType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Stroke.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAAAAAIAAAAAAAAAAAQgBAAAAAQAEAAAQAAA=</HashCode>
+      <FileName>Stroke.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandardStroke" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAAAACAEAAAAAAAAACAAAAAAgAAIAAAAAAAA=</HashCode>
+      <FileName>Stroke.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmptyStroke" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stroke.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BitmapStroke" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAAAAAAUAQAAAAAAAAAAABAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Stroke.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StrokeLib" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAQQAABAJAQgAAAgAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Stroke.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoundingBox" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAIIAUAgJCAIAAAAAQMIIEAAAgM=</HashCode>
+      <FileName>BoundingBox.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera" Collapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Camera::ProjType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Camera.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CoAGEAAIAAAAoIIQYEAKCggAIgADRIAyBgBAgIAiICw=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CubeMap" Collapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAggAgAIAQAAAAAAAAAAEAQAAAAQAAAAHAAAAAAAE=</HashCode>
+      <FileName>CubeMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeometryExposer" Collapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="GeometryExposer::ProjectionType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GeometryExposer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="GeometryExposer::DepthType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GeometryExposer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="GeometryExposer::UVTexPixelData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GeometryExposer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="GeometryExposer::NormalTexPixelData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GeometryExposer.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABYABACCBAKBAAYAQBAIIBAFAAAAjAIMQAAAAAKAQxI=</HashCode>
+      <FileName>GeometryExposer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mesh" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAAgCAAgCsCKBBgAAEADYQCQAASAwoAIQMABCYEAAA=</HashCode>
+      <FileName>Mesh.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectTransformWidget" Collapsed="true">
+    <Position X="3.5" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAgAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectTransformWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjReader" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ObjReader::coordType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ObjReader.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ObjReader::indexType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ObjReader.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAIAAAAAAQAASACAAAABAAAAACCAIAgAABACAI=</HashCode>
+      <FileName>ObjReader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectTransform" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAQAAAAABKICAAAQAAKiQAA0QAACAAEQAAkABAA=</HashCode>
+      <FileName>RenderableObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RenderableObject" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="RenderableObject::DrawType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RenderableObject.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Typedef Name="RenderableObject::ObjectPointer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RenderableObject.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Enum Name="RenderableObject::ObjectComponent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RenderableObject.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="RenderableObject::ObjectType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RenderableObject.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAlAgSAAAAQEIgABAAABAAgQAFATBABQQEAAAEIAA=</HashCode>
+      <FileName>RenderableObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEDABgggAiSCggAggSICKCUCQAIgAAYQEEACCCQoOCY=</HashCode>
+      <FileName>Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrushSettingWidget" Collapsed="true">
+    <Position X="3.5" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAgBAAACAgAKAAAiAAAggEQAAJAQAAggIAAkAQ=</HashCode>
+      <FileName>BrushSettingWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GLViewWidget" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="GLViewWidget::ToolType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GLViewWidget.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIABIIBAiBAgAAaOCADIhVAgiAUAAAAAEAAgAkTAAQ=</HashCode>
+      <FileName>GLViewWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HistoryWidget" Collapsed="true">
+    <Position X="0.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABAAAAAAAAAAAOAAAAAAAgAAQAAAAQAAAgAAAAAQ=</HashCode>
+      <FileName>HistoryWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MaterialLayerWidget" Collapsed="true">
+    <Position X="6.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAkAAqAABCAAAgAAQAAYAAAAAgMAABAQ=</HashCode>
+      <FileName>MaterialLayerWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Paint3DFrame" Collapsed="true">
+    <Position X="9.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQBIAEUIAAgAAAKAACAKAAwCEVAAACAAAAgBAIAAQ=</HashCode>
+      <FileName>Paint3DFrame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaintSettingWidget" Collapsed="true">
+    <Position X="0.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ISSEJAAAgwiIIAgEKkNSBAAEgAEUAAAABAAAqKAIEAQ=</HashCode>
+      <FileName>PaintSettingWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlendCurveGraphWidget" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAIAABAAAAAAAAAAAEAAAEAAAAAAAAAA=</HashCode>
+      <FileName>BlendCurveGraphWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ColorSelectButton" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAIgAAAAAAALAAAAAEAgAAQAACAAEAAgAAAAAQ=</HashCode>
+      <FileName>ColorSelectButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SliderSpinnerGroup" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIgAAAAAoBAAOAIAQAAAxAQQACAAQAAAiAAEAAQ=</HashCode>
+      <FileName>sliderspinnergroup.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_AboutDialog" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAABAAAAAAAAAAAAQAIAAAAAAAAAAABAA=</HashCode>
+      <FileName>GeneratedFiles\ui_aboutDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_BrushSetting" Collapsed="true">
+    <Position X="3.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQFQACUAAwAAAIghQIAAIEAAEQCIAgggKAAkUUAAAw=</HashCode>
+      <FileName>GeneratedFiles\ui_brushSetting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_History" Collapsed="true">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAQAIAAAAIAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_history.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_MainWindow" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAEEpkAAAAAAACGiCAAAYAAgEQCIiAgwACQIUIggAA=</HashCode>
+      <FileName>GeneratedFiles\ui_mainWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_MaterialLayer" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAggIAQAAAARAAQAAAAAEAAAYAIJAAAIAAQEAABAA=</HashCode>
+      <FileName>GeneratedFiles\ui_materialLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_TransformEditor" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEIAAAAEAAAAAAQEUCAQAIAAAAKAAgAAAQAA=</HashCode>
+      <FileName>GeneratedFiles\ui_object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_PaintSetting" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yEAlBIFqqMBaAEAEICwScAFUAccIOCchCqgQglADPug=</HashCode>
+      <FileName>GeneratedFiles\ui_paintSetting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::AboutDialog" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_aboutDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::BrushSetting" Collapsed="true">
+    <Position X="3.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_brushSetting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::History" Collapsed="true">
+    <Position X="0.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_history.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::MainWindow" Collapsed="true">
+    <Position X="9.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_mainWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::MaterialLayer" Collapsed="true">
+    <Position X="6.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_materialLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::TransformEditor" Collapsed="true">
+    <Position X="3.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::PaintSetting" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_paintSetting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="PixelUpdateItem" Collapsed="true">
+    <Position X="17.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAAAAAAAAAQAAAAAAAAAAAAAgAABgIAAAgAA=</HashCode>
+      <FileName>Brush.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PixelUpdateArray" Collapsed="true">
+    <Position X="15.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEIAAAAABgAAAAAABAAAAYAABAAEgQAAAEAAA=</HashCode>
+      <FileName>Brush.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CanvasLayer" Collapsed="true">
+    <Position X="14" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CanvasLayer::LayerChannel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Canvas.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>kQAGAAkAAAASgIQBQBAAAQAAQAIEAAhAAAAkAAAAAAA=</HashCode>
+      <FileName>Canvas.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ObjTriangle" Collapsed="true">
+    <Position X="22.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAgAAAAAAgIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="EdgePointID" Collapsed="true">
+    <Position X="15.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQgA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="EdgeTriID" Collapsed="true">
+    <Position X="17.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TexcoordVertex" Collapsed="true">
+    <Position X="21" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAQAAAAAABAQAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PixelPos" Collapsed="true">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAABgAAAAAgA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TexcoordEdge" Collapsed="true">
+    <Position X="19.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAAAAIAAAAgCAAAAgAAABAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>CanvasSeamFiller.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GLWireArray" Collapsed="true">
+    <Position X="19.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Mesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TriangleData" Collapsed="true">
+    <Position X="22.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Mesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ObjMaterial" Collapsed="true">
+    <Position X="21" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjReader.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="微软雅黑" Size="8.25" />
+</ClassDiagram>

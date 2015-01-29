@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BrushSetting</class>
+ <widget class="QScrollArea" name="BrushSetting">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>329</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Brush Settings</string>
+  </property>
+  <property name="widgetResizable">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="scrollAreaWidgetContents">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>327</width>
+     <height>678</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Brush</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="sizeLabel">
+         <property name="text">
+          <string>Size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="SliderSpinnerGroup" name="sizeSpinBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.050000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="hardnessLabel">
+         <property name="text">
+          <string>Hardness</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="SliderSpinnerGroup" name="hardnessSpinBox">
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="angleLabel">
+         <property name="text">
+          <string>Angle</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="SliderSpinnerGroup" name="angleSpinBox">
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="ratioLabel">
+         <property name="text">
+          <string>Ratio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="SliderSpinnerGroup" name="ratioSpinBox">
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.050000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="intervalLabel">
+         <property name="text">
+          <string>Interval</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="SliderSpinnerGroup" name="intervalSpinBox">
+         <property name="maximum">
+          <double>2.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.050000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.060000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="offsetRangeLabel">
+         <property name="text">
+          <string>Offset Range</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="SliderSpinnerGroup" name="offsetRangeSpinBox">
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="sizeJitterLabel">
+         <property name="text">
+          <string>Size Jitter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="SliderSpinnerGroup" name="sizeJitterSpinBox"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="ratioJitterLabel">
+         <property name="text">
+          <string>Ratio Jitter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="SliderSpinnerGroup" name="ratioJitterSpinBox"/>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="angleJitterLabel">
+         <property name="text">
+          <string>Angle Jitter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="SliderSpinnerGroup" name="angleJitterSpinBox"/>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="resolutionRatioLabel">
+         <property name="text">
+          <string>Res. Ratio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="SliderSpinnerGroup" name="resolutionRatioSpinBox">
+         <property name="maximum">
+          <double>110.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>10.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>50.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="nearPlaneLabel">
+         <property name="text">
+          <string>Near Plane</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="SliderSpinnerGroup" name="nearPlaneSpinBox">
+         <property name="maximum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>-5.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>-1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="farPlaneLabel">
+         <property name="text">
+          <string>Far Plane</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="SliderSpinnerGroup" name="farPlaneSpinBox">
+         <property name="maximum">
+          <double>40.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>Stroke</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QPushButton" name="loadFromImageButton">
+           <property name="text">
+            <string>load stroke from image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="loadFromAbrButton">
+           <property name="text">
+            <string>load stroke from Abr</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteStrokeButton">
+           <property name="text">
+            <string>delete stroke</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QListWidget" name="strokeList">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="isWrapping" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="viewMode">
+          <enum>QListView::ListMode</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SliderSpinnerGroup</class>
+   <extends>QWidget</extends>
+   <header>SliderSpinnerGroup.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

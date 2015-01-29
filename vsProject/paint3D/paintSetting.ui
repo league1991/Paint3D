@@ -1,0 +1,1607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PaintSetting</class>
+ <widget class="QScrollArea" name="PaintSetting">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>425</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Paint Settings</string>
+  </property>
+  <property name="widgetResizable">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="scrollAreaWidgetContents">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>408</width>
+     <height>866</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="modeGroup">
+      <property name="title">
+       <string>Brush Mode</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QRadioButton" name="brushModeRadio">
+         <property name="text">
+          <string>Brush</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="eraserModeRadio">
+         <property name="text">
+          <string>Eraser</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="brushParamGroup">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Brush Parameters</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QRadioButton" name="pureColorRadio">
+         <property name="text">
+          <string>Use Pure Paint</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="colorLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="affectColor">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="ColorSelectButton" name="colorButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="colorTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QToolButton" name="colorTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QToolButton" name="clearColorTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="opacityLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Flow</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="SliderSpinnerGroup" name="opacitySpinBox">
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="reflLevelLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Reflection Level</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QCheckBox" name="affectReflLevel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="SliderSpinnerGroup" name="reflLevelSpinBox"/>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="reflTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QToolButton" name="reflTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6">
+        <widget class="QToolButton" name="clearReflTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QLabel" name="reflGlossnessLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Glossness</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QCheckBox" name="affectGlossness">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="SliderSpinnerGroup" name="reflGlossnessSpinBox">
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QLabel" name="glosTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QToolButton" name="glossnessTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="6">
+        <widget class="QToolButton" name="clearGlossnessTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QLabel" name="refrLevelLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Opacity</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QCheckBox" name="affectRefrLevel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="SliderSpinnerGroup" name="refrLevelSpinBox">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QLabel" name="refrTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QToolButton" name="refrTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="6">
+        <widget class="QToolButton" name="clearRefrTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QLabel" name="refrGlossnessLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>IOR</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QCheckBox" name="affectIOR">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="3">
+        <widget class="SliderSpinnerGroup" name="refrGlossnessSpinBox"/>
+       </item>
+       <item row="6" column="4">
+        <widget class="QLabel" name="iorTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QToolButton" name="iorTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="6">
+        <widget class="QToolButton" name="clearIorTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QLabel" name="thicknessLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Thickness</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QCheckBox" name="affectThickness">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="3">
+        <widget class="SliderSpinnerGroup" name="thicknessSpinBox"/>
+       </item>
+       <item row="7" column="4">
+        <widget class="QLabel" name="thicknessTexLabel">
+         <property name="maximumSize">
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="paint3d.qrc">:/paint3D/Resources/null.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5">
+        <widget class="QToolButton" name="thicknessTexButton">
+         <property name="toolTip">
+          <string>Add Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/plus.png</normaloff>:/paint3D/Resources/plus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="6">
+        <widget class="QToolButton" name="clearThicknessTexButton">
+         <property name="toolTip">
+          <string>Clear Texture</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+         <property name="icon">
+          <iconset resource="paint3d.qrc">
+           <normaloff>:/paint3D/Resources/minus.png</normaloff>:/paint3D/Resources/minus.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QRadioButton" name="colorPickerRadio">
+         <property name="text">
+          <string>Use Paint Picker</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="4">
+        <widget class="QPushButton" name="selectPickerButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Select Picker From Scene..</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="2">
+        <widget class="QLabel" name="pickerOpacityLabel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Opacity</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0" colspan="2">
+        <widget class="QCheckBox" name="attachToCameraBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Attach To Camera</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>57</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="12" column="1">
+        <widget class="QLabel" name="xOffsetLabel">
+         <property name="text">
+          <string>X Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="xOffsetSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <double>-1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>57</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="13" column="1">
+        <widget class="QLabel" name="yOffsetLabel">
+         <property name="text">
+          <string>Y Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="yOffsetSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <double>-1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>57</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="14" column="1">
+        <widget class="QLabel" name="zOffsetLabel">
+         <property name="text">
+          <string>Z Offset</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="zOffsetSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="0">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>57</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="15" column="1">
+        <widget class="QLabel" name="rotateLabel">
+         <property name="text">
+          <string>Rotate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="rotateSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>57</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="16" column="1">
+        <widget class="QLabel" name="xScaleLabel">
+         <property name="text">
+          <string>X Scale</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="xScaleSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>-1.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0">
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>63</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="17" column="1">
+        <widget class="QLabel" name="yScaleLabel">
+         <property name="text">
+          <string>Y Scale</string>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="yScaleSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>-1.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2" colspan="2">
+        <widget class="SliderSpinnerGroup" name="pickerOpacitySpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="value">
+          <double>0.500000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="normalControlGroup">
+      <property name="title">
+       <string>Normal Control</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="normalV0Label">
+         <property name="text">
+          <string>V0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="SliderSpinnerGroup" name="normalV0Spinner">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" rowspan="4">
+        <widget class="BlendCurveGraphWidget" name="normalCurveView" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="normalV1Label">
+         <property name="text">
+          <string>V1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="SliderSpinnerGroup" name="normalV1Spinner">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="normalWeight0Label">
+         <property name="text">
+          <string>Weight 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="SliderSpinnerGroup" name="normalW0Spinner">
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="normalWeight1Label">
+         <property name="text">
+          <string>Weight 1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="SliderSpinnerGroup" name="normalW1Spinner">
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="depthControlGroup">
+      <property name="title">
+       <string>Depth Control</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="depthTypeLabel">
+         <property name="text">
+          <string>Depth Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="depthTypeBox">
+         <item>
+          <property name="text">
+           <string>Surface Thickness</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Geometry Depth</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="depthV0Label">
+         <property name="text">
+          <string>V0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="SliderSpinnerGroup" name="depthV0Spinner">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" rowspan="4">
+        <widget class="BlendCurveGraphWidget" name="depthCurveView" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="depthV1Label">
+         <property name="text">
+          <string>V1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="SliderSpinnerGroup" name="depthV1Spinner">
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="depthWeight0Label">
+         <property name="text">
+          <string>Weight 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="SliderSpinnerGroup" name="depthW0Spinner">
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="depthWeight1Label">
+         <property name="text">
+          <string>Weight 1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="SliderSpinnerGroup" name="depthW1Spinner">
+         <property name="maximum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SliderSpinnerGroup</class>
+   <extends>QWidget</extends>
+   <header>SliderSpinnerGroup.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColorSelectButton</class>
+   <extends>QPushButton</extends>
+   <header>colorselectbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlendCurveGraphWidget</class>
+   <extends>QWidget</extends>
+   <header>blendcurvegraphwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="paint3d.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>colorButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>133</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>opacitySpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>reflLevelSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>reflGlossnessSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>refrLevelSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>refrGlossnessSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>thicknessSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorPickerRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pickerOpacitySpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>colorTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearColorTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>133</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>reflTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearReflTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>glossnessTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearGlossnessTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>43</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>refrTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>53</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearRefrTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>iorTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearIorTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>thicknessTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pureColorRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clearThicknessTexButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>xOffsetSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>169</x>
+     <y>350</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>yOffsetSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>329</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>rotateSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>426</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorPickerRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectPickerButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>21</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>184</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorPickerRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pickerOpacitySpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorPickerRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>attachToCameraBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>22</x>
+     <y>255</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>zOffsetSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>xScaleSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>attachToCameraBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>yScaleSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>25</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

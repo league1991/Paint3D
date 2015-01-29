@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>616</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Paint3D</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="paint3d.qrc">
+    <normaloff>:/paint3D/Resources/software.png</normaloff>:/paint3D/Resources/software.png</iconset>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="GLViewWidget" name="viewWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>616</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionSelect"/>
+    <addaction name="actionSelectFace"/>
+    <addaction name="separator"/>
+    <addaction name="actionMove"/>
+    <addaction name="actionRotate"/>
+    <addaction name="actionScale"/>
+    <addaction name="separator"/>
+    <addaction name="actionFocus"/>
+    <addaction name="separator"/>
+    <addaction name="actionPaint"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuCreate">
+    <property name="title">
+     <string>Create</string>
+    </property>
+    <addaction name="actionImport"/>
+    <addaction name="actionPlaneLocator"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>Window</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuCreate"/>
+   <addaction name="menuWindow"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="fileToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QDockWidget" name="objectDocker">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Object</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="ObjectTransformWidget" name="transformEditor">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="manipulateToolBar">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSelect"/>
+   <addaction name="actionSelectFace"/>
+   <addaction name="separator"/>
+   <addaction name="actionMove"/>
+   <addaction name="actionRotate"/>
+   <addaction name="actionScale"/>
+   <addaction name="separator"/>
+   <addaction name="actionFocus"/>
+   <addaction name="separator"/>
+   <addaction name="actionPaint"/>
+  </widget>
+  <widget class="QDockWidget" name="historyDocker">
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>History</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="HistoryWidget" name="historyEditor"/>
+  </widget>
+  <widget class="QDockWidget" name="layerDocker">
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Material Layer</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="MaterialLayerWidget" name="layerEditor"/>
+  </widget>
+  <widget class="QDockWidget" name="paintEditorDocker">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::AllDockWidgetAreas</set>
+   </property>
+   <property name="windowTitle">
+    <string>Paint</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="PaintSettingWidget" name="paintEditor">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="createToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionImport"/>
+   <addaction name="actionPlaneLocator"/>
+  </widget>
+  <widget class="QDockWidget" name="brushEditorDocker">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Brush</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="BrushSettingWidget" name="brushEditor"/>
+  </widget>
+  <action name="actionImport">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/import.png</normaloff>:/paint3D/Resources/import.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import Model</string>
+   </property>
+   <property name="toolTip">
+    <string>Import a 3d Model</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/new.png</normaloff>:/paint3D/Resources/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a New File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/open.png</normaloff>:/paint3D/Resources/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open a File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/save.png</normaloff>:/paint3D/Resources/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionMove">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/move.png</normaloff>:/paint3D/Resources/move.png</iconset>
+   </property>
+   <property name="text">
+    <string>Move</string>
+   </property>
+   <property name="toolTip">
+    <string>Move Object</string>
+   </property>
+   <property name="shortcut">
+    <string>W</string>
+   </property>
+  </action>
+  <action name="actionRotate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/rotate.png</normaloff>:/paint3D/Resources/rotate.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate Object</string>
+   </property>
+   <property name="shortcut">
+    <string>E</string>
+   </property>
+  </action>
+  <action name="actionScale">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/scale.png</normaloff>:/paint3D/Resources/scale.png</iconset>
+   </property>
+   <property name="text">
+    <string>Scale</string>
+   </property>
+   <property name="toolTip">
+    <string>Scale Object</string>
+   </property>
+   <property name="shortcut">
+    <string>R</string>
+   </property>
+  </action>
+  <action name="actionSelect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/select.png</normaloff>:/paint3D/Resources/select.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select</string>
+   </property>
+   <property name="toolTip">
+    <string>Select Object</string>
+   </property>
+   <property name="shortcut">
+    <string>Q</string>
+   </property>
+  </action>
+  <action name="actionFocus">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/focus.png</normaloff>:/paint3D/Resources/focus.png</iconset>
+   </property>
+   <property name="text">
+    <string>Focus Model</string>
+   </property>
+   <property name="toolTip">
+    <string>Focus Selected Model</string>
+   </property>
+   <property name="shortcut">
+    <string>F</string>
+   </property>
+  </action>
+  <action name="actionPaint">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/brush.png</normaloff>:/paint3D/Resources/brush.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paint</string>
+   </property>
+   <property name="toolTip">
+    <string>Paint Model</string>
+   </property>
+   <property name="shortcut">
+    <string>B</string>
+   </property>
+  </action>
+  <action name="actionPlaneLocator">
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/planeLocator .png</normaloff>:/paint3D/Resources/planeLocator .png</iconset>
+   </property>
+   <property name="text">
+    <string>Create Plane Locator</string>
+   </property>
+   <property name="toolTip">
+    <string>create a plane locator</string>
+   </property>
+  </action>
+  <action name="actionSelectFace">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="paint3d.qrc">
+     <normaloff>:/paint3D/Resources/selectFace.png</normaloff>:/paint3D/Resources/selectFace.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Face</string>
+   </property>
+   <property name="toolTip">
+    <string>Select Face</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLViewWidget</class>
+   <extends>QWidget</extends>
+   <header>glviewwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BrushSettingWidget</class>
+   <extends>QWidget</extends>
+   <header>brushsettingwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HistoryWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">historywidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MaterialLayerWidget</class>
+   <extends>QWidget</extends>
+   <header>materiallayerwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PaintSettingWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">paintsettingwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ObjectTransformWidget</class>
+   <extends>QWidget</extends>
+   <header>objecttransformwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="paint3d.qrc"/>
+ </resources>
+ <connections/>
+</ui>

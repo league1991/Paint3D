@@ -1,0 +1,99 @@
+<project>
+  <current_configuration value="Debug" />
+  <configurations>
+    <configuration name="Debug">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Direct3D10\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+    </configuration>
+    <configuration name="Release">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Direct3D10\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+    </configuration>
+  </configurations>
+  <assetFile uri="Document1.dae" referenced="False" />
+  <activeAssetCollection uri="Document1.dae" />
+  <customConfigurations>
+    <FXComposer.Scene.Services.FXRenderPortService>
+      <defaultScene sceneUri="Document1.dae#DefaultScene" />
+      <camera type="Top" scene="Document1.dae#DefaultScene">
+        <focallength>2.178022</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 5.960464E-08 -0.9999999 0 0 0.9999999 5.960464E-08 0 0.1074073 2.965522 0 1 </viewtransform>
+      </camera>
+      <camera type="Front" scene="Document1.dae#DefaultScene">
+        <focallength>2.178022</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 1 0 0 0 0 1 0 0.1074073 0.7875 2.178022 1 </viewtransform>
+      </camera>
+      <camera type="Right" scene="Document1.dae#DefaultScene">
+        <focallength>2.178022</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>5.960464E-08 0 -0.9999999 0 0 1 0 0 0.9999999 0 5.960464E-08 0 2.285429 0.7875 0 1 </viewtransform>
+      </camera>
+      <camera type="Perspective" scene="Document1.dae#DefaultScene">
+        <focallength>6.34716</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>0.4225157 5.819674E-06 0.9063556 0 0.3037723 0.9421612 -0.1416156 0 -0.8539339 0.3351605 0.398076 0 -5.335086 2.871912 2.626916 1 </viewtransform>
+      </camera>
+      <renderPort name="Render" />
+    </FXComposer.Scene.Services.FXRenderPortService>
+    <FXComposer.Scene.Services.FXSceneService>
+      <grid_settings sceneUri="Document1.dae#DefaultScene">
+        <show_grid value="True" />
+        <axes_color value="0, 0, 0, 1" />
+        <size value="17.32051" />
+        <major_ticks_color value="0.25, 0.25, 0.25, 1" />
+        <major_tick_every_nth value="10" />
+        <ticks_color value="0.425, 0.425, 0.425, 1" />
+        <ticks_interval_in_units value="0.3464102" />
+      </grid_settings>
+      <background_color color="0.5 0.5 0.5 0" />
+    </FXComposer.Scene.Services.FXSceneService>
+  </customConfigurations>
+</project>
