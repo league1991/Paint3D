@@ -1,5 +1,5 @@
 # Paint3D
-A program allowing painting textures of different channels SIMULTANEOUSLY on a 3d model
+A program allowing painting textures of different channels SIMULTANEOUSLY on a 3d model.&#10
 You can also see this page: http://www.cnblogs.com/dydx/p/6445845.html
 
 ###Preliminary
