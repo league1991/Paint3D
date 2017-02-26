@@ -5,6 +5,7 @@ You can also see this page: http://www.cnblogs.com/dydx/p/6445845.html<br/>
 ###Preliminary
 Qt 4.7 or 4.8 32bit<br/>
 OpenGL 32bit<br/>
+Visual Studio 2008<br/>
 
 ###Screenshots
 
