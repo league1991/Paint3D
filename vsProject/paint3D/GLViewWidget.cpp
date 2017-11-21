@@ -26,7 +26,7 @@ GLViewWidget::~GLViewWidget(void)
 
 void GLViewWidget::initializeGL()
 {
-	GLContext::instance();
+	GLContext::instance()->getQGLFunctions()->initializeGLFunctions(this->context());
 	qglClearColor(backgroundClr);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);

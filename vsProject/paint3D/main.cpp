@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	translator->load("paint3d_zh.qm");
 	a.installTranslator(translator);
 	Paint3DFrame* app = Paint3DFrame::getInstance();
+	app->initialize();
 	app->show();
 	return a.exec();
 }

@@ -174,3 +174,17 @@ void Paint3DFrame::showAboutWindow()
 	QMessageBox::about ( this, tr("About..."), tr("Paint3D v1.0 \nCopyright(C) 2012\nOuyang Yaobin") );
 }
 
+void Paint3DFrame::initialize()
+{
+	historyEditor->setUndoStack(&Paint3DFrame::getInstance()->scene->getUndoStack());
+}
+
+Paint3DFrame* Paint3DFrame::getInstance()
+{
+	if (instance == NULL)
+	{
+		instance = new Paint3DFrame();
+	}
+	return instance;
+}
+

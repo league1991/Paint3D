@@ -10,16 +10,10 @@ class Paint3DFrame : public QMainWindow, public Ui::MainWindow
 public:
 	~Paint3DFrame();
 
-	static Paint3DFrame* getInstance()
-	{
-		if (instance == NULL)
-		{
-			instance = new Paint3DFrame();
-		}
-		return instance;
-	}
+	static Paint3DFrame* getInstance();
 	static QSharedPointer<Scene> scene;
 	Scene* getScene(){return scene.data();}
+	void initialize();
 	void updateGLView();
 private slots:
 	void importModel();

@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Scene.h"
 #include "Paint3DFrame.h"
+#include <QtWidgets/QMessageBox>
 
 Scene::Scene(void)
 {
@@ -57,29 +58,29 @@ void Scene::drawGrid()
 
 bool Scene::init()
 {
-// 	unsigned err = glewInit();
-// 	if (GLEW_OK != err)
-// 	{
-// 		const GLubyte *e = glewGetErrorString(err);
-// 		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("GLEW initialization error."));
-// 		qDebug() << e;
-// 	}
-// 
-// 	if (glewIsSupported("GL_EXT_framebuffer_object"))
-// 		qDebug() <<"Old EXT FBO available"<<endl;
-// 	else
-// 	{
-// 		qDebug() <<"Old EXT FBO NOT available"<<endl;
-// 		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("Old EXT FBO NOT available"));
-// 	}
-// 
-// 	if (glewIsSupported("GL_ARB_framebuffer_object"))
-// 		qDebug() <<"Newer ARB FBO available"<<endl;
-// 	else
-// 	{
-// 		qDebug() <<"Newer ARB FBO NOT available"<<endl;
-// 		//QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("New ARB FBO NOT available"));
-// 	}	
+	unsigned err = glewInit();
+	if (GLEW_OK != err)
+	{
+		const GLubyte *e = glewGetErrorString(err);
+		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("GLEW initialization error."));
+		qDebug() << e;
+	}
+
+	if (glewIsSupported("GL_EXT_framebuffer_object"))
+		qDebug() <<"Old EXT FBO available"<<endl;
+	else
+	{
+		qDebug() <<"Old EXT FBO NOT available"<<endl;
+		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("Old EXT FBO NOT available"));
+	}
+
+	if (glewIsSupported("GL_ARB_framebuffer_object"))
+		qDebug() <<"Newer ARB FBO available"<<endl;
+	else
+	{
+		qDebug() <<"Newer ARB FBO NOT available"<<endl;
+		//QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("New ARB FBO NOT available"));
+	}	
 
 	bool isfbo = GeometryExposer::isFBOSupported();
 	int w,h;
@@ -148,7 +149,7 @@ void Scene::draw()
 		// 先画不透明的物体
 		for (int i = 0; i < objectArray.size(); ++i)
 		{
-			if (objectArray[i]->getType() == RenderableObject::OBJ_MESH)
+			if (objectArray[i] && objectArray[i]->getType() == RenderableObject::OBJ_MESH)
 			{
 				objectArray[i]->drawAppearance();
 			}
@@ -160,7 +161,7 @@ void Scene::draw()
  		glDepthMask(GL_FALSE);
 		for (int i = 0; i < objectArray.size(); ++i)
 		{
-			if (objectArray[i]->getType() == RenderableObject::OBJ_PICKER_OBJECT)
+			if (objectArray[i] && objectArray[i]->getType() == RenderableObject::OBJ_PICKER_OBJECT)
 			{
 				objectArray[i]->drawAppearance();
 			}
