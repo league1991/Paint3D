@@ -58,30 +58,29 @@ void Scene::drawGrid()
 
 bool Scene::init()
 {
-	unsigned err = glewInit();
-	if (GLEW_OK != err)
-	{
-		const GLubyte *e = glewGetErrorString(err);
-		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("GLEW initialization error."));
-		qDebug() << e;
-	}
-
-	if (glewIsSupported("GL_EXT_framebuffer_object"))
-		qDebug() <<"Old EXT FBO available"<<endl;
-	else
-	{
-		qDebug() <<"Old EXT FBO NOT available"<<endl;
-		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("Old EXT FBO NOT available"));
-	}
-
-	if (glewIsSupported("GL_ARB_framebuffer_object"))
-		qDebug() <<"Newer ARB FBO available"<<endl;
-	else
-	{
-		qDebug() <<"Newer ARB FBO NOT available"<<endl;
-		//QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("New ARB FBO NOT available"));
-	}
-
+// 	unsigned err = glewInit();
+// 	if (GLEW_OK != err)
+// 	{
+// 		const GLubyte *e = glewGetErrorString(err);
+// 		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("GLEW initialization error."));
+// 		qDebug() << e;
+// 	}
+// 
+// 	if (glewIsSupported("GL_EXT_framebuffer_object"))
+// 		qDebug() <<"Old EXT FBO available"<<endl;
+// 	else
+// 	{
+// 		qDebug() <<"Old EXT FBO NOT available"<<endl;
+// 		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("Old EXT FBO NOT available"));
+// 	}
+// 
+// 	if (glewIsSupported("GL_ARB_framebuffer_object"))
+// 		qDebug() <<"Newer ARB FBO available"<<endl;
+// 	else
+// 	{
+// 		qDebug() <<"Newer ARB FBO NOT available"<<endl;
+// 		//QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("New ARB FBO NOT available"));
+// 	}	
 
 	bool isfbo = GeometryExposer::isFBOSupported();
 	int w,h;
@@ -132,9 +131,11 @@ void Scene::draw()
 		// 绑定环境贴图,只绑定一次
 		if (!isEnvMapUpdated)
 		{
-			int texRegBase = GL_TEXTURE0_ARB + SCENE_TEXTURE_REGISTER_OFFSET;
+			// int texRegBase = GL_TEXTURE0_ARB + SCENE_TEXTURE_REGISTER_OFFSET;
+			int texRegBase = GL_TEXTURE0 + SCENE_TEXTURE_REGISTER_OFFSET;
 			int texRegOffset = SCENE_TEXTURE_REGISTER_OFFSET;
-			glActiveTextureARB(texRegBase + 0);	
+			//glActiveTextureARB(texRegBase + 0);	
+			GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 0);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, envMap.getGLTexObj());
 			meshShader->setUniformValue("envTex", texRegOffset + 0);
 			isEnvMapUpdated = true;

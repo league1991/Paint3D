@@ -92,7 +92,7 @@ void CubeMap::initGLBuffer()
 	glBindTexture(GL_TEXTURE_CUBE_MAP, glCubeMapID);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+	//glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_GENERATE_MIPMAP, GL_TRUE);
 
 	GLenum errorMsg = glGetError();
@@ -102,9 +102,10 @@ void CubeMap::initGLBuffer()
 	}
 
 	//QMessageBox::information(NULL, QObject::tr("Info"), QObject::tr("begin init env map."));
+	QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
 	for (int ithMap = 0; ithMap < 6; ++ithMap)
 	{
-		gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
+		gl->gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
 		// QMessageBox::information(NULL, QObject::tr("Info"), QString::number(ithMap) + "th map completed");
 
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);

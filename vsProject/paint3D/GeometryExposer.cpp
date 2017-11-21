@@ -2,7 +2,8 @@
 #include "GeometryExposer.h"
 	
 const GLenum GeometryExposer::renderTargets[] = 
-{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT1_EXT };
+//{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT1_EXT };
+{ GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 
 GeometryExposer::GeometryExposer()
 {
@@ -46,18 +47,19 @@ void GeometryExposer::init( int w, int h )
 
 bool GeometryExposer::generateBuffers()
 {
+	QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
 	if (depthBufferObj == -1)
 	{
-		glGenRenderbuffersEXT(1, &depthBufferObj);
+		gl->glGenRenderbuffers(1, &depthBufferObj);
 	}
-	glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, depthBufferObj);
-	glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, GL_DEPTH_COMPONENT, width, height);
+	gl->glBindRenderbuffer(GL_RENDERBUFFER, depthBufferObj);
+	gl->glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
 
 	if (frameBufferObj == -1)
 	{
-		glGenFramebuffersEXT(1, &frameBufferObj);
+		gl->glGenFramebuffers(1, &frameBufferObj);
 	}
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, frameBufferObj);
+	gl->glBindFramebuffer(GL_FRAMEBUFFER, frameBufferObj);
 
 	if (uvTexData)
 	{
@@ -89,25 +91,26 @@ bool GeometryExposer::generateBuffers()
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16, width, height, 0, GL_RGBA, GL_UNSIGNED_SHORT, norTexData);
 
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, textureObj[0], 0);
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT1_EXT, GL_TEXTURE_2D, textureObj[1], 0);
-	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, depthBufferObj);
+	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureObj[0], 0);
+	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, textureObj[1], 0);
+	gl->glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBufferObj);
 
-	status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	if (status != GL_FRAMEBUFFER_COMPLETE_EXT)
+	status = gl->glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	if (status != GL_FRAMEBUFFER_COMPLETE)
 	{
 		qDebug() << "error when binding texture to fbo" << endl;
 		QMessageBox::critical(NULL, 
 			QObject::tr("Error"), 
 			QObject::tr("Fail to initialize framebuffer object."));
 	}
-	return status == GL_FRAMEBUFFER_COMPLETE_EXT;
+	return status == GL_FRAMEBUFFER_COMPLETE;
 }
 
 void GeometryExposer::exposeGeometry()
 {
-	// 切换framebuffer
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, frameBufferObj);
+	// 切换framebuffer	
+	QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
+	gl->glBindFramebuffer(GL_FRAMEBUFFER, frameBufferObj);
 
 	GLint view[4]; 
 	glPushAttrib(GL_VIEWPORT_BIT);
@@ -115,7 +118,7 @@ void GeometryExposer::exposeGeometry()
 	glClearColor(CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glDrawBuffers(2, renderTargets);
+	gl->glDrawBuffers(2, renderTargets);
 	int i = 0;
 
 	QSharedPointer<QGLShaderProgram>meshShader = Mesh::getGeometryShader();
@@ -145,7 +148,7 @@ void GeometryExposer::exposeGeometry()
 	glPopAttrib();
 
 	// 切换回原来的framebuffer
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	gl->glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	// 把帧缓存数据读回内存
 	glBindTexture(GL_TEXTURE_2D,textureObj[0]);
@@ -173,9 +176,10 @@ void GeometryExposer::destroyBuffers()
 {
 	if (uvTexData)
 	{
+		QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
 		glDeleteTextures(2, textureObj);
-		glDeleteFramebuffersEXT(1, &frameBufferObj);
-		glDeleteRenderbuffersEXT(1, &depthBufferObj);
+		gl->glDeleteFramebuffers(1, &frameBufferObj);
+		gl->glDeleteRenderbuffers(1, &depthBufferObj);
 		textureObj[0] = textureObj[1]= -1;
 		frameBufferObj = depthBufferObj = -1;
 		delete[] uvTexData;

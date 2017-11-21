@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "paint3dframe.h"
 #include <QtGui/QApplication>
-Paint3DFrame* paint3DApp;
-
-QSharedPointer<Scene> getScene()
-{
-	return paint3DApp->scene;
-}
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +10,7 @@ int main(int argc, char *argv[])
 	QTranslator *translator = new QTranslator;
 	translator->load("paint3d_zh.qm");
 	a.installTranslator(translator);
-	paint3DApp = new Paint3DFrame;
+	Paint3DFrame* paint3DApp = Paint3DFrame::getInstance();
 	paint3DApp->show();
 	return a.exec();
 }

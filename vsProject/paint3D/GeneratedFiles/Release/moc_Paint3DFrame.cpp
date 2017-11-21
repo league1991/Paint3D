@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Paint3DFrame.h'
 **
-** Created: Wed Oct 15 18:23:16 2014
+** Created: Tue Nov 21 21:07:11 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!
