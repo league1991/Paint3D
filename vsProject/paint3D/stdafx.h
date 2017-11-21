@@ -1,7 +1,7 @@
 #include <math.h>
 #include <float.h>
 #define GLUT_DISABLE_ATEXIT_HACK //这句话极其重要
-//#include <GL/glew.h>
+#include <GL/glew.h>
 //#include <gl/GLU.H>
 //#include "glextensions.h"
 //#include <GL/glut.h>

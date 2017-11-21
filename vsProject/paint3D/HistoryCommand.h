@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QtWidgets/QUndoCommand>
+
 class ManipulateCommand : public QUndoCommand
 {
 public:

@@ -49,7 +49,7 @@ void SurfacePainter::goOnPaint( const QVector2D& newScreenPos )
 
 	QVector2D deltaScreenPos = newScreenPos - lastScreenPos;
 	QVector2D deltaScreenRatio = camera.getScreenRatio(deltaScreenPos);
-	int nSubds = min(max(deltaScreenPos.length() / SAMPLE_PIXEL_INTERVAL,1),50);
+	int nSubds = min(max(deltaScreenPos.length() / SAMPLE_PIXEL_INTERVAL,1.f),50.f);
 	QVector2D dRatio = deltaScreenRatio / float(nSubds);
 
 	QVector3D viewPoint = camera.getOrigin();

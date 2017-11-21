@@ -27,29 +27,29 @@ ManipulateCommand::ManipulateCommand(
 
 void ManipulateCommand::undo()
 {
-	RenderableObject* obj = paint3DApp->scene->getObject(objID).data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (obj)
 	{
 		obj->setTransform(oldTransform);
-		paint3DApp->scene->updateGeometryImage();
-		paint3DApp->updateGLView();
+		Paint3DFrame::getInstance()->scene->updateGeometryImage();
+		Paint3DFrame::getInstance()->updateGLView();
 	}
 }
 
 void ManipulateCommand::redo()
 {
-	RenderableObject* obj = paint3DApp->scene->getObject(objID).data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (obj)
 	{
 		obj->setTransform(newTransform);
-		paint3DApp->scene->updateGeometryImage();
-		paint3DApp->updateGLView();
+		Paint3DFrame::getInstance()->scene->updateGeometryImage();
+		Paint3DFrame::getInstance()->updateGLView();
 	}
 }
 
 void PaintCommand::undo()
 {
-	RenderableObject* obj = paint3DApp->scene->getObject(objID).data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (obj && obj->getType() & RenderableObject::CMP_MESH)
 	{
 		Mesh* mesh = (Mesh*)obj;
@@ -66,13 +66,13 @@ void PaintCommand::undo()
 			canvas.setCurLayerThicknessPixel(x, y, pR->oldThickness);
 		}
 		canvas.updateGLTextures();
-		paint3DApp->updateGLView();
+		Paint3DFrame::getInstance()->updateGLView();
 	}
 }
 
 void PaintCommand::redo()
 {
-	RenderableObject* obj = paint3DApp->scene->getObject(objID).data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (obj && obj->getType() == RenderableObject::CMP_MESH)
 	{
 		Mesh* mesh = (Mesh*)obj;
@@ -89,7 +89,7 @@ void PaintCommand::redo()
 			canvas.setCurLayerThicknessPixel(x, y, pR->newThickness);
 		}
 		canvas.updateGLTextures();
-		paint3DApp->updateGLView();
+		Paint3DFrame::getInstance()->updateGLView();
 	}
 }
 
@@ -107,24 +107,24 @@ PaintCommand::PaintCommand( unsigned objID, int curLayer )
 
 void AddLayerCommand::undo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		QSharedPointer<CanvasLayer> dummy;
 		mesh->getCanvas().removeLayer(dummy, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void AddLayerCommand::redo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().insertLayer(layer, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
@@ -147,98 +147,98 @@ DeleteLayerCommand::DeleteLayerCommand( QSharedPointer<CanvasLayer>layer, int la
 
 void DeleteLayerCommand::undo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().insertLayer(layer, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void DeleteLayerCommand::redo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		QSharedPointer<CanvasLayer> dummy;
 		mesh->getCanvas().removeLayer(dummy, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void MoveUpLayerCommand::undo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().moveDownLayer(layerOriPos+1);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void MoveUpLayerCommand::redo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().moveUpLayer(layerOriPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 
 void MoveDownLayerCommand::undo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().moveUpLayer(layerOriPos-1);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void MoveDownLayerCommand::redo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().moveDownLayer(layerOriPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void SetLayerFromImageCommand::undo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().setLayer(oldLayer, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void SetLayerFromImageCommand::redo()
 {
-	Mesh* mesh = (Mesh*)paint3DApp->scene->getObject(objID).data();
+	Mesh* mesh = (Mesh*)Paint3DFrame::getInstance()->scene->getObject(objID).data();
 	if (mesh)
 	{
 		mesh->getCanvas().setLayer(newLayer, layerPos);
-		paint3DApp->updateGLView();
-		paint3DApp->layerEditor->updateList();
+		Paint3DFrame::getInstance()->updateGLView();
+		Paint3DFrame::getInstance()->layerEditor->updateList();
 	}
 }
 
 void RemoveObjectCommand::undo()
 {
-	paint3DApp->scene->insertObject(object);
-	Manipulator* curTool = paint3DApp->viewWidget->getCurTool();
+	Paint3DFrame::getInstance()->scene->insertObject(object);
+	Manipulator* curTool = Paint3DFrame::getInstance()->viewWidget->getCurTool();
 	if (curTool)
 	{
 		curTool->captureObject(object);
@@ -247,16 +247,16 @@ void RemoveObjectCommand::undo()
 
 void RemoveObjectCommand::redo()
 {
-	QWeakPointer<RenderableObject>curSelectObj = paint3DApp->viewWidget->getSelectedObject();
-	Manipulator*& curTool = paint3DApp->viewWidget->getCurTool();
+	QWeakPointer<RenderableObject>curSelectObj = Paint3DFrame::getInstance()->viewWidget->getSelectedObject();
+	Manipulator*& curTool = Paint3DFrame::getInstance()->viewWidget->getCurTool();
 	if (object == curSelectObj)
 	{
-		paint3DApp->viewWidget->clearSelectedObject();
+		Paint3DFrame::getInstance()->viewWidget->clearSelectedObject();
 	}
 	if (curTool && curTool->getCurObject() == object)
 	{
 		curTool->captureObject(curSelectObj);
-		paint3DApp->viewWidget->setTool(GLViewWidget::TOOL_SELECT);
+		Paint3DFrame::getInstance()->viewWidget->setTool(GLViewWidget::TOOL_SELECT);
 	}
-	paint3DApp->scene->removeObject(object);
+	Paint3DFrame::getInstance()->scene->removeObject(object);
 }

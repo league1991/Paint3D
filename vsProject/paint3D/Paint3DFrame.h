@@ -39,12 +39,11 @@ private slots:
 
 	void showAboutWindow();
 private:
-	Paint3DFrame(QWidget *parent = 0, Qt::WFlags flags = 0);
+	Paint3DFrame(QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	static Paint3DFrame* instance;
 	QActionGroup *actionGroup;
 	QAction* undoAction;
 	QAction* redoAction;
 };
 
-extern Paint3DFrame* paint3DApp;
 #endif // PAINT3D_H

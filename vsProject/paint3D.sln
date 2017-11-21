@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Paint3D", "paint3D\paint3D.vcproj", "{FF9615E1-CE3A-4F98-BC75-EDAD3C42FD9C}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "paint3D", "paint3D\paint3D.vcxproj", "{FF9615E1-CE3A-4F98-BC75-EDAD3C42FD9C}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Paint3DSetup", "Paint3DSetup\Paint3DSetup.vdproj", "{2BDDAF41-9437-4EAF-9635-E5E18D5043FB}"
 EndProject

@@ -2,7 +2,9 @@
 #include "PaintSettingWidget.h"
 #include "Paint3DFrame.h"
 
-PaintSettingWidget::PaintSettingWidget( QWidget *parent /*= 0*/, Qt::WFlags flags /*= 0*/ )
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+PaintSettingWidget::PaintSettingWidget( QWidget *parent /*= 0*/, Qt::WindowFlags flags /*= 0*/ )
 {
 	setupUi(this);
 
@@ -77,7 +79,7 @@ void PaintSettingWidget::setColor( double dummy )
 		color.greenF(),
 		color.blueF(),
 		opacitySpinBox->value());
-	paint3DApp->scene->getBrush().getPurePaintPicker().setColorParam(colorV);
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setColorParam(colorV);
 }
 
 void PaintSettingWidget::setColor( QColor color )
@@ -86,7 +88,7 @@ void PaintSettingWidget::setColor( QColor color )
 		color.greenF(),
 		color.blueF(),
 		opacitySpinBox->value());
-	paint3DApp->scene->getBrush().getPurePaintPicker().setColorParam(colorV);
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setColorParam(colorV);
 }
 
 void PaintSettingWidget::setSurface( double dummy )
@@ -95,45 +97,45 @@ void PaintSettingWidget::setSurface( double dummy )
 		reflGlossnessSpinBox->value(),
 		refrLevelSpinBox->value(),
 		refrGlossnessSpinBox->value());
-	paint3DApp->scene->getBrush().getPurePaintPicker().setSurfParam(surf);
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setSurfParam(surf);
 
 }
 
 
 void PaintSettingWidget::setThickness( double thick )
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().setDepth(thick);
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setDepth(thick);
 }
 
 
 void PaintSettingWidget::setAffectColor( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectColor(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectColor(isAffect);
 }
 
 void PaintSettingWidget::setAffectReflLevel( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectReflLevel(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectReflLevel(isAffect);
 }
 
 void PaintSettingWidget::setAffectRefrLevel( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectRefrLevel(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectRefrLevel(isAffect);
 }
 
 void PaintSettingWidget::setAffectGlossness( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectGlossness(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectGlossness(isAffect);
 }
 
 void PaintSettingWidget::setAffectIOR( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectIOR(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectIOR(isAffect);
 }
 
 void PaintSettingWidget::setAffectThickness( int isAffect )
 {
-	paint3DApp->scene->getBrush().setAffectThickness(isAffect);
+	Paint3DFrame::getInstance()->scene->getBrush().setAffectThickness(isAffect);
 }
 
 void PaintSettingWidget::computeNormalBlendCurve( double dummy )
@@ -143,7 +145,7 @@ void PaintSettingWidget::computeNormalBlendCurve( double dummy )
 	float w0 = normalW0Spinner->value();
 	float w1 = normalW1Spinner->value();
 	normalCurveView->setCurve(v0,v1,w0,w1);
-	paint3DApp->scene->getBrush().setNormalBlendCurveCoef(v0,v1,w0,w1);
+	Paint3DFrame::getInstance()->scene->getBrush().setNormalBlendCurveCoef(v0,v1,w0,w1);
 }
 
 void PaintSettingWidget::computeDepthBlendCurve( double dummy )
@@ -153,12 +155,12 @@ void PaintSettingWidget::computeDepthBlendCurve( double dummy )
 	float w0 = depthW0Spinner->value();
 	float w1 = depthW1Spinner->value();
 	depthCurveView->setCurve(v0,v1,w0,w1);
-	paint3DApp->scene->getBrush().setDepthBlendCurveCoef(v0,v1,w0,w1);
+	Paint3DFrame::getInstance()->scene->getBrush().setDepthBlendCurveCoef(v0,v1,w0,w1);
 }
 
 void PaintSettingWidget::setDepthMode( int mode )
 {
-	Brush& brush = paint3DApp->scene->getBrush();
+	Brush& brush = Paint3DFrame::getInstance()->scene->getBrush();
 	switch (mode)
 	{
 	case 0:
@@ -174,7 +176,7 @@ void PaintSettingWidget::changeColorPicker(bool dummy)
 	if (!isEnabled())
 		return;
 	bool isPurePicker = pureColorRadio->isChecked();
-	QSharedPointer<Scene> scene = paint3DApp->scene;
+	QSharedPointer<Scene> scene = Paint3DFrame::getInstance()->scene;
 	Brush& brush = scene->getBrush();
 	Camera& cam  = scene->getCamera();
 	if (isPurePicker)
@@ -206,7 +208,7 @@ void PaintSettingWidget::setColorTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setColorTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setColorTexture(img);
 		colorTexLabel->setPixmap(QPixmap::fromImage(img));
 	}
 }
@@ -218,7 +220,7 @@ void PaintSettingWidget::setReflTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setReflectionTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setReflectionTexture(img);
 		reflTexLabel->setPixmap(QPixmap::fromImage(convertToGrayScale(img)));
 	}
 }
@@ -230,7 +232,7 @@ void PaintSettingWidget::setGlosTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setGlossnessTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setGlossnessTexture(img);
 		glosTexLabel->setPixmap(QPixmap::fromImage(convertToGrayScale(img)));
 	}
 }
@@ -242,7 +244,7 @@ void PaintSettingWidget::setRefrTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setRefractionTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setRefractionTexture(img);
 		refrTexLabel->setPixmap(QPixmap::fromImage(convertToGrayScale(img)));
 	}
 }
@@ -254,7 +256,7 @@ void PaintSettingWidget::setIORTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setIORTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setIORTexture(img);
 		iorTexLabel->setPixmap(QPixmap::fromImage(convertToGrayScale(img)));
 	}
 }
@@ -266,44 +268,44 @@ void PaintSettingWidget::setThicknessTex()
 	{
 		//用户选择了文件
 		QImage img(filename);
-		paint3DApp->scene->getBrush().getPurePaintPicker().setThicknessTexture(img);
+		Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().setThicknessTexture(img);
 		thicknessTexLabel->setPixmap(QPixmap::fromImage(convertToGrayScale(img)));
 	}
 }
 
 void PaintSettingWidget::clearColorTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearColorTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearColorTexture();
 	colorTexLabel->setPixmap(nullPixmap);
 }
 
 void PaintSettingWidget::clearReflTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearReflectionTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearReflectionTexture();
 	reflTexLabel->setPixmap(nullPixmap);
 }
 
 void PaintSettingWidget::clearGlosTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearGlossnessTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearGlossnessTexture();
 	glosTexLabel->setPixmap(nullPixmap);
 }
 
 void PaintSettingWidget::clearRefrTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearRefractionTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearRefractionTexture();
 	refrTexLabel->setPixmap(nullPixmap);
 }
 
 void PaintSettingWidget::clearIORTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearIORTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearIORTexture();
 	iorTexLabel->setPixmap(nullPixmap);
 }
 
 void PaintSettingWidget::clearThicknessTex()
 {
-	paint3DApp->scene->getBrush().getPurePaintPicker().clearThicknessTexture();
+	Paint3DFrame::getInstance()->scene->getBrush().getPurePaintPicker().clearThicknessTexture();
 	thicknessTexLabel->setPixmap(nullPixmap);
 }
 
@@ -332,42 +334,42 @@ QImage PaintSettingWidget::convertToGrayScale( const QImage& img )
 
 void PaintSettingWidget::setPickerOpacity( double opacity )
 {
-	Brush& brush = paint3DApp->scene->getBrush();
+	Brush& brush = Paint3DFrame::getInstance()->scene->getBrush();
 	QString curPicker = selectPickerButton->text();
-	ImagePicker* picker = (ImagePicker*)paint3DApp->scene->getObject(curPicker).data();
+	ImagePicker* picker = (ImagePicker*)Paint3DFrame::getInstance()->scene->getObject(curPicker).data();
 	if (picker)
 	{
 		picker->setOpacity(opacity);
-		paint3DApp->updateGLView();
+		Paint3DFrame::getInstance()->updateGLView();
 	}
 }
 
 void PaintSettingWidget::attachToCamera(bool isAttach)
 {
-	Brush& brush = paint3DApp->scene->getBrush();
+	Brush& brush = Paint3DFrame::getInstance()->scene->getBrush();
 	QString curPicker = selectPickerButton->text();
-	QSharedPointer<RenderableObject> pPicker = paint3DApp->scene->getObject(curPicker);
+	QSharedPointer<RenderableObject> pPicker = Paint3DFrame::getInstance()->scene->getObject(curPicker);
 	if (pPicker)
 	{
 		if (isAttach)
 		{
-			Camera& cam = paint3DApp->scene->getCamera();
+			Camera& cam = Paint3DFrame::getInstance()->scene->getCamera();
 			QVector3D trans;
 			QQuaternion rot;
 			cam.setProjMode(Camera::GLCAMERA_ORTHO);
 			cam.addAttachedObjects(pPicker.toWeakRef());
-			paint3DApp->scene->getScreenExposer().setProjectionType(GeometryExposer::GE_PROJ_ORTHOGRAPHIC);
-			paint3DApp->updateGLView();
+			Paint3DFrame::getInstance()->scene->getScreenExposer().setProjectionType(GeometryExposer::GE_PROJ_ORTHOGRAPHIC);
+			Paint3DFrame::getInstance()->updateGLView();
 		}
 		else
 		{
-			Camera& cam = paint3DApp->scene->getCamera();
+			Camera& cam = Paint3DFrame::getInstance()->scene->getCamera();
 			QVector3D trans;
 			QQuaternion rot;
 			cam.setProjMode(Camera::GLCAMERA_PERSP);
 			cam.clearAttachedObjects();
-			paint3DApp->scene->getScreenExposer().setProjectionType(GeometryExposer::GE_PROJ_PERSPECTIVE);
-			paint3DApp->updateGLView();
+			Paint3DFrame::getInstance()->scene->getScreenExposer().setProjectionType(GeometryExposer::GE_PROJ_PERSPECTIVE);
+			Paint3DFrame::getInstance()->updateGLView();
 		}
 	}
 }
@@ -382,20 +384,20 @@ void PaintSettingWidget::updateWidgets()
 
 void PaintSettingWidget::pickColorPickerFromScene()
 {
-	paint3DApp->viewWidget->enterPickerMode(getPickedObject);
+	Paint3DFrame::getInstance()->viewWidget->enterPickerMode(getPickedObject);
 }
 
 void getPickedObject( QSharedPointer<RenderableObject> obj )
 {
-	PaintSettingWidget& thisEditor = *paint3DApp->paintEditor;
+	PaintSettingWidget& thisEditor = *Paint3DFrame::getInstance()->paintEditor;
 	if (obj && obj->getType() == RenderableObject::OBJ_PICKER_OBJECT)
 	{
 		thisEditor.selectPickerButton->setChecked(false);
 		thisEditor.attachToCameraBox->setChecked(false);
 		thisEditor.selectPickerButton->setText(obj->getName());
-		paint3DApp->scene->getBrush().setCustomPaintPicker(qSharedPointerCast<ImagePicker>(obj));
+		Paint3DFrame::getInstance()->scene->getBrush().setCustomPaintPicker(qSharedPointerCast<ImagePicker>(obj));
 	}
-	paint3DApp->viewWidget->setCursor(Qt::ArrowCursor);
+	Paint3DFrame::getInstance()->viewWidget->setCursor(Qt::ArrowCursor);
 }
 
 void PaintSettingWidget::setAttachingParam( double dummy )
@@ -406,21 +408,21 @@ void PaintSettingWidget::setAttachingParam( double dummy )
 	float rot     = rotateSpinBox->value();
 	float xScale  = xScaleSpinBox->value();
 	float yScale  = yScaleSpinBox->value();
-	Camera& cam = paint3DApp->scene->getCamera();
+	Camera& cam = Paint3DFrame::getInstance()->scene->getCamera();
 	cam.setAttachObjectOffset(xOffset, yOffset, zOffset);
 	cam.setAttachObjectRotation(rot);
 	cam.setAttachObjectScale(xScale, yScale);
-	paint3DApp->viewWidget->updateGL();
+	Paint3DFrame::getInstance()->viewWidget->updateGL();
 }
 
 void PaintSettingWidget::setBrushMode( bool isBrushMode )
 {
 	if (isBrushMode)
 	{
-		paint3DApp->scene->getBrush().setMode(Brush::MODE_BRUSH);
+		Paint3DFrame::getInstance()->scene->getBrush().setMode(Brush::MODE_BRUSH);
 	}
 	else
 	{
-		paint3DApp->scene->getBrush().setMode(Brush::MODE_ERASER);
+		Paint3DFrame::getInstance()->scene->getBrush().setMode(Brush::MODE_ERASER);
 	}
 }

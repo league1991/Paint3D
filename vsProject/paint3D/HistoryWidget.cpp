@@ -4,7 +4,7 @@
 HistoryWidget::HistoryWidget(void)
 {
 	setupUi(this);
-	historyView->setStack(&paint3DApp->scene->getUndoStack());
+	historyView->setStack(&Paint3DFrame::getInstance()->scene->getUndoStack());
 	historyView->setEmptyLabel("<start>");
 }
 

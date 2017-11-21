@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "Scene.h"
 #include "Paint3DFrame.h"
-extern Paint3DFrame* paint3DApp;
 
 Scene::Scene(void)
 {
@@ -174,7 +173,7 @@ void Scene::draw()
 	}
 
 
-	if (paint3DApp->viewWidget->getCurToolType() == GLViewWidget::TOOL_PAINT)
+	if (Paint3DFrame::getInstance()->viewWidget->getCurToolType() == GLViewWidget::TOOL_PAINT)
 		brush->draw();
 
 

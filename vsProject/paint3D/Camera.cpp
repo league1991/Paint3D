@@ -164,9 +164,9 @@ void Camera::resetCamera()
 void Camera::applyGLMatrices()
 {
     glMatrixMode(GL_MODELVIEW);
-    glLoadMatrixd(viewMatrix.constData());
+    glLoadMatrixf(viewMatrix.constData());
 	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixd(projMatrix.constData());
+	glLoadMatrixf(projMatrix.constData());
 }
 
 

@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "CubeMap.h"
-
+#include <QtWidgets/QMessageBox>
 const GLuint CubeMap::glCubeMapTable[] = {
 	GL_TEXTURE_CUBE_MAP_POSITIVE_X,
 	GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
@@ -69,8 +69,8 @@ void CubeMap::load( const QString& fileName, int cubeMapSize )
 				float alpha, beta;
 				cartesian2Spherical(norCubePos, alpha, beta);
 
-				int srcPosU = min(max(0, alpha / (M_PI * 2) * srcSize.width() ), srcSize.width ()-1);
-				int srcPosV = min(max(0, beta  / (M_PI) * srcSize.height()), srcSize.height()-1);
+				int srcPosU = min(max(0.0, alpha / (M_PI * 2) * srcSize.width() ), srcSize.width ()-1.0);
+				int srcPosV = min(max(0.0, beta  / (M_PI) * srcSize.height()), srcSize.height()-1.0);
 
 				pCubeImg[x] = srcImg.pixel(srcPosU, srcPosV);//[srcPosV * srcSize.width() + srcPosU];
 			}
@@ -105,7 +105,7 @@ void CubeMap::initGLBuffer()
 	QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
 	for (int ithMap = 0; ithMap < 6; ++ithMap)
 	{
-		gl->gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
+		gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
 		// QMessageBox::information(NULL, QObject::tr("Info"), QString::number(ithMap) + "th map completed");
 
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);

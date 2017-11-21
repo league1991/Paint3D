@@ -11,7 +11,7 @@ Stroke::~Stroke(void)
 
 float StandardStroke::getOpacity( const QVector2D& uv )
 {
-	float distSq = min((uv - QVector2D(0.5,0.5)).lengthSquared() / 0.25, 1.0f);
+	float distSq = min((uv - QVector2D(0.5,0.5)).lengthSquared() / 0.25, 1.0);
 	return (distSq-1) / (a * distSq -1);
 }
 

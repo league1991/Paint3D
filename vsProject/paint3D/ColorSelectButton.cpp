@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "ColorSelectButton.h"
-
+#include <QtWidgets/QColorDialog>
 
 
 ColorSelectButton::ColorSelectButton( QWidget * parent /*= 0 */ ):QPushButton(parent)

@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "ObjectTransformWidget.h"
 #include "Paint3DFrame.h"
-extern Paint3DFrame*paint3DApp;
 
 ObjectTransformWidget::ObjectTransformWidget(void)
 {
@@ -25,7 +24,7 @@ ObjectTransformWidget::~ObjectTransformWidget(void)
 
 void ObjectTransformWidget::updateWidgets()
 {
-	QSharedPointer<RenderableObject> pO = paint3DApp->viewWidget->getSelectedObject();
+	QSharedPointer<RenderableObject> pO = Paint3DFrame::getInstance()->viewWidget->getSelectedObject();
 	if (pO)
 	{
 		ObjectTransform& trans =pO->getTransform();
@@ -55,7 +54,7 @@ void ObjectTransformWidget::updateWidgets()
 
 void ObjectTransformWidget::updateSceneObject()
 {
-	QSharedPointer<RenderableObject> pO = paint3DApp->viewWidget->getSelectedObject();
+	QSharedPointer<RenderableObject> pO = Paint3DFrame::getInstance()->viewWidget->getSelectedObject();
 	if (pO)
 	{
 		ObjectTransform  trans;
@@ -77,13 +76,13 @@ void ObjectTransformWidget::updateSceneObject()
 		trans.setRotate(newQuat);
 		trans.setScale(QVector3D(scaleXSpinBox->value(), scaleYSpinBox->value(), scaleZSpinBox->value()));
 		QUndoCommand* cmd = new ManipulateCommand(pO->getObjectID(),pO->getTransform(),trans, ManipulateCommand::MANCMD_ALL);
-		paint3DApp->scene->getUndoStack().push(cmd);
+		Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 	}
 }
 
 void ObjectTransformWidget::updateObjectName()
 {
-	QString oldName = paint3DApp->viewWidget->getSelectedObject()->getName();
-	paint3DApp->scene->rename(oldName, nameEdit->text());
-	nameEdit->setText(paint3DApp->viewWidget->getSelectedObject()->getName());
+	QString oldName = Paint3DFrame::getInstance()->viewWidget->getSelectedObject()->getName();
+	Paint3DFrame::getInstance()->scene->rename(oldName, nameEdit->text());
+	nameEdit->setText(Paint3DFrame::getInstance()->viewWidget->getSelectedObject()->getName());
 }

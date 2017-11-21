@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "paint3dframe.h"
+
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+
 Paint3DFrame* Paint3DFrame::instance = NULL;
 QSharedPointer<Scene> Paint3DFrame::scene = QSharedPointer<Scene>(new Scene);
 
-Paint3DFrame::Paint3DFrame(QWidget *parent, Qt::WFlags flags)
+Paint3DFrame::Paint3DFrame(QWidget *parent, Qt::WindowFlags flags)
 	: QMainWindow(parent, flags)
 {
 

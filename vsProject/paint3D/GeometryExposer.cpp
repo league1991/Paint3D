@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "GeometryExposer.h"
-	
+#include <QtWidgets/QMessageBox>	
 const GLenum GeometryExposer::renderTargets[] = 
-//{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT1_EXT };
-{ GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
+{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT1_EXT };
+//{ GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 
 GeometryExposer::GeometryExposer()
 {
@@ -91,8 +91,8 @@ bool GeometryExposer::generateBuffers()
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16, width, height, 0, GL_RGBA, GL_UNSIGNED_SHORT, norTexData);
 
-	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureObj[0], 0);
-	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, textureObj[1], 0);
+	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, textureObj[0], 0);
+	gl->glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1_EXT, GL_TEXTURE_2D, textureObj[1], 0);
 	gl->glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBufferObj);
 
 	status = gl->glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -118,7 +118,7 @@ void GeometryExposer::exposeGeometry()
 	glClearColor(CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	gl->glDrawBuffers(2, renderTargets);
+	glDrawBuffers(2, renderTargets);
 	int i = 0;
 
 	QSharedPointer<QGLShaderProgram>meshShader = Mesh::getGeometryShader();
@@ -199,8 +199,8 @@ void GeometryExposer::setResolution( int w, int h )
 
 bool GeometryExposer::getNormalAndDepth( const QVector2D& ratio, QVector3D& normal, float& depth )const
 {
-	int xID = max(0, min(ratio.x() * width, width - 1));
-	int yID = max(0, min((1 - ratio.y()) * height, height - 1));
+	int xID = max(0.0f, min(ratio.x() * width, width - 1.0f));
+	int yID = max(0.0f, min((1 - ratio.y()) * height, height - 1.0f));
 	if (isPixelEmpty(xID, yID))
 		return false;
 	NormalTexPixelData& norPixel = norTexData[xID + yID * width];
@@ -208,14 +208,14 @@ bool GeometryExposer::getNormalAndDepth( const QVector2D& ratio, QVector3D& norm
 		               (norPixel.ny - 32767.5) / 32767.5,
 					   (norPixel.nz - 32767.5) / 32767.5);
 	float norDepth = norPixel.depth / 65535.0;
-	depth = norDepth / max(1 - norDepth, 0.001);	// 保证depth为有效值并小于1000
+	depth = norDepth / max(1 - norDepth, 0.001f);	// 保证depth为有效值并小于1000
 	return true;
 }
 
 bool GeometryExposer::getUVAndID(const QVector2D& ratio, QVector3D& uv,unsigned char& objectID, unsigned int& faceID )const
 {
-	int xID = max(0, min(ratio.x() * width, width - 1));
-	int yID = max(0, min((1 - ratio.y()) * height, height - 1));
+	int xID = max(0.f, min(ratio.x() * width, width - 1.f));
+	int yID = max(0.f, min((1 - ratio.y()) * height, height - 1.f));
 	if (isPixelEmpty(xID, yID))
 		return false;
 	UVTexPixelData &uvPixel = uvTexData[xID + yID * width];
@@ -227,15 +227,15 @@ bool GeometryExposer::getUVAndID(const QVector2D& ratio, QVector3D& uv,unsigned 
 
 bool GeometryExposer::isEmpty( const QVector2D& ratio )const
 {
-	int xID = max(0, min(ratio.x() * width, width - 1));
-	int yID = max(0, min((1 - ratio.y()) * height, height - 1));
+	int xID = max(0.f, min(ratio.x() * width, width - 1.f));
+	int yID = max(0.f, min((1 - ratio.y()) * height, height - 1.f));
 	return isPixelEmpty(xID, yID);
 }
 
 bool GeometryExposer::getAll(const QVector2D& ratio, QVector3D& normal, float& depth,QVector2D& uv,unsigned char& objectID, unsigned int& faceID)const
 {
-	int xID = max(0, min(ratio.x() * width, width - 1));
-	int yID = max(0, min((1 - ratio.y()) * height, height - 1));
+	int xID = max(0.f, min(ratio.x() * width, width - 1.f));
+	int yID = max(0.f, min((1 - ratio.y()) * height, height - 1.f));
 	UVTexPixelData &uvPixel = uvTexData[xID + yID * width];
 	if (uvPixel.objectID == NO_OBJECT_BIT)
 		return false;
@@ -248,14 +248,14 @@ bool GeometryExposer::getAll(const QVector2D& ratio, QVector3D& normal, float& d
 						(norPixel.ny - 32767.5) / 32767.5,
 						(norPixel.nz - 32767.5) / 32767.5);
 	float norDepth = norPixel.depth / 65535.0;
-	depth = norDepth / max(1 - norDepth, 0.001);
+	depth = norDepth / max(1 - norDepth, 0.001f);
 	return true;
 }
 
 bool GeometryExposer::getObjectID( const QVector2D& ratio, unsigned char& objectID )const
 {
-	int xID = max(0, min(ratio.x() * width, width - 1));
-	int yID = max(0, min((1 - ratio.y()) * height, height - 1));
+	int xID = max(0.f, min(ratio.x() * width, width - 1.f));
+	int yID = max(0.f, min((1 - ratio.y()) * height, height - 1.f));
 
 	UVTexPixelData &uvPixel = uvTexData[xID + yID * width];
 	objectID = uvPixel.objectID;
@@ -265,10 +265,10 @@ bool GeometryExposer::getObjectID( const QVector2D& ratio, unsigned char& object
 
 void GeometryExposer::getRegionFaceID( const QVector2D& minRatio, const QVector2D& maxRatio, int objectID, QSet<int>& faceIDSet )const
 {
-	int minX = max(0, min(      minRatio.x() * width, width - 1));
-	int maxX = max(0, min(      maxRatio.x() * width, width - 1));
-	int minY = max(0, min((1 - maxRatio.y()) * height, height - 1));
-	int maxY = max(0, min((1 - minRatio.y()) * height, height - 1));
+	int minX = max(0.f, min(      minRatio.x() * width, width - 1.f));
+	int maxX = max(0.f, min(      maxRatio.x() * width, width - 1.f));
+	int minY = max(0.f, min((1 - maxRatio.y()) * height, height - 1.f));
+	int maxY = max(0.f, min((1 - minRatio.y()) * height, height - 1.f));
 	for (int y = minY; y <= maxY; ++y)
 	{
 		for (int x = minX; x <= maxX; ++x)

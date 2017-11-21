@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'paintSetting.ui'
 **
-** Created: Mon Sep 22 21:18:39 2014
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,23 +10,23 @@
 #define UI_PAINTSETTING_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
-#include <QtGui/QGridLayout>
-#include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QRadioButton>
-#include <QtGui/QScrollArea>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QToolButton>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 #include "SliderSpinnerGroup.h"
 #include "blendcurvegraphwidget.h"
 #include "colorselectbutton.h"
@@ -136,26 +135,26 @@ public:
     void setupUi(QScrollArea *PaintSetting)
     {
         if (PaintSetting->objectName().isEmpty())
-            PaintSetting->setObjectName(QString::fromUtf8("PaintSetting"));
+            PaintSetting->setObjectName(QStringLiteral("PaintSetting"));
         PaintSetting->resize(425, 760);
         PaintSetting->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 408, 866));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         modeGroup = new QGroupBox(scrollAreaWidgetContents);
-        modeGroup->setObjectName(QString::fromUtf8("modeGroup"));
+        modeGroup->setObjectName(QStringLiteral("modeGroup"));
         horizontalLayout = new QHBoxLayout(modeGroup);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         brushModeRadio = new QRadioButton(modeGroup);
-        brushModeRadio->setObjectName(QString::fromUtf8("brushModeRadio"));
+        brushModeRadio->setObjectName(QStringLiteral("brushModeRadio"));
         brushModeRadio->setChecked(true);
 
         horizontalLayout->addWidget(brushModeRadio);
 
         eraserModeRadio = new QRadioButton(modeGroup);
-        eraserModeRadio->setObjectName(QString::fromUtf8("eraserModeRadio"));
+        eraserModeRadio->setObjectName(QStringLiteral("eraserModeRadio"));
 
         horizontalLayout->addWidget(eraserModeRadio);
 
@@ -163,7 +162,7 @@ public:
         verticalLayout->addWidget(modeGroup);
 
         brushParamGroup = new QGroupBox(scrollAreaWidgetContents);
-        brushParamGroup->setObjectName(QString::fromUtf8("brushParamGroup"));
+        brushParamGroup->setObjectName(QStringLiteral("brushParamGroup"));
         brushParamGroup->setEnabled(true);
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -173,21 +172,21 @@ public:
         brushParamGroup->setFlat(false);
         brushParamGroup->setCheckable(false);
         gridLayout = new QGridLayout(brushParamGroup);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         pureColorRadio = new QRadioButton(brushParamGroup);
-        pureColorRadio->setObjectName(QString::fromUtf8("pureColorRadio"));
+        pureColorRadio->setObjectName(QStringLiteral("pureColorRadio"));
         pureColorRadio->setChecked(true);
 
         gridLayout->addWidget(pureColorRadio, 0, 0, 1, 2);
 
         colorLabel = new QLabel(brushParamGroup);
-        colorLabel->setObjectName(QString::fromUtf8("colorLabel"));
+        colorLabel->setObjectName(QStringLiteral("colorLabel"));
         colorLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(colorLabel, 1, 0, 1, 2);
 
         affectColor = new QCheckBox(brushParamGroup);
-        affectColor->setObjectName(QString::fromUtf8("affectColor"));
+        affectColor->setObjectName(QStringLiteral("affectColor"));
         QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -198,7 +197,7 @@ public:
         gridLayout->addWidget(affectColor, 1, 2, 1, 1);
 
         colorButton = new ColorSelectButton(brushParamGroup);
-        colorButton->setObjectName(QString::fromUtf8("colorButton"));
+        colorButton->setObjectName(QStringLiteral("colorButton"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -209,7 +208,7 @@ public:
         gridLayout->addWidget(colorButton, 1, 3, 1, 1);
 
         colorTexLabel = new QLabel(brushParamGroup);
-        colorTexLabel->setObjectName(QString::fromUtf8("colorTexLabel"));
+        colorTexLabel->setObjectName(QStringLiteral("colorTexLabel"));
         colorTexLabel->setMaximumSize(QSize(22, 22));
         colorTexLabel->setAutoFillBackground(false);
         colorTexLabel->setFrameShape(QFrame::NoFrame);
@@ -222,29 +221,29 @@ public:
         gridLayout->addWidget(colorTexLabel, 1, 4, 1, 1);
 
         colorTexButton = new QToolButton(brushParamGroup);
-        colorTexButton->setObjectName(QString::fromUtf8("colorTexButton"));
+        colorTexButton->setObjectName(QStringLiteral("colorTexButton"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/paint3D/Resources/plus.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/paint3D/Resources/plus.png"), QSize(), QIcon::Normal, QIcon::Off);
         colorTexButton->setIcon(icon);
 
         gridLayout->addWidget(colorTexButton, 1, 5, 1, 1);
 
         clearColorTexButton = new QToolButton(brushParamGroup);
-        clearColorTexButton->setObjectName(QString::fromUtf8("clearColorTexButton"));
+        clearColorTexButton->setObjectName(QStringLiteral("clearColorTexButton"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/paint3D/Resources/minus.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/paint3D/Resources/minus.png"), QSize(), QIcon::Normal, QIcon::Off);
         clearColorTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearColorTexButton, 1, 6, 1, 1);
 
         opacityLabel = new QLabel(brushParamGroup);
-        opacityLabel->setObjectName(QString::fromUtf8("opacityLabel"));
+        opacityLabel->setObjectName(QStringLiteral("opacityLabel"));
         opacityLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(opacityLabel, 2, 0, 1, 2);
 
         opacitySpinBox = new SliderSpinnerGroup(brushParamGroup);
-        opacitySpinBox->setObjectName(QString::fromUtf8("opacitySpinBox"));
+        opacitySpinBox->setObjectName(QStringLiteral("opacitySpinBox"));
         opacitySpinBox->setMaximum(1);
         opacitySpinBox->setMinimum(0);
         opacitySpinBox->setValue(1);
@@ -252,13 +251,13 @@ public:
         gridLayout->addWidget(opacitySpinBox, 2, 3, 1, 1);
 
         reflLevelLabel = new QLabel(brushParamGroup);
-        reflLevelLabel->setObjectName(QString::fromUtf8("reflLevelLabel"));
+        reflLevelLabel->setObjectName(QStringLiteral("reflLevelLabel"));
         reflLevelLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(reflLevelLabel, 3, 0, 1, 2);
 
         affectReflLevel = new QCheckBox(brushParamGroup);
-        affectReflLevel->setObjectName(QString::fromUtf8("affectReflLevel"));
+        affectReflLevel->setObjectName(QStringLiteral("affectReflLevel"));
         sizePolicy1.setHeightForWidth(affectReflLevel->sizePolicy().hasHeightForWidth());
         affectReflLevel->setSizePolicy(sizePolicy1);
         affectReflLevel->setChecked(true);
@@ -266,12 +265,12 @@ public:
         gridLayout->addWidget(affectReflLevel, 3, 2, 1, 1);
 
         reflLevelSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        reflLevelSpinBox->setObjectName(QString::fromUtf8("reflLevelSpinBox"));
+        reflLevelSpinBox->setObjectName(QStringLiteral("reflLevelSpinBox"));
 
         gridLayout->addWidget(reflLevelSpinBox, 3, 3, 1, 1);
 
         reflTexLabel = new QLabel(brushParamGroup);
-        reflTexLabel->setObjectName(QString::fromUtf8("reflTexLabel"));
+        reflTexLabel->setObjectName(QStringLiteral("reflTexLabel"));
         reflTexLabel->setMaximumSize(QSize(22, 22));
         reflTexLabel->setFrameShape(QFrame::NoFrame);
         reflTexLabel->setPixmap(QPixmap(QString::fromUtf8(":/paint3D/Resources/null.png")));
@@ -280,25 +279,25 @@ public:
         gridLayout->addWidget(reflTexLabel, 3, 4, 1, 1);
 
         reflTexButton = new QToolButton(brushParamGroup);
-        reflTexButton->setObjectName(QString::fromUtf8("reflTexButton"));
+        reflTexButton->setObjectName(QStringLiteral("reflTexButton"));
         reflTexButton->setIcon(icon);
 
         gridLayout->addWidget(reflTexButton, 3, 5, 1, 1);
 
         clearReflTexButton = new QToolButton(brushParamGroup);
-        clearReflTexButton->setObjectName(QString::fromUtf8("clearReflTexButton"));
+        clearReflTexButton->setObjectName(QStringLiteral("clearReflTexButton"));
         clearReflTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearReflTexButton, 3, 6, 1, 1);
 
         reflGlossnessLabel = new QLabel(brushParamGroup);
-        reflGlossnessLabel->setObjectName(QString::fromUtf8("reflGlossnessLabel"));
+        reflGlossnessLabel->setObjectName(QStringLiteral("reflGlossnessLabel"));
         reflGlossnessLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(reflGlossnessLabel, 4, 0, 1, 2);
 
         affectGlossness = new QCheckBox(brushParamGroup);
-        affectGlossness->setObjectName(QString::fromUtf8("affectGlossness"));
+        affectGlossness->setObjectName(QStringLiteral("affectGlossness"));
         sizePolicy1.setHeightForWidth(affectGlossness->sizePolicy().hasHeightForWidth());
         affectGlossness->setSizePolicy(sizePolicy1);
         affectGlossness->setChecked(true);
@@ -306,13 +305,13 @@ public:
         gridLayout->addWidget(affectGlossness, 4, 2, 1, 1);
 
         reflGlossnessSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        reflGlossnessSpinBox->setObjectName(QString::fromUtf8("reflGlossnessSpinBox"));
+        reflGlossnessSpinBox->setObjectName(QStringLiteral("reflGlossnessSpinBox"));
         reflGlossnessSpinBox->setInputMethodHints(Qt::ImhNone);
 
         gridLayout->addWidget(reflGlossnessSpinBox, 4, 3, 1, 1);
 
         glosTexLabel = new QLabel(brushParamGroup);
-        glosTexLabel->setObjectName(QString::fromUtf8("glosTexLabel"));
+        glosTexLabel->setObjectName(QStringLiteral("glosTexLabel"));
         glosTexLabel->setMaximumSize(QSize(22, 22));
         glosTexLabel->setFrameShape(QFrame::NoFrame);
         glosTexLabel->setPixmap(QPixmap(QString::fromUtf8(":/paint3D/Resources/null.png")));
@@ -321,25 +320,25 @@ public:
         gridLayout->addWidget(glosTexLabel, 4, 4, 1, 1);
 
         glossnessTexButton = new QToolButton(brushParamGroup);
-        glossnessTexButton->setObjectName(QString::fromUtf8("glossnessTexButton"));
+        glossnessTexButton->setObjectName(QStringLiteral("glossnessTexButton"));
         glossnessTexButton->setIcon(icon);
 
         gridLayout->addWidget(glossnessTexButton, 4, 5, 1, 1);
 
         clearGlossnessTexButton = new QToolButton(brushParamGroup);
-        clearGlossnessTexButton->setObjectName(QString::fromUtf8("clearGlossnessTexButton"));
+        clearGlossnessTexButton->setObjectName(QStringLiteral("clearGlossnessTexButton"));
         clearGlossnessTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearGlossnessTexButton, 4, 6, 1, 1);
 
         refrLevelLabel = new QLabel(brushParamGroup);
-        refrLevelLabel->setObjectName(QString::fromUtf8("refrLevelLabel"));
+        refrLevelLabel->setObjectName(QStringLiteral("refrLevelLabel"));
         refrLevelLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(refrLevelLabel, 5, 0, 1, 2);
 
         affectRefrLevel = new QCheckBox(brushParamGroup);
-        affectRefrLevel->setObjectName(QString::fromUtf8("affectRefrLevel"));
+        affectRefrLevel->setObjectName(QStringLiteral("affectRefrLevel"));
         sizePolicy1.setHeightForWidth(affectRefrLevel->sizePolicy().hasHeightForWidth());
         affectRefrLevel->setSizePolicy(sizePolicy1);
         affectRefrLevel->setChecked(true);
@@ -347,13 +346,13 @@ public:
         gridLayout->addWidget(affectRefrLevel, 5, 2, 1, 1);
 
         refrLevelSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        refrLevelSpinBox->setObjectName(QString::fromUtf8("refrLevelSpinBox"));
+        refrLevelSpinBox->setObjectName(QStringLiteral("refrLevelSpinBox"));
         refrLevelSpinBox->setValue(1);
 
         gridLayout->addWidget(refrLevelSpinBox, 5, 3, 1, 1);
 
         refrTexLabel = new QLabel(brushParamGroup);
-        refrTexLabel->setObjectName(QString::fromUtf8("refrTexLabel"));
+        refrTexLabel->setObjectName(QStringLiteral("refrTexLabel"));
         refrTexLabel->setMaximumSize(QSize(22, 22));
         refrTexLabel->setFrameShape(QFrame::NoFrame);
         refrTexLabel->setPixmap(QPixmap(QString::fromUtf8(":/paint3D/Resources/null.png")));
@@ -362,25 +361,25 @@ public:
         gridLayout->addWidget(refrTexLabel, 5, 4, 1, 1);
 
         refrTexButton = new QToolButton(brushParamGroup);
-        refrTexButton->setObjectName(QString::fromUtf8("refrTexButton"));
+        refrTexButton->setObjectName(QStringLiteral("refrTexButton"));
         refrTexButton->setIcon(icon);
 
         gridLayout->addWidget(refrTexButton, 5, 5, 1, 1);
 
         clearRefrTexButton = new QToolButton(brushParamGroup);
-        clearRefrTexButton->setObjectName(QString::fromUtf8("clearRefrTexButton"));
+        clearRefrTexButton->setObjectName(QStringLiteral("clearRefrTexButton"));
         clearRefrTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearRefrTexButton, 5, 6, 1, 1);
 
         refrGlossnessLabel = new QLabel(brushParamGroup);
-        refrGlossnessLabel->setObjectName(QString::fromUtf8("refrGlossnessLabel"));
+        refrGlossnessLabel->setObjectName(QStringLiteral("refrGlossnessLabel"));
         refrGlossnessLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(refrGlossnessLabel, 6, 0, 1, 2);
 
         affectIOR = new QCheckBox(brushParamGroup);
-        affectIOR->setObjectName(QString::fromUtf8("affectIOR"));
+        affectIOR->setObjectName(QStringLiteral("affectIOR"));
         sizePolicy1.setHeightForWidth(affectIOR->sizePolicy().hasHeightForWidth());
         affectIOR->setSizePolicy(sizePolicy1);
         affectIOR->setChecked(true);
@@ -388,12 +387,12 @@ public:
         gridLayout->addWidget(affectIOR, 6, 2, 1, 1);
 
         refrGlossnessSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        refrGlossnessSpinBox->setObjectName(QString::fromUtf8("refrGlossnessSpinBox"));
+        refrGlossnessSpinBox->setObjectName(QStringLiteral("refrGlossnessSpinBox"));
 
         gridLayout->addWidget(refrGlossnessSpinBox, 6, 3, 1, 1);
 
         iorTexLabel = new QLabel(brushParamGroup);
-        iorTexLabel->setObjectName(QString::fromUtf8("iorTexLabel"));
+        iorTexLabel->setObjectName(QStringLiteral("iorTexLabel"));
         iorTexLabel->setMaximumSize(QSize(22, 22));
         iorTexLabel->setFrameShape(QFrame::NoFrame);
         iorTexLabel->setPixmap(QPixmap(QString::fromUtf8(":/paint3D/Resources/null.png")));
@@ -402,25 +401,25 @@ public:
         gridLayout->addWidget(iorTexLabel, 6, 4, 1, 1);
 
         iorTexButton = new QToolButton(brushParamGroup);
-        iorTexButton->setObjectName(QString::fromUtf8("iorTexButton"));
+        iorTexButton->setObjectName(QStringLiteral("iorTexButton"));
         iorTexButton->setIcon(icon);
 
         gridLayout->addWidget(iorTexButton, 6, 5, 1, 1);
 
         clearIorTexButton = new QToolButton(brushParamGroup);
-        clearIorTexButton->setObjectName(QString::fromUtf8("clearIorTexButton"));
+        clearIorTexButton->setObjectName(QStringLiteral("clearIorTexButton"));
         clearIorTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearIorTexButton, 6, 6, 1, 1);
 
         thicknessLabel = new QLabel(brushParamGroup);
-        thicknessLabel->setObjectName(QString::fromUtf8("thicknessLabel"));
+        thicknessLabel->setObjectName(QStringLiteral("thicknessLabel"));
         thicknessLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(thicknessLabel, 7, 0, 1, 2);
 
         affectThickness = new QCheckBox(brushParamGroup);
-        affectThickness->setObjectName(QString::fromUtf8("affectThickness"));
+        affectThickness->setObjectName(QStringLiteral("affectThickness"));
         sizePolicy1.setHeightForWidth(affectThickness->sizePolicy().hasHeightForWidth());
         affectThickness->setSizePolicy(sizePolicy1);
         affectThickness->setChecked(true);
@@ -428,12 +427,12 @@ public:
         gridLayout->addWidget(affectThickness, 7, 2, 1, 1);
 
         thicknessSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        thicknessSpinBox->setObjectName(QString::fromUtf8("thicknessSpinBox"));
+        thicknessSpinBox->setObjectName(QStringLiteral("thicknessSpinBox"));
 
         gridLayout->addWidget(thicknessSpinBox, 7, 3, 1, 1);
 
         thicknessTexLabel = new QLabel(brushParamGroup);
-        thicknessTexLabel->setObjectName(QString::fromUtf8("thicknessTexLabel"));
+        thicknessTexLabel->setObjectName(QStringLiteral("thicknessTexLabel"));
         thicknessTexLabel->setMaximumSize(QSize(22, 22));
         thicknessTexLabel->setFrameShape(QFrame::NoFrame);
         thicknessTexLabel->setPixmap(QPixmap(QString::fromUtf8(":/paint3D/Resources/null.png")));
@@ -442,24 +441,24 @@ public:
         gridLayout->addWidget(thicknessTexLabel, 7, 4, 1, 1);
 
         thicknessTexButton = new QToolButton(brushParamGroup);
-        thicknessTexButton->setObjectName(QString::fromUtf8("thicknessTexButton"));
+        thicknessTexButton->setObjectName(QStringLiteral("thicknessTexButton"));
         thicknessTexButton->setIcon(icon);
 
         gridLayout->addWidget(thicknessTexButton, 7, 5, 1, 1);
 
         clearThicknessTexButton = new QToolButton(brushParamGroup);
-        clearThicknessTexButton->setObjectName(QString::fromUtf8("clearThicknessTexButton"));
+        clearThicknessTexButton->setObjectName(QStringLiteral("clearThicknessTexButton"));
         clearThicknessTexButton->setIcon(icon1);
 
         gridLayout->addWidget(clearThicknessTexButton, 7, 6, 1, 1);
 
         colorPickerRadio = new QRadioButton(brushParamGroup);
-        colorPickerRadio->setObjectName(QString::fromUtf8("colorPickerRadio"));
+        colorPickerRadio->setObjectName(QStringLiteral("colorPickerRadio"));
 
         gridLayout->addWidget(colorPickerRadio, 8, 0, 1, 2);
 
         selectPickerButton = new QPushButton(brushParamGroup);
-        selectPickerButton->setObjectName(QString::fromUtf8("selectPickerButton"));
+        selectPickerButton->setObjectName(QStringLiteral("selectPickerButton"));
         selectPickerButton->setEnabled(false);
         selectPickerButton->setCheckable(true);
         selectPickerButton->setChecked(false);
@@ -467,13 +466,13 @@ public:
         gridLayout->addWidget(selectPickerButton, 9, 0, 1, 4);
 
         pickerOpacityLabel = new QLabel(brushParamGroup);
-        pickerOpacityLabel->setObjectName(QString::fromUtf8("pickerOpacityLabel"));
+        pickerOpacityLabel->setObjectName(QStringLiteral("pickerOpacityLabel"));
         pickerOpacityLabel->setMinimumSize(QSize(100, 0));
 
         gridLayout->addWidget(pickerOpacityLabel, 10, 0, 1, 2);
 
         attachToCameraBox = new QCheckBox(brushParamGroup);
-        attachToCameraBox->setObjectName(QString::fromUtf8("attachToCameraBox"));
+        attachToCameraBox->setObjectName(QStringLiteral("attachToCameraBox"));
         attachToCameraBox->setEnabled(false);
 
         gridLayout->addWidget(attachToCameraBox, 11, 0, 1, 2);
@@ -483,12 +482,12 @@ public:
         gridLayout->addItem(horizontalSpacer, 12, 0, 1, 1);
 
         xOffsetLabel = new QLabel(brushParamGroup);
-        xOffsetLabel->setObjectName(QString::fromUtf8("xOffsetLabel"));
+        xOffsetLabel->setObjectName(QStringLiteral("xOffsetLabel"));
 
         gridLayout->addWidget(xOffsetLabel, 12, 1, 1, 1);
 
         xOffsetSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        xOffsetSpinBox->setObjectName(QString::fromUtf8("xOffsetSpinBox"));
+        xOffsetSpinBox->setObjectName(QStringLiteral("xOffsetSpinBox"));
         xOffsetSpinBox->setEnabled(false);
         xOffsetSpinBox->setMinimum(-1);
 
@@ -499,12 +498,12 @@ public:
         gridLayout->addItem(horizontalSpacer_2, 13, 0, 1, 1);
 
         yOffsetLabel = new QLabel(brushParamGroup);
-        yOffsetLabel->setObjectName(QString::fromUtf8("yOffsetLabel"));
+        yOffsetLabel->setObjectName(QStringLiteral("yOffsetLabel"));
 
         gridLayout->addWidget(yOffsetLabel, 13, 1, 1, 1);
 
         yOffsetSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        yOffsetSpinBox->setObjectName(QString::fromUtf8("yOffsetSpinBox"));
+        yOffsetSpinBox->setObjectName(QStringLiteral("yOffsetSpinBox"));
         yOffsetSpinBox->setEnabled(false);
         yOffsetSpinBox->setMinimum(-1);
 
@@ -515,12 +514,12 @@ public:
         gridLayout->addItem(horizontalSpacer_4, 14, 0, 1, 1);
 
         zOffsetLabel = new QLabel(brushParamGroup);
-        zOffsetLabel->setObjectName(QString::fromUtf8("zOffsetLabel"));
+        zOffsetLabel->setObjectName(QStringLiteral("zOffsetLabel"));
 
         gridLayout->addWidget(zOffsetLabel, 14, 1, 1, 1);
 
         zOffsetSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        zOffsetSpinBox->setObjectName(QString::fromUtf8("zOffsetSpinBox"));
+        zOffsetSpinBox->setObjectName(QStringLiteral("zOffsetSpinBox"));
         zOffsetSpinBox->setEnabled(false);
         zOffsetSpinBox->setMinimum(0);
 
@@ -531,12 +530,12 @@ public:
         gridLayout->addItem(horizontalSpacer_3, 15, 0, 1, 1);
 
         rotateLabel = new QLabel(brushParamGroup);
-        rotateLabel->setObjectName(QString::fromUtf8("rotateLabel"));
+        rotateLabel->setObjectName(QStringLiteral("rotateLabel"));
 
         gridLayout->addWidget(rotateLabel, 15, 1, 1, 1);
 
         rotateSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        rotateSpinBox->setObjectName(QString::fromUtf8("rotateSpinBox"));
+        rotateSpinBox->setObjectName(QStringLiteral("rotateSpinBox"));
         rotateSpinBox->setEnabled(false);
         rotateSpinBox->setMaximum(360);
 
@@ -547,12 +546,12 @@ public:
         gridLayout->addItem(horizontalSpacer_5, 16, 0, 1, 1);
 
         xScaleLabel = new QLabel(brushParamGroup);
-        xScaleLabel->setObjectName(QString::fromUtf8("xScaleLabel"));
+        xScaleLabel->setObjectName(QStringLiteral("xScaleLabel"));
 
         gridLayout->addWidget(xScaleLabel, 16, 1, 1, 1);
 
         xScaleSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        xScaleSpinBox->setObjectName(QString::fromUtf8("xScaleSpinBox"));
+        xScaleSpinBox->setObjectName(QStringLiteral("xScaleSpinBox"));
         xScaleSpinBox->setEnabled(false);
         xScaleSpinBox->setMaximum(1);
         xScaleSpinBox->setMinimum(-1);
@@ -565,12 +564,12 @@ public:
         gridLayout->addItem(horizontalSpacer_6, 17, 0, 1, 1);
 
         yScaleLabel = new QLabel(brushParamGroup);
-        yScaleLabel->setObjectName(QString::fromUtf8("yScaleLabel"));
+        yScaleLabel->setObjectName(QStringLiteral("yScaleLabel"));
 
         gridLayout->addWidget(yScaleLabel, 17, 1, 1, 1);
 
         yScaleSpinBox = new SliderSpinnerGroup(brushParamGroup);
-        yScaleSpinBox->setObjectName(QString::fromUtf8("yScaleSpinBox"));
+        yScaleSpinBox->setObjectName(QStringLiteral("yScaleSpinBox"));
         yScaleSpinBox->setEnabled(false);
         yScaleSpinBox->setMaximum(1);
         yScaleSpinBox->setMinimum(-1);
@@ -579,7 +578,7 @@ public:
         gridLayout->addWidget(yScaleSpinBox, 17, 2, 1, 2);
 
         pickerOpacitySpinBox = new SliderSpinnerGroup(brushParamGroup);
-        pickerOpacitySpinBox->setObjectName(QString::fromUtf8("pickerOpacitySpinBox"));
+        pickerOpacitySpinBox->setObjectName(QStringLiteral("pickerOpacitySpinBox"));
         pickerOpacitySpinBox->setEnabled(false);
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Ignored);
         sizePolicy3.setHorizontalStretch(0);
@@ -594,22 +593,22 @@ public:
         verticalLayout->addWidget(brushParamGroup);
 
         normalControlGroup = new QGroupBox(scrollAreaWidgetContents);
-        normalControlGroup->setObjectName(QString::fromUtf8("normalControlGroup"));
+        normalControlGroup->setObjectName(QStringLiteral("normalControlGroup"));
         gridLayout_2 = new QGridLayout(normalControlGroup);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         normalV0Label = new QLabel(normalControlGroup);
-        normalV0Label->setObjectName(QString::fromUtf8("normalV0Label"));
+        normalV0Label->setObjectName(QStringLiteral("normalV0Label"));
 
         gridLayout_2->addWidget(normalV0Label, 0, 0, 1, 1);
 
         normalV0Spinner = new SliderSpinnerGroup(normalControlGroup);
-        normalV0Spinner->setObjectName(QString::fromUtf8("normalV0Spinner"));
+        normalV0Spinner->setObjectName(QStringLiteral("normalV0Spinner"));
         normalV0Spinner->setValue(1);
 
         gridLayout_2->addWidget(normalV0Spinner, 0, 1, 1, 1);
 
         normalCurveView = new BlendCurveGraphWidget(normalControlGroup);
-        normalCurveView->setObjectName(QString::fromUtf8("normalCurveView"));
+        normalCurveView->setObjectName(QStringLiteral("normalCurveView"));
         QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
@@ -620,23 +619,23 @@ public:
         gridLayout_2->addWidget(normalCurveView, 0, 2, 4, 1);
 
         normalV1Label = new QLabel(normalControlGroup);
-        normalV1Label->setObjectName(QString::fromUtf8("normalV1Label"));
+        normalV1Label->setObjectName(QStringLiteral("normalV1Label"));
 
         gridLayout_2->addWidget(normalV1Label, 1, 0, 1, 1);
 
         normalV1Spinner = new SliderSpinnerGroup(normalControlGroup);
-        normalV1Spinner->setObjectName(QString::fromUtf8("normalV1Spinner"));
+        normalV1Spinner->setObjectName(QStringLiteral("normalV1Spinner"));
         normalV1Spinner->setValue(1);
 
         gridLayout_2->addWidget(normalV1Spinner, 1, 1, 1, 1);
 
         normalWeight0Label = new QLabel(normalControlGroup);
-        normalWeight0Label->setObjectName(QString::fromUtf8("normalWeight0Label"));
+        normalWeight0Label->setObjectName(QStringLiteral("normalWeight0Label"));
 
         gridLayout_2->addWidget(normalWeight0Label, 2, 0, 1, 1);
 
         normalW0Spinner = new SliderSpinnerGroup(normalControlGroup);
-        normalW0Spinner->setObjectName(QString::fromUtf8("normalW0Spinner"));
+        normalW0Spinner->setObjectName(QStringLiteral("normalW0Spinner"));
         normalW0Spinner->setMaximum(5);
         normalW0Spinner->setMinimum(0.01);
         normalW0Spinner->setValue(1);
@@ -644,12 +643,12 @@ public:
         gridLayout_2->addWidget(normalW0Spinner, 2, 1, 1, 1);
 
         normalWeight1Label = new QLabel(normalControlGroup);
-        normalWeight1Label->setObjectName(QString::fromUtf8("normalWeight1Label"));
+        normalWeight1Label->setObjectName(QStringLiteral("normalWeight1Label"));
 
         gridLayout_2->addWidget(normalWeight1Label, 3, 0, 1, 1);
 
         normalW1Spinner = new SliderSpinnerGroup(normalControlGroup);
-        normalW1Spinner->setObjectName(QString::fromUtf8("normalW1Spinner"));
+        normalW1Spinner->setObjectName(QStringLiteral("normalW1Spinner"));
         normalW1Spinner->setMaximum(5);
         normalW1Spinner->setMinimum(0.01);
         normalW1Spinner->setValue(1);
@@ -660,32 +659,32 @@ public:
         verticalLayout->addWidget(normalControlGroup);
 
         depthControlGroup = new QGroupBox(scrollAreaWidgetContents);
-        depthControlGroup->setObjectName(QString::fromUtf8("depthControlGroup"));
+        depthControlGroup->setObjectName(QStringLiteral("depthControlGroup"));
         gridLayout_3 = new QGridLayout(depthControlGroup);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         depthTypeLabel = new QLabel(depthControlGroup);
-        depthTypeLabel->setObjectName(QString::fromUtf8("depthTypeLabel"));
+        depthTypeLabel->setObjectName(QStringLiteral("depthTypeLabel"));
 
         gridLayout_3->addWidget(depthTypeLabel, 0, 0, 1, 1);
 
         depthTypeBox = new QComboBox(depthControlGroup);
-        depthTypeBox->setObjectName(QString::fromUtf8("depthTypeBox"));
+        depthTypeBox->setObjectName(QStringLiteral("depthTypeBox"));
 
         gridLayout_3->addWidget(depthTypeBox, 0, 1, 1, 1);
 
         depthV0Label = new QLabel(depthControlGroup);
-        depthV0Label->setObjectName(QString::fromUtf8("depthV0Label"));
+        depthV0Label->setObjectName(QStringLiteral("depthV0Label"));
 
         gridLayout_3->addWidget(depthV0Label, 1, 0, 1, 1);
 
         depthV0Spinner = new SliderSpinnerGroup(depthControlGroup);
-        depthV0Spinner->setObjectName(QString::fromUtf8("depthV0Spinner"));
+        depthV0Spinner->setObjectName(QStringLiteral("depthV0Spinner"));
         depthV0Spinner->setValue(1);
 
         gridLayout_3->addWidget(depthV0Spinner, 1, 1, 1, 1);
 
         depthCurveView = new BlendCurveGraphWidget(depthControlGroup);
-        depthCurveView->setObjectName(QString::fromUtf8("depthCurveView"));
+        depthCurveView->setObjectName(QStringLiteral("depthCurveView"));
         sizePolicy4.setHeightForWidth(depthCurveView->sizePolicy().hasHeightForWidth());
         depthCurveView->setSizePolicy(sizePolicy4);
         depthCurveView->setMinimumSize(QSize(100, 0));
@@ -693,23 +692,23 @@ public:
         gridLayout_3->addWidget(depthCurveView, 1, 2, 4, 1);
 
         depthV1Label = new QLabel(depthControlGroup);
-        depthV1Label->setObjectName(QString::fromUtf8("depthV1Label"));
+        depthV1Label->setObjectName(QStringLiteral("depthV1Label"));
 
         gridLayout_3->addWidget(depthV1Label, 2, 0, 1, 1);
 
         depthV1Spinner = new SliderSpinnerGroup(depthControlGroup);
-        depthV1Spinner->setObjectName(QString::fromUtf8("depthV1Spinner"));
+        depthV1Spinner->setObjectName(QStringLiteral("depthV1Spinner"));
         depthV1Spinner->setValue(1);
 
         gridLayout_3->addWidget(depthV1Spinner, 2, 1, 1, 1);
 
         depthWeight0Label = new QLabel(depthControlGroup);
-        depthWeight0Label->setObjectName(QString::fromUtf8("depthWeight0Label"));
+        depthWeight0Label->setObjectName(QStringLiteral("depthWeight0Label"));
 
         gridLayout_3->addWidget(depthWeight0Label, 3, 0, 1, 1);
 
         depthW0Spinner = new SliderSpinnerGroup(depthControlGroup);
-        depthW0Spinner->setObjectName(QString::fromUtf8("depthW0Spinner"));
+        depthW0Spinner->setObjectName(QStringLiteral("depthW0Spinner"));
         depthW0Spinner->setMaximum(5);
         depthW0Spinner->setMinimum(0.01);
         depthW0Spinner->setValue(1);
@@ -717,12 +716,12 @@ public:
         gridLayout_3->addWidget(depthW0Spinner, 3, 1, 1, 1);
 
         depthWeight1Label = new QLabel(depthControlGroup);
-        depthWeight1Label->setObjectName(QString::fromUtf8("depthWeight1Label"));
+        depthWeight1Label->setObjectName(QStringLiteral("depthWeight1Label"));
 
         gridLayout_3->addWidget(depthWeight1Label, 4, 0, 1, 1);
 
         depthW1Spinner = new SliderSpinnerGroup(depthControlGroup);
-        depthW1Spinner->setObjectName(QString::fromUtf8("depthW1Spinner"));
+        depthW1Spinner->setObjectName(QStringLiteral("depthW1Spinner"));
         depthW1Spinner->setMaximum(5);
         depthW1Spinner->setMinimum(0.01);
         depthW1Spinner->setValue(1);
@@ -774,106 +773,106 @@ public:
 
     void retranslateUi(QScrollArea *PaintSetting)
     {
-        PaintSetting->setWindowTitle(QApplication::translate("PaintSetting", "Paint Settings", 0, QApplication::UnicodeUTF8));
-        modeGroup->setTitle(QApplication::translate("PaintSetting", "Brush Mode", 0, QApplication::UnicodeUTF8));
-        brushModeRadio->setText(QApplication::translate("PaintSetting", "Brush", 0, QApplication::UnicodeUTF8));
-        eraserModeRadio->setText(QApplication::translate("PaintSetting", "Eraser", 0, QApplication::UnicodeUTF8));
-        brushParamGroup->setTitle(QApplication::translate("PaintSetting", "Brush Parameters", 0, QApplication::UnicodeUTF8));
-        pureColorRadio->setText(QApplication::translate("PaintSetting", "Use Pure Paint", 0, QApplication::UnicodeUTF8));
-        colorLabel->setText(QApplication::translate("PaintSetting", "Color", 0, QApplication::UnicodeUTF8));
+        PaintSetting->setWindowTitle(QApplication::translate("PaintSetting", "Paint Settings", 0));
+        modeGroup->setTitle(QApplication::translate("PaintSetting", "Brush Mode", 0));
+        brushModeRadio->setText(QApplication::translate("PaintSetting", "Brush", 0));
+        eraserModeRadio->setText(QApplication::translate("PaintSetting", "Eraser", 0));
+        brushParamGroup->setTitle(QApplication::translate("PaintSetting", "Brush Parameters", 0));
+        pureColorRadio->setText(QApplication::translate("PaintSetting", "Use Pure Paint", 0));
+        colorLabel->setText(QApplication::translate("PaintSetting", "Color", 0));
         affectColor->setText(QString());
-        colorButton->setText(QApplication::translate("PaintSetting", "...", 0, QApplication::UnicodeUTF8));
+        colorButton->setText(QApplication::translate("PaintSetting", "...", 0));
         colorTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        colorTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        colorTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
         colorTexButton->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        clearColorTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearColorTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
         clearColorTexButton->setText(QString());
-        opacityLabel->setText(QApplication::translate("PaintSetting", "Flow", 0, QApplication::UnicodeUTF8));
-        reflLevelLabel->setText(QApplication::translate("PaintSetting", "Reflection Level", 0, QApplication::UnicodeUTF8));
+        opacityLabel->setText(QApplication::translate("PaintSetting", "Flow", 0));
+        reflLevelLabel->setText(QApplication::translate("PaintSetting", "Reflection Level", 0));
         affectReflLevel->setText(QString());
         reflTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        reflTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        reflTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
         reflTexButton->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        clearReflTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearReflTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
         clearReflTexButton->setText(QString());
-        reflGlossnessLabel->setText(QApplication::translate("PaintSetting", "Glossness", 0, QApplication::UnicodeUTF8));
+        reflGlossnessLabel->setText(QApplication::translate("PaintSetting", "Glossness", 0));
         affectGlossness->setText(QString());
         glosTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        glossnessTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        glossnessTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
-        glossnessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
+        glossnessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
 #ifndef QT_NO_TOOLTIP
-        clearGlossnessTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearGlossnessTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
-        clearGlossnessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
-        refrLevelLabel->setText(QApplication::translate("PaintSetting", "Opacity", 0, QApplication::UnicodeUTF8));
+        clearGlossnessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
+        refrLevelLabel->setText(QApplication::translate("PaintSetting", "Opacity", 0));
         affectRefrLevel->setText(QString());
         refrTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        refrTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        refrTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
-        refrTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
+        refrTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
 #ifndef QT_NO_TOOLTIP
-        clearRefrTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearRefrTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
-        clearRefrTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
-        refrGlossnessLabel->setText(QApplication::translate("PaintSetting", "IOR", 0, QApplication::UnicodeUTF8));
+        clearRefrTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
+        refrGlossnessLabel->setText(QApplication::translate("PaintSetting", "IOR", 0));
         affectIOR->setText(QString());
         iorTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        iorTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        iorTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
-        iorTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
+        iorTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
 #ifndef QT_NO_TOOLTIP
-        clearIorTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearIorTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
-        clearIorTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
-        thicknessLabel->setText(QApplication::translate("PaintSetting", "Thickness", 0, QApplication::UnicodeUTF8));
+        clearIorTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
+        thicknessLabel->setText(QApplication::translate("PaintSetting", "Thickness", 0));
         affectThickness->setText(QString());
         thicknessTexLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        thicknessTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0, QApplication::UnicodeUTF8));
+        thicknessTexButton->setToolTip(QApplication::translate("PaintSetting", "Add Texture", 0));
 #endif // QT_NO_TOOLTIP
-        thicknessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
+        thicknessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
 #ifndef QT_NO_TOOLTIP
-        clearThicknessTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0, QApplication::UnicodeUTF8));
+        clearThicknessTexButton->setToolTip(QApplication::translate("PaintSetting", "Clear Texture", 0));
 #endif // QT_NO_TOOLTIP
-        clearThicknessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0, QApplication::UnicodeUTF8));
-        colorPickerRadio->setText(QApplication::translate("PaintSetting", "Use Paint Picker", 0, QApplication::UnicodeUTF8));
-        selectPickerButton->setText(QApplication::translate("PaintSetting", "Select Picker From Scene..", 0, QApplication::UnicodeUTF8));
-        pickerOpacityLabel->setText(QApplication::translate("PaintSetting", "Opacity", 0, QApplication::UnicodeUTF8));
-        attachToCameraBox->setText(QApplication::translate("PaintSetting", "Attach To Camera", 0, QApplication::UnicodeUTF8));
-        xOffsetLabel->setText(QApplication::translate("PaintSetting", "X Offset", 0, QApplication::UnicodeUTF8));
-        yOffsetLabel->setText(QApplication::translate("PaintSetting", "Y Offset", 0, QApplication::UnicodeUTF8));
-        zOffsetLabel->setText(QApplication::translate("PaintSetting", "Z Offset", 0, QApplication::UnicodeUTF8));
-        rotateLabel->setText(QApplication::translate("PaintSetting", "Rotate", 0, QApplication::UnicodeUTF8));
-        xScaleLabel->setText(QApplication::translate("PaintSetting", "X Scale", 0, QApplication::UnicodeUTF8));
-        yScaleLabel->setText(QApplication::translate("PaintSetting", "Y Scale", 0, QApplication::UnicodeUTF8));
-        normalControlGroup->setTitle(QApplication::translate("PaintSetting", "Normal Control", 0, QApplication::UnicodeUTF8));
-        normalV0Label->setText(QApplication::translate("PaintSetting", "V0", 0, QApplication::UnicodeUTF8));
-        normalV1Label->setText(QApplication::translate("PaintSetting", "V1", 0, QApplication::UnicodeUTF8));
-        normalWeight0Label->setText(QApplication::translate("PaintSetting", "Weight 0", 0, QApplication::UnicodeUTF8));
-        normalWeight1Label->setText(QApplication::translate("PaintSetting", "Weight 1", 0, QApplication::UnicodeUTF8));
-        depthControlGroup->setTitle(QApplication::translate("PaintSetting", "Depth Control", 0, QApplication::UnicodeUTF8));
-        depthTypeLabel->setText(QApplication::translate("PaintSetting", "Depth Type", 0, QApplication::UnicodeUTF8));
+        clearThicknessTexButton->setText(QApplication::translate("PaintSetting", "PushButton", 0));
+        colorPickerRadio->setText(QApplication::translate("PaintSetting", "Use Paint Picker", 0));
+        selectPickerButton->setText(QApplication::translate("PaintSetting", "Select Picker From Scene..", 0));
+        pickerOpacityLabel->setText(QApplication::translate("PaintSetting", "Opacity", 0));
+        attachToCameraBox->setText(QApplication::translate("PaintSetting", "Attach To Camera", 0));
+        xOffsetLabel->setText(QApplication::translate("PaintSetting", "X Offset", 0));
+        yOffsetLabel->setText(QApplication::translate("PaintSetting", "Y Offset", 0));
+        zOffsetLabel->setText(QApplication::translate("PaintSetting", "Z Offset", 0));
+        rotateLabel->setText(QApplication::translate("PaintSetting", "Rotate", 0));
+        xScaleLabel->setText(QApplication::translate("PaintSetting", "X Scale", 0));
+        yScaleLabel->setText(QApplication::translate("PaintSetting", "Y Scale", 0));
+        normalControlGroup->setTitle(QApplication::translate("PaintSetting", "Normal Control", 0));
+        normalV0Label->setText(QApplication::translate("PaintSetting", "V0", 0));
+        normalV1Label->setText(QApplication::translate("PaintSetting", "V1", 0));
+        normalWeight0Label->setText(QApplication::translate("PaintSetting", "Weight 0", 0));
+        normalWeight1Label->setText(QApplication::translate("PaintSetting", "Weight 1", 0));
+        depthControlGroup->setTitle(QApplication::translate("PaintSetting", "Depth Control", 0));
+        depthTypeLabel->setText(QApplication::translate("PaintSetting", "Depth Type", 0));
         depthTypeBox->clear();
         depthTypeBox->insertItems(0, QStringList()
-         << QApplication::translate("PaintSetting", "Surface Thickness", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("PaintSetting", "Geometry Depth", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("PaintSetting", "Surface Thickness", 0)
+         << QApplication::translate("PaintSetting", "Geometry Depth", 0)
         );
-        depthV0Label->setText(QApplication::translate("PaintSetting", "V0", 0, QApplication::UnicodeUTF8));
-        depthV1Label->setText(QApplication::translate("PaintSetting", "V1", 0, QApplication::UnicodeUTF8));
-        depthWeight0Label->setText(QApplication::translate("PaintSetting", "Weight 0", 0, QApplication::UnicodeUTF8));
-        depthWeight1Label->setText(QApplication::translate("PaintSetting", "Weight 1", 0, QApplication::UnicodeUTF8));
+        depthV0Label->setText(QApplication::translate("PaintSetting", "V0", 0));
+        depthV1Label->setText(QApplication::translate("PaintSetting", "V1", 0));
+        depthWeight0Label->setText(QApplication::translate("PaintSetting", "Weight 0", 0));
+        depthWeight1Label->setText(QApplication::translate("PaintSetting", "Weight 1", 0));
     } // retranslateUi
 
 };

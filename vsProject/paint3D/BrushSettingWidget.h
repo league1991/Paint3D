@@ -1,12 +1,12 @@
 #pragma once
-#include "QWidget"
+#include <QtWidgets/QScrollArea>
 #include "ui_brushSetting.h"
 
 class BrushSettingWidget: public QScrollArea, Ui::BrushSetting
 {
 	Q_OBJECT
 public:
-	BrushSettingWidget(QWidget *parent = 0, Qt::WFlags flags = 0);
+	BrushSettingWidget(QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~BrushSettingWidget(void);
 
 private slots:

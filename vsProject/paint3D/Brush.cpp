@@ -78,8 +78,8 @@ Brush::~Brush()
 void Brush::updateCurParams()
 {
 	curAngle = angle  + getRandomFloat_m11() * angleJitter * M_PI;
-	float sizeTmp  = max(size  * (1 + getRandomFloat_m11() * sizeJitter), 0.05);
-	float ratioTmp = max(ratio * (1 + getRandomFloat_m11() * ratioJitter), 0.05);
+	float sizeTmp  = std::max(size  * (1 + getRandomFloat_m11() * sizeJitter), 0.05f);
+	float ratioTmp = std::max(ratio * (1 + getRandomFloat_m11() * ratioJitter), 0.05f);
 	curSize = QVector2D(sizeTmp, sizeTmp * ratioTmp);
 	curOffset[0] = size * offsetJitter * getRandomFloat_m11();
 	curOffset[1] = size * offsetJitter * getRandomFloat_m11();
@@ -210,11 +210,11 @@ void Brush::worldPaint()
 		// 渲染一次物体
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
-		glLoadMatrixd(viewMatrix.constData());
+		glLoadMatrixf(viewMatrix.constData());
 
 		glMatrixMode(GL_PROJECTION);
 		glPushMatrix();
-		glLoadMatrixd(projMatrix.constData());
+		glLoadMatrixf(projMatrix.constData());
 
 		brushExposer.exposeGeometry();
 
@@ -335,10 +335,10 @@ void Brush::paintToObject(int ithPoint)
 			// 计算更新的矩形区域 {{xmin, ymin},{xmax, ymax}},并把其影响的像素加入
 			// 确保矩形大小至少为1个像素
 			unsigned int meshPixRect[2][2];
-			meshPixRect[0][0] = unsigned(max((meshPixUVCenter[0] - meshPixUVExtend.x()) * meshTexRes[0],0));
-			meshPixRect[0][1] = unsigned(max((meshPixUVCenter[1] - meshPixUVExtend.y()) * meshTexRes[1],0));
-			meshPixRect[1][0] = unsigned(min((meshPixUVCenter[0] + meshPixUVExtend.x()) * meshTexRes[0], meshTexRes[0]-1));
-			meshPixRect[1][1] = unsigned(min((meshPixUVCenter[1] + meshPixUVExtend.y()) * meshTexRes[1], meshTexRes[1]-1));
+			meshPixRect[0][0] = unsigned(std::max((meshPixUVCenter[0] - meshPixUVExtend.x()) * meshTexRes[0],0.f));
+			meshPixRect[0][1] = unsigned(std::max((meshPixUVCenter[1] - meshPixUVExtend.y()) * meshTexRes[1],0.f));
+			meshPixRect[1][0] = unsigned(std::min((meshPixUVCenter[0] + meshPixUVExtend.x()) * meshTexRes[0], meshTexRes[0]-1.f));
+			meshPixRect[1][1] = unsigned(std::min((meshPixUVCenter[1] + meshPixUVExtend.y()) * meshTexRes[1], meshTexRes[1]-1.f));
 			float invMeshResX = 1.0f /  (meshTexRes[0] - 1);
 			float invMeshResY = 1.0f /	(meshTexRes[1] - 1);
 			for (unsigned short meshPixelY = meshPixRect[0][1]; meshPixelY <= meshPixRect[1][1]; ++meshPixelY)
@@ -403,8 +403,8 @@ void Brush::paintToObject(int ithPoint)
 		updateArray.clearBitmapItem(meshPixID);
 
 		// 计算像素位置
-		unsigned short tarX = max(0,min(item.x, meshTexRes[0] - 1));
-		unsigned short tarY = max(0,min(item.y, meshTexRes[1] - 1));
+		unsigned short tarX = std::max(0,std::min(int(item.x), meshTexRes[0] - 1));
+		unsigned short tarY = std::max(0,std::min(int(item.y), meshTexRes[1] - 1));
 
 		// 计算法线和深度过滤值
 		float norProjValue = abs(item.norProj);

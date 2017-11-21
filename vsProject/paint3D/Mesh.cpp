@@ -44,7 +44,7 @@ void Mesh::drawGeometry()
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glMultMatrixd(transform.getTransformMatrix().constData());
+	glMultMatrixf(transform.getTransformMatrix().constData());
 
 	geometryProgram->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
 	geometryProgram->enableAttributeArray(PROGRAM_NORMAL_ATTRIBUTE);
@@ -198,7 +198,7 @@ void Mesh::drawAppearance()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glMultMatrixd(transform.getTransformMatrix().constData());
+	glMultMatrixf(transform.getTransformMatrix().constData());
 
 	appearProgram->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
 	appearProgram->enableAttributeArray(PROGRAM_NORMAL_ATTRIBUTE);

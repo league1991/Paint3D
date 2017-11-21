@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'history.ui'
 **
-** Created: Mon Sep 22 21:18:40 2014
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,13 +10,13 @@
 #define UI_HISTORY_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QUndoView>
-#include <QtGui/QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QUndoView>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -30,12 +29,12 @@ public:
     void setupUi(QWidget *History)
     {
         if (History->objectName().isEmpty())
-            History->setObjectName(QString::fromUtf8("History"));
+            History->setObjectName(QStringLiteral("History"));
         History->resize(306, 235);
         gridLayout = new QGridLayout(History);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         historyView = new QUndoView(History);
-        historyView->setObjectName(QString::fromUtf8("historyView"));
+        historyView->setObjectName(QStringLiteral("historyView"));
 
         gridLayout->addWidget(historyView, 0, 0, 1, 1);
 
@@ -47,7 +46,7 @@ public:
 
     void retranslateUi(QWidget *History)
     {
-        History->setWindowTitle(QApplication::translate("History", "History", 0, QApplication::UnicodeUTF8));
+        History->setWindowTitle(QApplication::translate("History", "History", 0));
     } // retranslateUi
 
 };

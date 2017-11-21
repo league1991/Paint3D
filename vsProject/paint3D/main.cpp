@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	QTranslator *translator = new QTranslator;
 	translator->load("paint3d_zh.qm");
 	a.installTranslator(translator);
-	Paint3DFrame* paint3DApp = Paint3DFrame::getInstance();
-	paint3DApp->show();
+	Paint3DFrame* app = Paint3DFrame::getInstance();
+	app->show();
 	return a.exec();
 }

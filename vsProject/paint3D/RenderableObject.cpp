@@ -73,7 +73,7 @@ void ObjectTransform::updateTransformMatrix()
 	m_invTransformMatrix *= transposeRot.transposed();
 	m_invTransformMatrix.translate(-m_translation);
 	// 还要更新场景的GeometryImage
-	paint3DApp->scene->updateGeometryImage();
+	Paint3DFrame::getInstance()->scene->updateGeometryImage();
 }
 
 

@@ -1,8 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'aboutDlg.ui'
 **
-** Created: Mon Sep 22 21:18:40 2014
-**      by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,14 +10,14 @@
 #define UI_ABOUTDLG_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 
 QT_BEGIN_NAMESPACE
 
@@ -32,14 +31,14 @@ public:
     void setupUi(QDialog *AboutDialog)
     {
         if (AboutDialog->objectName().isEmpty())
-            AboutDialog->setObjectName(QString::fromUtf8("AboutDialog"));
+            AboutDialog->setObjectName(QStringLiteral("AboutDialog"));
         AboutDialog->resize(252, 69);
         horizontalLayout = new QHBoxLayout(AboutDialog);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(AboutDialog);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName(QStringLiteral("label"));
         QFont font;
-        font.setFamily(QString::fromUtf8("Times New Roman"));
+        font.setFamily(QStringLiteral("Times New Roman"));
         font.setPointSize(10);
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
@@ -47,7 +46,7 @@ public:
         horizontalLayout->addWidget(label);
 
         buttonBox = new QDialogButtonBox(AboutDialog);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Close);
 
@@ -63,10 +62,10 @@ public:
 
     void retranslateUi(QDialog *AboutDialog)
     {
-        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About...", 0, QApplication::UnicodeUTF8));
+        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About...", 0));
         label->setText(QApplication::translate("AboutDialog", "Paint3D v1.0 \n"
 "Copyright(C) 2012\n"
-"Ouyang Yaobin", 0, QApplication::UnicodeUTF8));
+"Ouyang Yaobin", 0));
     } // retranslateUi
 
 };
