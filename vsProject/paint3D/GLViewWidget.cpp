@@ -52,7 +52,8 @@ void GLViewWidget::paintGL()
 	// »­³ö²Ù×İÆ÷
 	if (curTool)
 	{
-		curTool->draw(Paint3DFrame::getInstance()->scene->getCamera());
+		Camera& camera = Paint3DFrame::getInstance()->scene->getCamera();
+		curTool->draw(camera);
 	}
 
 	// »­³öÑ¡¿ò
