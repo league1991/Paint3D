@@ -330,7 +330,7 @@ void PlanePicker::drawAppearance()
 	appearProgram->release();
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glMultMatrixd(transform.getTransformMatrix().constData());
+	glMultMatrixf(transform.getTransformMatrix().constData());
 	glLineWidth(3.0f);
 	if (isObjSelected)
 	{

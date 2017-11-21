@@ -2,9 +2,9 @@
 #define SLIDERSPINNERGROUP_H
 
 #include <QtGui/QWidget>
-#include <QSlider>
-#include <QDoubleSpinBox>
-#include <QHBoxLayout>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QHBoxLayout>
 
 #define SLIDER_MIN_VALUE 0
 #define SLIDER_MAX_VALUE 1000

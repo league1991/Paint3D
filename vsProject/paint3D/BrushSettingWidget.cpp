@@ -1,10 +1,11 @@
 #include "StdAfx.h"
 #include "BrushSettingWidget.h"
 #include "paint3DFrame.h"
-
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 class Paint3DFrame;
 
-BrushSettingWidget::BrushSettingWidget( QWidget *parent /*= 0*/, Qt::WFlags flags /*= 0*/ )
+BrushSettingWidget::BrushSettingWidget( QWidget *parent /*= 0*/, Qt::WindowFlags flags /*= 0*/ )
 {
 	setupUi(this);
 
@@ -36,7 +37,7 @@ BrushSettingWidget::~BrushSettingWidget( void )
 
 void BrushSettingWidget::setHardness( double hard )
 {
-	QSharedPointer<Stroke> pStroke = paint3DApp->scene->getBrush().getStroke();
+	QSharedPointer<Stroke> pStroke = Paint3DFrame::getInstance()->scene->getBrush().getStroke();
 	if (pStroke->getType() == Stroke::STROKE_ANALYTIC)
 	{
 		qSharedPointerCast<StandardStroke>(pStroke)->setHardness(hard);
@@ -46,49 +47,49 @@ void BrushSettingWidget::setHardness( double hard )
 
 void BrushSettingWidget::setSize( double size )
 {
-	paint3DApp->scene->getBrush().setSize(size);
+	Paint3DFrame::getInstance()->scene->getBrush().setSize(size);
 }
 
 void BrushSettingWidget::setAngle( double angle )
 {
-	paint3DApp->scene->getBrush().setAngle(angle / 180 * M_PI);
+	Paint3DFrame::getInstance()->scene->getBrush().setAngle(angle / 180 * M_PI);
 }
 
 void BrushSettingWidget::setRatio( double ratio )
 {
-	paint3DApp->scene->getBrush().setRatio(ratio);
+	Paint3DFrame::getInstance()->scene->getBrush().setRatio(ratio);
 }
 
 void BrushSettingWidget::setSizeJitter( double sizeJitter )
 {
-	paint3DApp->scene->getBrush().setSizeJitter(sizeJitter);
+	Paint3DFrame::getInstance()->scene->getBrush().setSizeJitter(sizeJitter);
 }
 
 void BrushSettingWidget::setAngleJitter( double angleJitter )
 {
-	paint3DApp->scene->getBrush().setAngleJitter(angleJitter);
+	Paint3DFrame::getInstance()->scene->getBrush().setAngleJitter(angleJitter);
 }
 
 void BrushSettingWidget::setRatioJitter( double ratioJitter )
 {
-	paint3DApp->scene->getBrush().setRatioJitter(ratioJitter);
+	Paint3DFrame::getInstance()->scene->getBrush().setRatioJitter(ratioJitter);
 }
 
 void BrushSettingWidget::setOffsetJitter( double offsetJitter )
 {
-	paint3DApp->scene->getBrush().setOffsetJitter(offsetJitter);
+	Paint3DFrame::getInstance()->scene->getBrush().setOffsetJitter(offsetJitter);
 }
 
 void BrushSettingWidget::setInterval( double interval )
 {
-	paint3DApp->scene->getBrush().setIntervalRatio(interval);
+	Paint3DFrame::getInstance()->scene->getBrush().setIntervalRatio(interval);
 }
 
 
 void BrushSettingWidget::refreshListViewItem()
 {
 	strokeList->clear();
-	StrokeLib& strokeLib = paint3DApp->scene->getStrokeLib();
+	StrokeLib& strokeLib = Paint3DFrame::getInstance()->scene->getStrokeLib();
 	for (int ithItem = 0; ithItem < strokeLib.getNumStrokes(); ++ithItem)
 	{
 		QListWidgetItem* item = new QListWidgetItem;
@@ -112,7 +113,7 @@ void BrushSettingWidget::loadStrokeFromImage()
 
 	if (!filename.isNull()) 
 	{ //用户选择了文件
-		if (!paint3DApp->scene->getStrokeLib().loadFromImage(filename))
+		if (!Paint3DFrame::getInstance()->scene->getStrokeLib().loadFromImage(filename))
 		{
 			QMessageBox::information(this, tr("import"), tr("Not a valid obj file."), QMessageBox::Ok);
 		}
@@ -129,7 +130,7 @@ void BrushSettingWidget::loadStrokeFromAbr()
 		"Abr files (*.abr)");
 	if (!filename.isNull()) 
 	{ //用户选择了文件
-		if (!paint3DApp->scene->getStrokeLib().loadFromAbr(filename))
+		if (!Paint3DFrame::getInstance()->scene->getStrokeLib().loadFromAbr(filename))
 		{
 			QMessageBox::information(this, tr("import"), tr("Not a valid obj file."), QMessageBox::Ok);
 		}
@@ -140,16 +141,16 @@ void BrushSettingWidget::loadStrokeFromAbr()
 void BrushSettingWidget::setStroke( int ithStroke )
 {
 	ithStroke = ithStroke == -1 ? 0 : ithStroke;
-	QSharedPointer<Stroke> ps = paint3DApp->scene->getStrokeLib().getStroke(ithStroke);
-	paint3DApp->scene->getBrush().setStroke(ps);
+	QSharedPointer<Stroke> ps = Paint3DFrame::getInstance()->scene->getStrokeLib().getStroke(ithStroke);
+	Paint3DFrame::getInstance()->scene->getBrush().setStroke(ps);
 }
 
 void BrushSettingWidget::setResolutionRatio( double ratio )
 {
-	paint3DApp->scene->getBrush().setResolutionRatio(ratio);
+	Paint3DFrame::getInstance()->scene->getBrush().setResolutionRatio(ratio);
 }
 
 void BrushSettingWidget::setDepthRange( double dummy )
 {
-	paint3DApp->scene->getBrush().setDepthRange(nearPlaneSpinBox->value(), farPlaneSpinBox->value());
+	Paint3DFrame::getInstance()->scene->getBrush().setDepthRange(nearPlaneSpinBox->value(), farPlaneSpinBox->value());
 }

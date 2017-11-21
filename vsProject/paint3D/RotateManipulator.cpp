@@ -29,7 +29,7 @@ void RotateManipulator::draw(Camera& camera)
     glDisable(GL_DEPTH_TEST);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-    glMultMatrixd(getTransform()->getTransRotMatrix().constData());
+    glMultMatrixf(getTransform()->getTransRotMatrix().constData());
     glLineWidth(3.0f);
 
 	float angle = 0;

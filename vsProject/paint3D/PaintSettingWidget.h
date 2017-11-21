@@ -7,7 +7,7 @@ class PaintSettingWidget:public QScrollArea, public Ui::PaintSetting
 {
 	Q_OBJECT
 public:
-	PaintSettingWidget(QWidget *parent = 0, Qt::WFlags flags = 0);
+	PaintSettingWidget(QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~PaintSettingWidget(void);
 
 public slots:

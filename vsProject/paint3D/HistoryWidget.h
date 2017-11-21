@@ -7,4 +7,9 @@ class HistoryWidget: public QWidget, Ui::History
 public:
 	HistoryWidget(void);
 	~HistoryWidget(void);
+
+	void setUndoStack(QUndoStack* stack)
+	{
+		historyView->setStack(stack);
+	}
 };

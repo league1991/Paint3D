@@ -1,5 +1,5 @@
 #pragma once
-#include <QWidget>
+#include <QtWidgets/QScrollArea>
 #include "ui_materialLayer.h"
 
 QSharedPointer<Scene> getScene();

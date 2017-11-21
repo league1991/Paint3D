@@ -4,7 +4,7 @@ class BlendCurveGraphWidget :
 	public QWidget
 {
 public:
-	BlendCurveGraphWidget(QWidget *parent = 0, Qt::WFlags flags = 0);
+	BlendCurveGraphWidget(QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~BlendCurveGraphWidget(void);
 
 	void setCurve(float v0, float v1, float w0, float w1);

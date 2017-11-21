@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "paint3dframe.h"
 
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+
+Paint3DFrame* Paint3DFrame::instance = NULL;
 QSharedPointer<Scene> Paint3DFrame::scene = QSharedPointer<Scene>(new Scene);
 
-Paint3DFrame::Paint3DFrame(QWidget *parent, Qt::WFlags flags)
+Paint3DFrame::Paint3DFrame(QWidget *parent, Qt::WindowFlags flags)
 	: QMainWindow(parent, flags)
 {
 
@@ -168,5 +172,19 @@ void Paint3DFrame::newFile()
 void Paint3DFrame::showAboutWindow()
 {
 	QMessageBox::about ( this, tr("About..."), tr("Paint3D v1.0 \nCopyright(C) 2012\nOuyang Yaobin") );
+}
+
+void Paint3DFrame::initialize()
+{
+	historyEditor->setUndoStack(&Paint3DFrame::getInstance()->scene->getUndoStack());
+}
+
+Paint3DFrame* Paint3DFrame::getInstance()
+{
+	if (instance == NULL)
+	{
+		instance = new Paint3DFrame();
+	}
+	return instance;
 }
 

@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "Scene.h"
 #include "Paint3DFrame.h"
-extern Paint3DFrame* paint3DApp;
+#include <QtWidgets/QMessageBox>
 
 Scene::Scene(void)
 {
@@ -80,8 +80,7 @@ bool Scene::init()
 	{
 		qDebug() <<"Newer ARB FBO NOT available"<<endl;
 		//QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("New ARB FBO NOT available"));
-	}
-
+	}	
 
 	bool isfbo = GeometryExposer::isFBOSupported();
 	int w,h;
@@ -132,9 +131,11 @@ void Scene::draw()
 		// 绑定环境贴图,只绑定一次
 		if (!isEnvMapUpdated)
 		{
-			int texRegBase = GL_TEXTURE0_ARB + SCENE_TEXTURE_REGISTER_OFFSET;
+			// int texRegBase = GL_TEXTURE0_ARB + SCENE_TEXTURE_REGISTER_OFFSET;
+			int texRegBase = GL_TEXTURE0 + SCENE_TEXTURE_REGISTER_OFFSET;
 			int texRegOffset = SCENE_TEXTURE_REGISTER_OFFSET;
-			glActiveTextureARB(texRegBase + 0);	
+			//glActiveTextureARB(texRegBase + 0);	
+			GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 0);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, envMap.getGLTexObj());
 			meshShader->setUniformValue("envTex", texRegOffset + 0);
 			isEnvMapUpdated = true;
@@ -148,7 +149,7 @@ void Scene::draw()
 		// 先画不透明的物体
 		for (int i = 0; i < objectArray.size(); ++i)
 		{
-			if (objectArray[i]->getType() == RenderableObject::OBJ_MESH)
+			if (objectArray[i] && objectArray[i]->getType() == RenderableObject::OBJ_MESH)
 			{
 				objectArray[i]->drawAppearance();
 			}
@@ -160,7 +161,7 @@ void Scene::draw()
  		glDepthMask(GL_FALSE);
 		for (int i = 0; i < objectArray.size(); ++i)
 		{
-			if (objectArray[i]->getType() == RenderableObject::OBJ_PICKER_OBJECT)
+			if (objectArray[i] && objectArray[i]->getType() == RenderableObject::OBJ_PICKER_OBJECT)
 			{
 				objectArray[i]->drawAppearance();
 			}
@@ -173,7 +174,7 @@ void Scene::draw()
 	}
 
 
-	if (paint3DApp->viewWidget->getCurToolType() == GLViewWidget::TOOL_PAINT)
+	if (Paint3DFrame::getInstance()->viewWidget->getCurToolType() == GLViewWidget::TOOL_PAINT)
 		brush->draw();
 
 

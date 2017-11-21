@@ -29,7 +29,7 @@ void ScaleManipulator::draw(Camera& camera)
     glDisable(GL_DEPTH_TEST);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-	glMultMatrixd(getTransform()->getTransRotMatrix().constData());
+	glMultMatrixf(getTransform()->getTransRotMatrix().constData());
 
     glPointSize(15.0);
     for (char axis = 0; axis < 3; ++axis)

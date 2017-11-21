@@ -2,7 +2,7 @@
 #include "BlendCurveGraphWidget.h"
 
 
-BlendCurveGraphWidget::BlendCurveGraphWidget( QWidget *parent /*= 0*/, Qt::WFlags flags /*= 0*/ ): QWidget(parent, flags)
+BlendCurveGraphWidget::BlendCurveGraphWidget( QWidget *parent /*= 0*/, Qt::WindowFlags flags /*= 0*/ ): QWidget(parent, flags)
 {
 	for (int i = 0; i < BLEND_CURVE_WIDGET_SEGMENTS;++i)
 	{

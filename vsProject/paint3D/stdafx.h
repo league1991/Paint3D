@@ -1,8 +1,8 @@
 #include <math.h>
 #include <float.h>
 #define GLUT_DISABLE_ATEXIT_HACK //这句话极其重要
-//#include <gl/GLU.H>
 #include <GL/glew.h>
+//#include <gl/GLU.H>
 //#include "glextensions.h"
 //#include <GL/glut.h>
 
@@ -19,14 +19,14 @@ using namespace std;
 #include <QSharedPointer>
 #include <QWeakPointer>
 //#include <QtOpenGL>
+#include <QtOpenGL/QGLFunctions>
 #include <QtOpenGL/QGLShaderProgram>
 #include <QtOpenGL/QGLBuffer>
-//#include <QtOpenGL/QGLFramebufferObject>
-//#include <QtOpenGL/QGLFunctions>
+#include <QtOpenGL/QGLFramebufferObject>
 //#include <QtPlugin>
 
 
-
+#include "GLContext.h"
 #include "BoundingBox.h"
 #include "RenderableObject.h"
 #include "CanvasSeamFiller.h"

@@ -1,7 +1,9 @@
 #include "StdAfx.h"
 #include "MaterialLayerWidget.h"
 #include "Paint3DFrame.h"
-extern Paint3DFrame* paint3DApp;
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+
 MaterialLayerWidget::MaterialLayerWidget(void)
 {
 	setupUi(this);
@@ -22,7 +24,7 @@ MaterialLayerWidget::~MaterialLayerWidget(void)
 
 void MaterialLayerWidget::updateList()
 {
-	RenderableObject* obj = paint3DApp->viewWidget->getSelectedObject().data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->viewWidget->getSelectedObject().data();
 	layerList->clear();
 	if (obj && obj->getType() & RenderableObject::OBJ_MESH)
 	{
@@ -44,7 +46,7 @@ void MaterialLayerWidget::addLayer()
 		int curLayerID = canvas.getCurLayerID();
 		QSharedPointer<CanvasLayer> layer = canvas.generateLayer();
 		AddLayerCommand* cmd = new AddLayerCommand(layer, curLayerID+1, mesh->getObjectID());
-		paint3DApp->scene->getUndoStack().push(cmd);
+		Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 	}
 	updateList();
 }
@@ -53,7 +55,7 @@ void MaterialLayerWidget::addLayer()
 
 Mesh* MaterialLayerWidget::getSelectedMesh()
 {
-	RenderableObject* obj = paint3DApp->viewWidget->getSelectedObject().data();
+	RenderableObject* obj = Paint3DFrame::getInstance()->viewWidget->getSelectedObject().data();
 	if (obj && obj->getType() & RenderableObject::OBJ_MESH)
 	{
 		return (Mesh*)obj;
@@ -70,10 +72,10 @@ void MaterialLayerWidget::deleteLayer()
 		int curLayerID = canvas.getCurLayerID();
 		QSharedPointer<CanvasLayer> layer = canvas.getCurLayer();
 		DeleteLayerCommand* cmd = new DeleteLayerCommand(layer, curLayerID, mesh->getObjectID());
-		paint3DApp->scene->getUndoStack().push(cmd);
+		Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 	}
 	updateList();
-	paint3DApp->viewWidget->update();
+	Paint3DFrame::getInstance()->viewWidget->update();
 }
 
 void MaterialLayerWidget::selectLayer( int ithLayer )
@@ -106,9 +108,9 @@ void MaterialLayerWidget::moveUpLayer()
 		if (curLayerID < canvas.getNumLayers()-1)
 		{
 			MoveUpLayerCommand* cmd = new MoveUpLayerCommand(curLayerID, mesh->getObjectID());
-			paint3DApp->scene->getUndoStack().push(cmd);
+			Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 			updateList();
-			paint3DApp->viewWidget->update();
+			Paint3DFrame::getInstance()->viewWidget->update();
 		}
 	}
 }
@@ -123,9 +125,9 @@ void MaterialLayerWidget::moveDownLayer()
 		if (curLayerID > 0)
 		{
 			MoveDownLayerCommand* cmd = new MoveDownLayerCommand(curLayerID, mesh->getObjectID());
-			paint3DApp->scene->getUndoStack().push(cmd);
+			Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 			updateList();
-			paint3DApp->viewWidget->update();
+			Paint3DFrame::getInstance()->viewWidget->update();
 		}
 	}
 }
@@ -178,9 +180,9 @@ void MaterialLayerWidget::loadLayerFromImage()
 		newLayer->setLayerFromImage(img, channel);
 		SetLayerFromImageCommand* cmd = 
 			new SetLayerFromImageCommand(newLayer, canvas.getCurLayer(), canvas.getCurLayerID(),mesh->getObjectID());
-		paint3DApp->scene->getUndoStack().push(cmd);
+		Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
 		updateList();
-		paint3DApp->viewWidget->update();
+		Paint3DFrame::getInstance()->viewWidget->update();
 
 	}
 }

@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="系统">
+      <UniqueIdentifier>{2a3770e4-a4ac-424b-b834-30c8868d4339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统\操纵器">
+      <UniqueIdentifier>{f63a5ea5-01a8-4899-8a6b-704ca5d0827a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统\画笔画布">
+      <UniqueIdentifier>{8799d25b-9b9d-45c3-b35e-42687bc1e8d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="系统\场景">
+      <UniqueIdentifier>{9da9e9c7-5c6b-45b7-b2c1-3dad91b91298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="预编译头">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Qt界面文件">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Qt界面文件\资源文件">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="界面">
+      <UniqueIdentifier>{7058ee62-5e47-45b3-bc7a-6b3edc7949ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="界面\自定义控件">
+      <UniqueIdentifier>{6bf73d2f-2e6c-418e-b820-368ea8a56e1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{62861f8a-66da-4022-817a-ab0cbf6af8d1}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{dfb28147-30d8-4f8a-b873-91d6fcd243d8}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HistoryCommand.cpp">
+      <Filter>系统</Filter>
+    </ClCompile>
+    <ClCompile Include="Manipulator.cpp">
+      <Filter>系统\操纵器</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateManipulator.cpp">
+      <Filter>系统\操纵器</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleManipulator.cpp">
+      <Filter>系统\操纵器</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslateManipulator.cpp">
+      <Filter>系统\操纵器</Filter>
+    </ClCompile>
+    <ClCompile Include="Brush.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasSeamFiller.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="Painter.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintPicker.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="Stroke.cpp">
+      <Filter>系统\画笔画布</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingBox.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryExposer.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjReader.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableObject.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>预编译头</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushSettingWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="GLViewWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialLayerWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectTransformWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="Paint3DFrame.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintSettingWidget.cpp">
+      <Filter>界面</Filter>
+    </ClCompile>
+    <ClCompile Include="BlendCurveGraphWidget.cpp">
+      <Filter>界面\自定义控件</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorSelectButton.cpp">
+      <Filter>界面\自定义控件</Filter>
+    </ClCompile>
+    <ClCompile Include="sliderspinnergroup.cpp">
+      <Filter>界面\自定义控件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_paint3d.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Brush.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BrushSettingWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ColorSelectButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GLViewWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_HistoryWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MaterialLayerWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ObjectTransformWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Paint3DFrame.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PaintSettingWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_sliderspinnergroup.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Brush.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BrushSettingWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ColorSelectButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GLViewWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_HistoryWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MaterialLayerWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ObjectTransformWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Paint3DFrame.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_PaintSettingWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_sliderspinnergroup.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLContext.cpp">
+      <Filter>系统\场景</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Manipulator.h">
+      <Filter>系统\操纵器</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateManipulator.h">
+      <Filter>系统\操纵器</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleManipulator.h">
+      <Filter>系统\操纵器</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslateManipulator.h">
+      <Filter>系统\操纵器</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas.h">
+      <Filter>系统\画笔画布</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasSeamFiller.h">
+      <Filter>系统\画笔画布</Filter>
+    </ClInclude>
+    <ClInclude Include="Painter.h">
+      <Filter>系统\画笔画布</Filter>
+    </ClInclude>
+    <ClInclude Include="PaintPicker.h">
+      <Filter>系统\画笔画布</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryExposer.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjReader.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableObject.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>预编译头</Filter>
+    </ClInclude>
+    <ClInclude Include="BlendCurveGraphWidget.h">
+      <Filter>界面\自定义控件</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_aboutDlg.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_brushSetting.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_history.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_mainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_materialLayer.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_object.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_paintSetting.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLContext.h">
+      <Filter>系统\场景</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move.psd">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="paint3d_zh.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brush.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\copy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\cut.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\focus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\import.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\minus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\move.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="myapp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\new.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\null.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\open.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\paint.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\paste.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\planeLocator .png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\plus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\redo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\rotate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\save.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\scale.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\select.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\selectFace.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\software.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\undo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IconResource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="HistoryCommand.h">
+      <Filter>系统</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Brush.h">
+      <Filter>系统\画笔画布</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Stroke.h">
+      <Filter>系统\画笔画布</Filter>
+    </CustomBuild>
+    <CustomBuild Include="aboutDlg.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="brushSetting.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="history.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="mainWindow.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="materialLayer.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="object.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="paintSetting.ui">
+      <Filter>Qt界面文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="paint3d.qrc">
+      <Filter>Qt界面文件\资源文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BrushSettingWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GLViewWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="HistoryWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MaterialLayerWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ObjectTransformWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Paint3DFrame.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PaintSettingWidget.h">
+      <Filter>界面</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ColorSelectButton.h">
+      <Filter>界面\自定义控件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="sliderspinnergroup.h">
+      <Filter>界面\自定义控件</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

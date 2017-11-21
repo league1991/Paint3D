@@ -44,35 +44,35 @@ void Mesh::drawGeometry()
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glMultMatrixd(transform.getTransformMatrix().constData());
+	glMultMatrixf(transform.getTransformMatrix().constData());
 
 	geometryProgram->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
 	geometryProgram->enableAttributeArray(PROGRAM_NORMAL_ATTRIBUTE);
 	geometryProgram->enableAttributeArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
 	// 表示当前表面厚度的纹理
-	int texRegBase = GL_TEXTURE0_ARB + MESH_TEXTURE_REGISTER_OFFSET;
+	int texRegBase = GL_TEXTURE0 + MESH_TEXTURE_REGISTER_OFFSET;
 	int texRegOffset = MESH_TEXTURE_REGISTER_OFFSET;
-	glActiveTextureARB(texRegBase + 3);								// 分配一个纹理寄存器
+	GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 3);								// 分配一个纹理寄存器
 	glBindTexture(GL_TEXTURE_2D, canvas.getGLBaseThicknessTexObj());		// 把贴图对象绑定到寄存器
 	geometryProgram->setUniformValue("baseThickTex", texRegOffset + 3);	// 把寄存器绑定到着色器变量
 
 	// 顶点各属性数组
 	glBuffer[0].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[1].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_NORMAL_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_NORMAL_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[4].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_TEXCOORD_ATTRIBUTE, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_TEXCOORD_ATTRIBUTE, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glDrawArrays(GL_TRIANGLES, 0, glVertexBuffer.size());
 
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
 	glPopMatrix();
 }
@@ -198,7 +198,7 @@ void Mesh::drawAppearance()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glMultMatrixd(transform.getTransformMatrix().constData());
+	glMultMatrixf(transform.getTransformMatrix().constData());
 
 	appearProgram->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
 	appearProgram->enableAttributeArray(PROGRAM_NORMAL_ATTRIBUTE);
@@ -206,45 +206,45 @@ void Mesh::drawAppearance()
 	appearProgram->enableAttributeArray(PROGRAM_BITANGENT_ATTRIBUTE);
 	appearProgram->enableAttributeArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_BITANGENT_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_TANGENT_ATTRIBUTE);
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_BITANGENT_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_TANGENT_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
-	int texRegBase = GL_TEXTURE0_ARB + MESH_TEXTURE_REGISTER_OFFSET;
+	int texRegBase = GL_TEXTURE0 + MESH_TEXTURE_REGISTER_OFFSET;
 	int texRegOffset = MESH_TEXTURE_REGISTER_OFFSET;
-	glActiveTextureARB(texRegBase + 0);								// 分配一个纹理寄存器
+	GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 0);								// 分配一个纹理寄存器
 	glBindTexture(GL_TEXTURE_2D, canvas.getGLColorTexObj());		// 把贴图对象绑定到寄存器
 	appearProgram->setUniformValue("colorTex", texRegOffset + 0);	// 把寄存器绑定到着色器变量
 
-	glActiveTextureARB(texRegBase + 1);
+	GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 1);
 	glBindTexture(GL_TEXTURE_2D, canvas.getGLSurfTexObj());
 	appearProgram->setUniformValue("surfTex", texRegOffset + 1);
 
-	glActiveTextureARB(texRegBase + 2);
+	GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 2);
 	glBindTexture(GL_TEXTURE_2D, canvas.getGLThicknessTexObj());
 	appearProgram->setUniformValue("thickTex", texRegOffset + 2);
 
 	appearProgram->setUniformValue("finalAlpha", alphaForAppearance);
 
 	glBuffer[0].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[1].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_NORMAL_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_NORMAL_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[2].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_TANGENT_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_TANGENT_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[3].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_BITANGENT_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_BITANGENT_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBuffer[4].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_TEXCOORD_ATTRIBUTE, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_TEXCOORD_ATTRIBUTE, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glDrawArrays(GL_TRIANGLES, 0, glVertexBuffer.size());
 
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_BITANGENT_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_TANGENT_ATTRIBUTE);
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_NORMAL_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_BITANGENT_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_TANGENT_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_TEXCOORD_ATTRIBUTE);
 
 	drawSelectedFaces();
 	if (isWireFrameEnabled && isObjSelected)
@@ -266,14 +266,14 @@ void Mesh::drawSelectedFaces()
 	glEnable(GL_COLOR_MATERIAL);
 	glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
 /*
 	bool r = glBuffer[0].bind();
-	QGLFunctions::glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);*/
+	GLContext::instance()->getQGLFunctions()->glVertexAttribPointer(PROGRAM_VERTEX_ATTRIBUTE, 3, GL_FLOAT, GL_FALSE, 0, NULL);*/
 	glBuffer[5].bind();
 	glDrawElements(GL_TRIANGLES, selectedVertexIDArray.size(), GL_UNSIGNED_INT, 0);
 
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
 
 	glDisable(GL_COLOR_MATERIAL);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -307,7 +307,7 @@ void Mesh::drawWireFrame()
 	glColor3f(0.8,0.8,0.8);
 	glLineWidth(1.0f);
 
-	QGLFunctions::glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glEnableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
 	glColorMaterial(GL_FRONT,GL_AMBIENT);    //最开始颜色材质对应的是ambient的。所以要给为diffuse
 	glColor3f(116.0 / 255.0f,190.0 / 255.0f,160.0 / 255.0f);
 	glEnable(GL_COLOR_MATERIAL);
@@ -318,7 +318,7 @@ void Mesh::drawWireFrame()
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glDisable(GL_COLOR_MATERIAL);
 
-	QGLFunctions::glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
+	GLContext::instance()->getQGLFunctions()->glDisableVertexAttribArray(PROGRAM_VERTEX_ATTRIBUTE);
 
 	appearProgram->bind();
 }

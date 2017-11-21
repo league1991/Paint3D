@@ -26,12 +26,13 @@ GLViewWidget::~GLViewWidget(void)
 
 void GLViewWidget::initializeGL()
 {
+	GLContext::instance()->getQGLFunctions()->initializeGLFunctions(this->context());
 	qglClearColor(backgroundClr);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glShadeModel(GL_SMOOTH);
 
-	paint3DApp->scene->init();
+	Paint3DFrame::getInstance()->scene->init();
 	// QMessageBox::information(NULL, QObject::tr("Info"), QObject::tr("All initialized."));
 }
 
@@ -46,12 +47,13 @@ void GLViewWidget::paintGL()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// 画出场景
-	paint3DApp->scene->draw();
+	Paint3DFrame::getInstance()->scene->draw();
 
 	// 画出操纵器
 	if (curTool)
 	{
-		curTool->draw(paint3DApp->scene->getCamera());
+		Camera& camera = Paint3DFrame::getInstance()->scene->getCamera();
+		curTool->draw(camera);
 	}
 
 	// 画出选框
@@ -88,7 +90,7 @@ void GLViewWidget::paintGL()
 
 void GLViewWidget::resizeGL( int width, int height )
 {
-	paint3DApp->scene->resizeCamera(width, height);
+	Paint3DFrame::getInstance()->scene->resizeCamera(width, height);
 	updateGL();
 }
 
@@ -99,7 +101,7 @@ void GLViewWidget::mousePressEvent( QMouseEvent *event )
 	// 优先处理拾取模式
 	if (isPickMode && pickCallBackFun)
 	{
-		pickCallBackFun(paint3DApp->scene->intersectObject(x,y));
+		pickCallBackFun(Paint3DFrame::getInstance()->scene->intersectObject(x,y));
 		isPickMode = false;
 		pickCallBackFun = NULL;
 	}
@@ -110,7 +112,7 @@ void GLViewWidget::mousePressEvent( QMouseEvent *event )
 	lastPos = event->pos();
 	pressPos = event->pos();
 
-	QSharedPointer<Scene> scene = paint3DApp->scene;
+	QSharedPointer<Scene> scene = Paint3DFrame::getInstance()->scene;
 	if (!isAltDown)
 	{
 		if (isLMBDown)
@@ -182,10 +184,10 @@ void GLViewWidget::mousePressEvent( QMouseEvent *event )
 			}
 		}
 	}
-	paint3DApp->layerEditor->updateList();
-	paint3DApp->actionPaint->setEnabled(!curSelectObj.isNull());
-	paint3DApp->actionSelectFace->setEnabled(!curSelectObj.isNull());
-	paint3DApp->transformEditor->updateWidgets();
+	Paint3DFrame::getInstance()->layerEditor->updateList();
+	Paint3DFrame::getInstance()->actionPaint->setEnabled(!curSelectObj.isNull());
+	Paint3DFrame::getInstance()->actionSelectFace->setEnabled(!curSelectObj.isNull());
+	Paint3DFrame::getInstance()->transformEditor->updateWidgets();
 	updateGL();
 }
 
@@ -195,7 +197,7 @@ void GLViewWidget::mouseMoveEvent( QMouseEvent *event )
 	int y = event->y();
 	int dx = event->x() - lastPos.x();
 	int dy = event->y() - lastPos.y();
-	QSharedPointer<Scene>scene = paint3DApp->scene;
+	QSharedPointer<Scene>scene = Paint3DFrame::getInstance()->scene;
 	Camera& camera = scene->getCamera();
 
 	curPos = event->pos();
@@ -234,7 +236,7 @@ void GLViewWidget::mouseMoveEvent( QMouseEvent *event )
 		}
 		else
 		{
-			//paint3DApp->scene->onMouseHover(event->x(), event->y());
+			//Paint3DFrame::getInstance()->scene->onMouseHover(event->x(), event->y());
 			QVector3D ori, dir;
 			camera.getRay(x, y, ori, dir);
 			if (curTool)
@@ -242,7 +244,10 @@ void GLViewWidget::mouseMoveEvent( QMouseEvent *event )
 				if (!curTool->isManipulating())
 				{
 					char axis = curTool->intersect(ori, dir);
-					curTool->selectAxis(axis);
+					if (axis >= 0 && axis <= 2)
+					{
+						curTool->selectAxis(axis);
+					}
 				}
 			}
 			else if (curToolType == GLViewWidget::TOOL_PAINT)
@@ -260,7 +265,7 @@ void GLViewWidget::mouseReleaseEvent( QMouseEvent *event )
 {
 	int x = event->x();
 	int y = event->y();
-	QSharedPointer<Scene>scene = paint3DApp->scene;
+	QSharedPointer<Scene>scene = Paint3DFrame::getInstance()->scene;
 	Camera& camera = scene->getCamera();
 	if (!isAltDown && isLMBDown)
 	{
@@ -312,7 +317,7 @@ void GLViewWidget::mouseReleaseEvent( QMouseEvent *event )
 	}
 END_RELEASE:
 	isLMBDown = false;
-	paint3DApp->transformEditor->updateWidgets();
+	Paint3DFrame::getInstance()->transformEditor->updateWidgets();
 	updateGL();
 	return;
 }
@@ -330,13 +335,13 @@ void GLViewWidget::keyPressEvent( QKeyEvent *event )
 		isShiftDown = true;
 		break;
 	case Qt::Key_Delete:
-		QSharedPointer<RenderableObject> renObj = paint3DApp->viewWidget->getSelectedObject();;
+		QSharedPointer<RenderableObject> renObj = Paint3DFrame::getInstance()->viewWidget->getSelectedObject();;
 		if (renObj)
 		{
 			QUndoCommand* cmd = new RemoveObjectCommand(renObj);
-			paint3DApp->scene->getUndoStack().push(cmd);
-			paint3DApp->actionSelect->trigger();
-			paint3DApp->transformEditor->updateWidgets();
+			Paint3DFrame::getInstance()->scene->getUndoStack().push(cmd);
+			Paint3DFrame::getInstance()->actionSelect->trigger();
+			Paint3DFrame::getInstance()->transformEditor->updateWidgets();
 		}
 	}
 }
@@ -357,10 +362,10 @@ void GLViewWidget::keyReleaseEvent( QKeyEvent *event )
 
 void GLViewWidget::wheelEvent( QWheelEvent *event )
 {
-	paint3DApp->scene->zoomCamera(event->delta());
+	Paint3DFrame::getInstance()->scene->zoomCamera(event->delta());
 	if (curToolType == TOOL_PAINT)
 	{
-		paint3DApp->scene->getPainter().onMouseHover(QVector2D(lastPos.x(),lastPos.y()));
+		Paint3DFrame::getInstance()->scene->getPainter().onMouseHover(QVector2D(lastPos.x(),lastPos.y()));
 	}
 	updateGL();
 }
@@ -369,15 +374,15 @@ void GLViewWidget::setTool( ToolType type )
 {
 	if (curToolType == TOOL_PAINT)
 	{
-		paint3DApp->paintEditor->attachToCamera(false);
+		Paint3DFrame::getInstance()->paintEditor->attachToCamera(false);
 	}
 	curToolType = type;
-	QSharedPointer<Scene> scene = paint3DApp->scene;
+	QSharedPointer<Scene> scene = Paint3DFrame::getInstance()->scene;
 	bool isPaintMode = type == TOOL_PAINT;
 	Mesh::enableWireFrame(!isPaintMode);
 	scene->getBrush().activate(isPaintMode);
-	paint3DApp->actionImport->setEnabled(!isPaintMode);
-	paint3DApp->actionPlaneLocator->setEnabled(!isPaintMode);
+	Paint3DFrame::getInstance()->actionImport->setEnabled(!isPaintMode);
+	Paint3DFrame::getInstance()->actionPlaneLocator->setEnabled(!isPaintMode);
 	switch (type)
 	{
 	case TOOL_TRANSLATE:
@@ -410,10 +415,10 @@ void GLViewWidget::setTool( ToolType type )
 	}
 	bool hasObject = !curSelectObj.isNull();
 	isPaintMode = curToolType == GLViewWidget::TOOL_PAINT;
-	paint3DApp->paintEditor->setEnabled(hasObject && isPaintMode);
-	paint3DApp->paintEditor->changeColorPicker(true);
+	Paint3DFrame::getInstance()->paintEditor->setEnabled(hasObject && isPaintMode);
+	Paint3DFrame::getInstance()->paintEditor->changeColorPicker(true);
 	if (!isPaintMode)
-		paint3DApp->scene->setPickerObjectUnfrozen();
+		Paint3DFrame::getInstance()->scene->setPickerObjectUnfrozen();
 	updateGL();
 }
 
@@ -422,8 +427,8 @@ bool GLViewWidget::focusCurSelected()
 	if (curSelectObj)
 	{
 		RenderableObject *obj = curSelectObj.data();
-		paint3DApp->scene->getCamera().setCenter(obj->getCenter(), obj->getApproSize() );
-		paint3DApp->scene->updateGeometryImage();
+		Paint3DFrame::getInstance()->scene->getCamera().setCenter(obj->getCenter(), obj->getApproSize() );
+		Paint3DFrame::getInstance()->scene->updateGeometryImage();
 
 		return true;
 	}

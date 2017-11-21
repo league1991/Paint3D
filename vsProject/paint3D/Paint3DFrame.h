@@ -8,10 +8,12 @@ class Paint3DFrame : public QMainWindow, public Ui::MainWindow
 {
 	Q_OBJECT
 public:
-	Paint3DFrame(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~Paint3DFrame();
 
+	static Paint3DFrame* getInstance();
 	static QSharedPointer<Scene> scene;
+	Scene* getScene(){return scene.data();}
+	void initialize();
 	void updateGLView();
 private slots:
 	void importModel();
@@ -31,10 +33,11 @@ private slots:
 
 	void showAboutWindow();
 private:
+	Paint3DFrame(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+	static Paint3DFrame* instance;
 	QActionGroup *actionGroup;
 	QAction* undoAction;
 	QAction* redoAction;
 };
 
-extern Paint3DFrame* paint3DApp;
 #endif // PAINT3D_H
