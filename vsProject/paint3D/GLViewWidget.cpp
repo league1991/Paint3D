@@ -244,7 +244,10 @@ void GLViewWidget::mouseMoveEvent( QMouseEvent *event )
 				if (!curTool->isManipulating())
 				{
 					char axis = curTool->intersect(ori, dir);
-					curTool->selectAxis(axis);
+					if (axis >= 0 && axis <= 2)
+					{
+						curTool->selectAxis(axis);
+					}
 				}
 			}
 			else if (curToolType == GLViewWidget::TOOL_PAINT)
