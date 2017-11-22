@@ -2,12 +2,12 @@
 A program allowing painting textures of different channels SIMULTANEOUSLY on a 3d model.<br/>
 You can also see this page: http://www.cnblogs.com/dydx/p/6445845.html<br/>
 
-###Preliminary
+### Preliminary
 Qt 5.3 32bit<br/>
 OpenGL 32bit<br/>
 Visual Studio 2012<br/>
 
-###Screenshots
+### Screenshots
 
 ![](https://github.com/league1991/Paint3D/raw/master/ImageCache/switch.gif) 
 
