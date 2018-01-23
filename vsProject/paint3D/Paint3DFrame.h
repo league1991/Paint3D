@@ -1,7 +1,7 @@
 #ifndef PAINT3D_H
 #define PAINT3D_H
 
-#include <QtGui/QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include "ui_mainWindow.h"
 
 class Paint3DFrame : public QMainWindow, public Ui::MainWindow

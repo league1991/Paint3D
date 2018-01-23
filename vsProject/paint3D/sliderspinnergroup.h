@@ -1,7 +1,7 @@
 #ifndef SLIDERSPINNERGROUP_H
 #define SLIDERSPINNERGROUP_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QHBoxLayout>

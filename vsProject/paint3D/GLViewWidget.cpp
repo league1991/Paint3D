@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-#include <QtGui>
 #include <QtOpenGL>
 #include <math.h>
 #include "GLViewWidget.h"

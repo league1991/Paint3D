@@ -10,7 +10,7 @@
 using namespace std;
 
 #include <QDebug>
-#include <QtGui>
+#include <QtWidgets/QtWidgets>
 #include <qvector.h>
 #include <qmath.h>
 #include <QVector3D>
