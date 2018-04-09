@@ -460,7 +460,7 @@ void Scene::save( const QString& fileName )
 	if (file.open(QIODevice::WriteOnly))
 	{
 		QDataStream out(&file);
-		out.setVersion(QDataStream::Qt_4_3);
+		out.setVersion(QDataStream::Qt_5_3);
 		out << objectArray;
 	}
 }
@@ -472,7 +472,7 @@ void Scene::open( const QString& fileName )
 	{
 		clear();
 		QDataStream in(&file);
-		in.setVersion(QDataStream::Qt_4_3);
+		in.setVersion(QDataStream::Qt_5_3);
 		in >> objectArray;
 	}
 	refreshExposerObjectList();
