@@ -458,9 +458,13 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FullPath);.\Resources\copy.png;.\Resources\cut.png;.\Resources\new.png;.\Resources\open.png;.\Resources\paste.png;.\Resources\save.png;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
+    <None Include="fboShaderFS.glsl" />
+    <None Include="fboShaderVS.glsl" />
     <None Include="Resources\move.psd" />
     <None Include="paint3d_zh.ts" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="sceneShaderFS.glsl" />
+    <None Include="sceneShaderVS.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\arrow.png" />

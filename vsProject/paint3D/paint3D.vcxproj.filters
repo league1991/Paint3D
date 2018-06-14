@@ -56,6 +56,9 @@
       <Extensions>ts</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="系统\Shader">
+      <UniqueIdentifier>{617587be-2bc0-4197-bf1f-c682243d0b09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HistoryCommand.cpp">
@@ -306,6 +309,18 @@
       <Filter>Translation Files</Filter>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="fboShaderFS.glsl">
+      <Filter>系统\Shader</Filter>
+    </None>
+    <None Include="fboShaderVS.glsl">
+      <Filter>系统\Shader</Filter>
+    </None>
+    <None Include="sceneShaderFS.glsl">
+      <Filter>系统\Shader</Filter>
+    </None>
+    <None Include="sceneShaderVS.glsl">
+      <Filter>系统\Shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\arrow.png">
