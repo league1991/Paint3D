@@ -138,6 +138,10 @@ void Scene::draw()
 			GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 0);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, envMap.getGLTexObj());
 			meshShader->setUniformValue("envTex", texRegOffset + 0);
+
+			GLContext::instance()->getQGLFunctions()->glActiveTexture(texRegBase + 1);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, envMap.getBRDFTexObj());
+			meshShader->setUniformValue("brdfLUT", texRegOffset + 1);
 			isEnvMapUpdated = true;
 		}
 

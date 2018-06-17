@@ -23,6 +23,11 @@ const GLuint CubeMap::glCubeMapTable[] = {
 	GL_TEXTURE_CUBE_MAP_NEGATIVE_Z,
 };
 
+inline float saturate(float v)
+{
+	return v < 0?0:(v > 1?1:v);
+}
+
 CubeMap::CubeMap(void)
 {
 }
@@ -91,9 +96,20 @@ void CubeMap::load( const QString& fileName, int cubeMapSize )
 	}
 
 	CubeMapLayer layer0(cubeImgs);
-	PBRCubeMapGenerator generator(layer0);
-	generator.generateMipmaps();
-	generator.saveImages("i:/Programs/CG2008/paint3D/vsProject/paint3D/");
+	int numLayers = 0, cubeMapSizeI = cubeMapSize;
+	while (cubeMapSizeI > 0)
+	{
+		numLayers++;
+		cubeMapSizeI /= 2;
+	}
+	QDir tempDir("./");
+	if (!cubeGenerator.loadCubeMapImages(tempDir.path(), numLayers))
+	{
+		cubeGenerator.generateMipmaps(layer0);
+		cubeGenerator.saveCubeMapImages(tempDir.path());
+	}
+	cubeGenerator.generateBRDFTable(64);
+	cubeGenerator.saveBRDFTableImage("brdf.png");
 	//QMessageBox::information(NULL, QObject::tr("Error"), QObject::tr("convert to cube completed."));
 }
 
@@ -110,7 +126,7 @@ void CubeMap::initGLBuffer()
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	//glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_GENERATE_MIPMAP, GL_TRUE);
+	//glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_GENERATE_MIPMAP, GL_TRUE);
 
 	GLenum errorMsg = glGetError();
 	if (errorMsg != GL_NO_ERROR)
@@ -118,23 +134,43 @@ void CubeMap::initGLBuffer()
 		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("OpenGL error occurs when generating cube map object."));
 	}
 
-	//QMessageBox::information(NULL, QObject::tr("Info"), QObject::tr("begin init env map."));
 	QGLFunctions* gl = GLContext::instance()->getQGLFunctions();
-	for (int ithMap = 0; ithMap < 6; ++ithMap)
+	auto& layers = cubeGenerator.getMipMaps();
+	for (int ithLevel = 0; ithLevel < layers.size(); ithLevel++)
 	{
-		gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
-		// QMessageBox::information(NULL, QObject::tr("Info"), QString::number(ithMap) + "th map completed");
-
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		GLenum errorMsg = glGetError();
-		if (errorMsg != GL_NO_ERROR)
+		QSize layerSize = layers[ithLevel].size();
+		for (int ithMap = 0; ithMap < 6; ++ithMap)
 		{
-			QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("OpenGL error occurs when initializing cube map."));
-			qDebug() << "OpenGL error occurs when initializing cube map" << endl;
-		}
+			//gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
+			glTexImage2D(glCubeMapTable[ithMap], ithLevel, GL_BGRA, layerSize.width(), layerSize.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, layers[ithLevel].rawBuffer(ithMap));
 
+			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			GLenum errorMsg = glGetError();
+			if (errorMsg != GL_NO_ERROR)
+			{
+				QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("OpenGL error occurs when initializing cube map."));
+				qDebug() << "OpenGL error occurs when initializing cube map" << endl;
+			}
+		}
+	}
+
+	glGenTextures(1, &glBRDFMapID);
+	glBindTexture(GL_TEXTURE_2D, glBRDFMapID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	auto& brdfBuffer = cubeGenerator.getBRDFTable();
+	QSize brdfBufferSize = cubeGenerator.getBRDFTableSize();
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, brdfBufferSize.width(), brdfBufferSize.height(), 0, GL_RGB, GL_FLOAT, &brdfBuffer[0]);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	errorMsg = glGetError();
+	if (errorMsg != GL_NO_ERROR)
+	{
+		QMessageBox::critical(NULL, QObject::tr("Error"), QObject::tr("OpenGL error occurs when initializing cube map."));
+		qDebug() << "OpenGL error occurs when initializing cube map" << endl;
 	}
 }
 
@@ -157,8 +193,8 @@ CubeMapLayer::CubeMapLayer(QImage cubeImg[6])
 {
 	for (int i = 0; i < 6; i++)
 	{
-		m_cubeImgs[i] = cubeImg[i];
-		m_cubePixel[i] = (QRgb*)m_cubeImgs[i].bits();
+		cubeImgs[i] = cubeImg[i];
+		cubePixel[i] = (QRgb*)cubeImgs[i].bits();
 	}
 }
 
@@ -166,8 +202,8 @@ CubeMapLayer::CubeMapLayer(const QSize & size)
 {
 	for (int i = 0; i < 6; i++)
 	{
-		m_cubeImgs[i] = QImage(size, QImage::Format_ARGB32);
-		m_cubePixel[i] = (QRgb*)m_cubeImgs[i].bits();
+		cubeImgs[i] = QImage(size, QImage::Format_ARGB32);
+		cubePixel[i] = (QRgb*)cubeImgs[i].bits();
 	}
 }
 
@@ -187,9 +223,9 @@ QVector3D CubeMapLayer::sample(QVector3D v) const
 	}
 
 	v /= maxAbsV;
-	const QImage& srcImg = m_cubeImgs[faceIdx];
+	const QImage& srcImg = cubeImgs[faceIdx];
 	QSize srcSize = srcImg.size();
-	QRgb* pSrcImg = m_cubePixel[faceIdx];
+	QRgb* pSrcImg = cubePixel[faceIdx];
 	float uOffset = QVector3D::dotProduct(v, s_offsetU[faceIdx]) / 2.f;
 	float vOffset = QVector3D::dotProduct(v, s_offsetV[faceIdx]) / 2.f;
 	uOffset = (uOffset + 1.0) * 0.5f;
@@ -203,9 +239,9 @@ QVector3D CubeMapLayer::sample(QVector3D v) const
 
 void CubeMapLayer::setPixel(int faceIdx, int x, int y, const QVector3D& color)
 {
-	const QImage& srcImg = m_cubeImgs[faceIdx];
+	const QImage& srcImg = cubeImgs[faceIdx];
 	QSize srcSize = srcImg.size();
-	QRgb* pSrcImg = m_cubePixel[faceIdx];
+	QRgb* pSrcImg = cubePixel[faceIdx];
 	int uOffseti = qMax(0, qMin(x, srcSize.width() - 1));
 	int vOffseti = qMax(0, qMin(y, srcSize.height() - 1));
 
@@ -213,31 +249,62 @@ void CubeMapLayer::setPixel(int faceIdx, int x, int y, const QVector3D& color)
 	pSrcImg[vOffseti * srcSize.width() + uOffseti] = rgb;
 }
 
-PBRCubeMapGenerator::PBRCubeMapGenerator(const CubeMapLayer & layer0)
+void CubeMapLayer::save(QString fileName)
+{
+	int idx = fileName.lastIndexOf(".");
+
+	for (int i = 0; i < 6; i++)
+	{
+		QString faceName = fileName;
+		faceName.insert(idx, QString("_%1").arg(i));
+		cubeImgs[i].save(faceName);
+	}
+}
+
+bool CubeMapLayer::load(QString fileName)
+{
+	int idx = fileName.lastIndexOf(".");
+
+	for (int i = 0; i < 6; i++)
+	{
+		QString faceName = fileName;
+		faceName.insert(idx, QString("_%1").arg(i));
+		if (!QFile::exists(faceName))
+		{
+			return false;
+		}
+		cubeImgs[i].load(faceName);
+		cubePixel[i] = (QRgb*)cubeImgs[i].bits();
+	}
+	return true;
+}
+
+PBRCubeMapGenerator::PBRCubeMapGenerator()
+{
+}
+
+void PBRCubeMapGenerator::generateMipmaps(const CubeMapLayer& layer0)
 {
 	QSize s0 = layer0.size();
 	QSize s = s0;
-	m_layers.clear();
+	layers.clear();
 	while (s.width() > 0 || s.height() > 0)
 	{
 		QSize layerSize(qMax(s.width(), 1), qMax(s.height(), 1));
-		m_layers.emplace_back(layerSize);
+		layers.emplace_back(layerSize);
 		s.setWidth(s.width() / 2);
 		s.setHeight(s.height() / 2);
 	}
-	m_layers[0] = layer0;
-}
+	layers[0] = layer0;
 
-void PBRCubeMapGenerator::generateMipmaps()
-{
-	float dRough = 1.0 / (m_layers.size() - 1);
+	float dRough = 1.0 / (layers.size() - 1);
 	float roughness = dRough;
 
-	for (int i = 1; i < m_layers.size(); i++, roughness += dRough)
+	for (int i = 1; i < layers.size(); i++, roughness += dRough)
 	{
 		// 把二维贴图转化成立方体贴图
-		QSize srcSize = m_layers[i - 1].size();
-		QSize dstSize = m_layers[i].size();
+		QSize srcSize = layers[i - 1].size();
+		QSize dstSize = layers[i].size();
 		for (int ithMap = 0; ithMap < 6; ++ithMap)
 		{
 			const QVector3D offsetU = CubeMapLayer::s_offsetU[ithMap] / dstSize.width();
@@ -253,10 +320,62 @@ void PBRCubeMapGenerator::generateMipmaps()
 					QVector3D norCubePos = cubePos;
 					norCubePos.normalize();
 
-					auto filteredColor = prefilterEnvMap(roughness, norCubePos, m_layers[i - 1]);
-					m_layers[i].setPixel(ithMap, x, y, filteredColor);
+					auto filteredColor = prefilterEnvMap(roughness, norCubePos, layers[i - 1]);
+					layers[i].setPixel(ithMap, x, y, filteredColor);
 				}
 			}
+		}
+	}
+}
+
+void PBRCubeMapGenerator::saveCubeMapImages(const QString & path)
+{
+	for (int i = 0; i < layers.size(); i++)
+	{
+		QString layerPath = path + QString("/cubeMap_layer%1.png").arg(i);
+		layers[i].save(layerPath);
+	}
+}
+
+void PBRCubeMapGenerator::saveBRDFTableImage(const QString & path)
+{
+	QImage img(brdfTableSize, QImage::Format_ARGB32);
+	for (int y = 0; y < brdfTableSize.height(); y++)
+	{
+		QRgb* buf = (QRgb*)img.scanLine(y);
+		for (int x = 0; x < brdfTableSize.width(); x++)
+		{
+			auto v = brdfTable[y*brdfTableSize.width() + x];
+			buf[x] = qRgb(saturate(v.x()) * 255, saturate(v.y()) * 255, 0);
+		}
+	}
+	img.save(path);
+}
+
+bool PBRCubeMapGenerator::loadCubeMapImages(const QString & path, int numLayers)
+{
+	layers.resize(numLayers);
+	for (int i = 0; i < layers.size(); i++)
+	{
+		QString layerPath = path + QString("/cubeMap_layer%1.png").arg(i);
+		if (!layers[i].load(layerPath))
+			return false;
+	}
+	return true;
+}
+
+void PBRCubeMapGenerator::generateBRDFTable(int size)
+{
+	brdfTableSize = QSize(size, size);
+	brdfTable.resize(size*size);
+	for (int y = 0; y < size; y++)
+	{
+		float roughness = float(y) / float(size - 1);
+		for (int x = 0; x < size; x++)
+		{
+			float cosV = float(x+1) / float(size);
+			auto val = integrateBRDF(roughness, cosV);
+			brdfTable[y*size + x] = QVector3D(val.x(), val.y(), 0.0);
 		}
 	}
 }
@@ -317,6 +436,39 @@ inline QVector3D PBRCubeMapGenerator::importanceSampleGGX(const QVector2D & Xi, 
 	QVector3D tangentY = QVector3D::crossProduct(N, tangentX);
 
 	return tangentX * H.x() + tangentY * H.y() + N * H.z();
+}
+
+QVector2D PBRCubeMapGenerator::integrateBRDF(float roughness, float NV)
+{
+	QVector3D V(sqrt(1 - NV*NV), 0, NV);
+	QVector3D N(0, 0, 1);
+
+	float A = 0;
+	float B = 0;
+	const int numSamples = 1024;
+	int samples = 0;
+	for (int i = 0; i < numSamples; i++)
+	{
+		float randU = rand() / float(RAND_MAX);
+		float randV = rand() / float(RAND_MAX);
+		QVector2D uv(randU, randV);
+		QVector3D H = importanceSampleGGX(uv, roughness, N);
+		QVector3D L = 2 * QVector3D::dotProduct(V, H) * H - V;
+
+		float NL = saturate(L.z());
+		float NH = saturate(H.z());
+		float VH = saturate(QVector3D::dotProduct(V, H));
+		if (NL > 0)
+		{
+			float g = G(roughness, N, V, L);
+			float gVis = g * VH / (NH*NV);
+			float fc = pow(qMax(0.f, 1.f - VH), 5);
+			A += (1 - fc)*gVis;
+			B += fc * gVis;
+			samples++;
+		}
+	}
+	return QVector2D(A / samples, B / samples);
 }
 
 QVector3D PBRCubeMapGenerator::prefilterEnvMap(float roughness, const QVector3D & R, CubeMapLayer & cubeMap)

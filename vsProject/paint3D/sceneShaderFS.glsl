@@ -3,6 +3,7 @@ uniform sampler2D colorTex;         // r g b a
 uniform sampler2D surfTex;          // reflLevel, reflGlossness, refrLevel, fresnelIOR
 uniform sampler2D thickTex;         // thickness
 uniform samplerCube envTex;         // environment map
+uniform sampler2D brdfLUT;
 uniform mat4      viewMatrixTranspose;// matrix converting normal from view space to world space
 uniform float finalAlpha;            // final alpha used for blending
 
@@ -50,30 +51,19 @@ void main(void)
    vec3  R = reflect(lightDir, finalNormal);
    float RDotV   = abs(dot( R, viewDir));
    
-   // diffuse color
-   vec4 diffuseClr = color * NDotL;
-   
    // specular color
-   float specularLevel = pow(surf.x + 0.0001, 0.5);
-   float glossnessExponent = surf.y * surf.y * 400.0 + 1.0;
-   float specularGlossness = pow(RDotV + 0.01, glossnessExponent);
-   vec4 specularClr = vec4(1) * specularLevel * specularGlossness;
-   
-   // compute reflection color
+   float roughness = surf.y;
+   vec3 F0 = vec3(0.04);
+   float metalness = surf.w;
+   F0 = mix(F0, color.rgb, metalness);
    vec3 cubeMapDir   = reflect(viewDir, finalNormal);
    vec3 cubeMapDirWorld = (viewMatrixTranspose * vec4(cubeMapDir,0.0)).xyz;
-   vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, (1.0 - surf.y) * 5.0);
-   
-   // compute fresnel coefficient
-   float fresnelProj = 1.0 - NDotV;
-   float fresnelProjSq = fresnelProj * fresnelProj;
-   float fresnelN = 1.0 - surf.w;
-   float fresnelA0 = (fresnelN - 1.0) / (fresnelN + 1.0);
-   float fresnelA = fresnelA0 * fresnelA0;
-   float fresnelCoef = fresnelA + (1.0 - fresnelA) * fresnelProjSq * fresnelProjSq * fresnelProj;
-   
-   // blend colors
-   float reflRatio = fresnelCoef * surf.x;
-   vec4 finalRGB = reflRatio * cubeMapClr + (1.0 -  reflRatio) * diffuseClr + specularClr;
+   vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, roughness * 10);
+   vec2 envBRDF = textureLod(brdfLUT, vec2(NDotV, roughness)).rg;
+   vec3 specularClr = cubeMapClr * (F0 * envBRDF.r + envBRDF.g);
+
+   // diffuse color
+   vec4 diffuseClr = color * NDotL;
+   vec4 finalRGB = diffuseClr + specularClr;
    gl_FragColor = vec4(finalRGB.xyz, finalAlpha);
 }
