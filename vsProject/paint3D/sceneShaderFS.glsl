@@ -13,6 +13,11 @@ varying vec3 tangentF;
 varying vec3 bitangentF;
 varying vec4 texCoordF;
 
+vec3 fresnelSchlickRoughness(float cosTheta, vec3 F0, float roughness)
+{
+	return F0 + (max(vec3(1.0 - roughness), F0) - F0) * pow(1.0 - cosTheta, 5.0);
+}
+
 void main(void)
 {
 	vec3 normal = normalize(normalF);
@@ -52,18 +57,22 @@ void main(void)
 	float RDotV = abs(dot(R, viewDir));
 
 	// specular color
-	float roughness = surf.y;
+	float roughness = 1 - surf.y;
 	vec3 F0 = vec3(0.04);
 	float metalness = surf.w;
 	F0 = mix(F0, color.rgb, metalness);
+
+	vec3 kS = fresnelSchlickRoughness(NDotV, F0, roughness);
+	vec3 kD = 1.0 - kS;
+
 	vec3 cubeMapDir = reflect(viewDir, finalNormal);
 	vec3 cubeMapDirWorld = (viewMatrixTranspose * vec4(cubeMapDir, 0.0)).xyz;
-	vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, roughness * 10);
+	vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, roughness * 5.0);
 	vec2 envBRDF = textureLod(brdfLUT, vec2(NDotV, roughness), 0).rg;
-	vec3 specularClr = cubeMapClr.rgb * (F0 * envBRDF.r + envBRDF.g);
+	vec3 specularClr = cubeMapClr.rgb *(F0 * envBRDF.r + envBRDF.g);
 
 	// diffuse color
 	vec3 diffuseClr = color.rgb * NDotL;
-	vec3 finalRGB = diffuseClr + specularClr;
+	vec3 finalRGB = kD * diffuseClr + specularClr;
 	gl_FragColor = vec4(finalRGB, finalAlpha);
 }

@@ -95,16 +95,10 @@ void CubeMap::load( const QString& fileName, int cubeMapSize )
 		}
 	}
 
-	CubeMapLayer layer0(cubeImgs);
-	int numLayers = 0, cubeMapSizeI = cubeMapSize;
-	while (cubeMapSizeI > 0)
-	{
-		numLayers++;
-		cubeMapSizeI /= 2;
-	}
 	QDir tempDir("./");
-	if (!cubeGenerator.loadCubeMapImages(tempDir.path(), numLayers))
+	if (!cubeGenerator.loadCubeMapImages(tempDir.path()))
 	{
+		CubeMapLayer layer0(cubeImgs);
 		cubeGenerator.generateMipmaps(layer0);
 		cubeGenerator.saveCubeMapImages(tempDir.path());
 	}
@@ -141,8 +135,8 @@ void CubeMap::initGLBuffer()
 		QSize layerSize = layers[ithLevel].size();
 		for (int ithMap = 0; ithMap < 6; ++ithMap)
 		{
-			//gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
-			glTexImage2D(glCubeMapTable[ithMap], ithLevel, GL_BGRA, layerSize.width(), layerSize.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, layers[ithLevel].rawBuffer(ithMap));
+			gluBuild2DMipmaps(glCubeMapTable[ithMap], 4, cubeMapSize, cubeMapSize, GL_BGRA, GL_UNSIGNED_BYTE, cubeImgs[ithMap].scanLine(0));
+			//glTexImage2D(glCubeMapTable[ithMap], ithLevel, GL_BGRA, layerSize.width(), layerSize.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, layers[ithLevel].rawBuffer(ithMap));
 
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -288,7 +282,7 @@ void PBRCubeMapGenerator::generateMipmaps(const CubeMapLayer& layer0)
 	QSize s0 = layer0.size();
 	QSize s = s0;
 	layers.clear();
-	while (s.width() > 0 || s.height() > 0)
+	for(int level = 0; level < ENV_MIP_LEVELS; ++level)
 	{
 		QSize layerSize(qMax(s.width(), 1), qMax(s.height(), 1));
 		layers.emplace_back(layerSize);
@@ -352,9 +346,9 @@ void PBRCubeMapGenerator::saveBRDFTableImage(const QString & path)
 	img.save(path);
 }
 
-bool PBRCubeMapGenerator::loadCubeMapImages(const QString & path, int numLayers)
+bool PBRCubeMapGenerator::loadCubeMapImages(const QString & path)
 {
-	layers.resize(numLayers);
+	layers.resize(ENV_MIP_LEVELS);
 	for (int i = 0; i < layers.size(); i++)
 	{
 		QString layerPath = path + QString("/cubeMap_layer%1.png").arg(i);
@@ -389,16 +383,22 @@ inline float PBRCubeMapGenerator::D(const QVector3D & h, const QVector3D & n, fl
 	return alpha2 / (M_PI * denominator);
 }
 
-inline float PBRCubeMapGenerator::G1(float roughness, const QVector3D & n, const QVector3D & v)
+inline float PBRCubeMapGenerator::G1(float k, const QVector3D & n, const QVector3D & v)
 {
-	float k = (roughness + 1)*(roughness + 1) / 8.f;
 	float NV = QVector3D::dotProduct(n, v);
 	return NV / (NV*(1 - k) + k);
 }
 
 inline float PBRCubeMapGenerator::G(float roughness, const QVector3D & n, const QVector3D & v, const QVector3D & l)
 {
-	return G1(roughness, n, v) * G1(roughness, n, l);
+	float k = (roughness + 1)*(roughness + 1) / 8.f;
+	return G1(k, n, v) * G1(k, n, l);
+}
+
+inline float PBRCubeMapGenerator::GIBL(float roughness, const QVector3D & n, const QVector3D & v, const QVector3D & l)
+{
+	float k = roughness * roughness / 2.0;
+	return G1(k, n, v) * G1(k, n, l);
 }
 
 inline float PBRCubeMapGenerator::F(float f0, const QVector3D & h, const QVector3D & v)
@@ -460,7 +460,7 @@ QVector2D PBRCubeMapGenerator::integrateBRDF(float roughness, float NV)
 		float VH = saturate(QVector3D::dotProduct(V, H));
 		if (NL > 0)
 		{
-			float g = G(roughness, N, V, L);
+			float g = GIBL(roughness, N, V, L);
 			float gVis = g * VH / (NH*NV);
 			float fc = pow(qMax(0.f, 1.f - VH), 5);
 			A += (1 - fc)*gVis;
@@ -468,7 +468,7 @@ QVector2D PBRCubeMapGenerator::integrateBRDF(float roughness, float NV)
 			samples++;
 		}
 	}
-	return QVector2D(A / samples, B / samples);
+	return QVector2D(A / numSamples, B / numSamples);
 }
 
 QVector3D PBRCubeMapGenerator::prefilterEnvMap(float roughness, const QVector3D & R, CubeMapLayer & cubeMap)

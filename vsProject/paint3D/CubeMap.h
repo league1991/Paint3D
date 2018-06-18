@@ -1,5 +1,6 @@
 #pragma once
 
+#define ENV_MIP_LEVELS 5
 class CubeMapLayer
 {
 public:
@@ -44,7 +45,7 @@ public:
 
 	void generateMipmaps(const CubeMapLayer& layer0);
 	const std::vector<CubeMapLayer>& getMipMaps()const { return layers; }
-	bool loadCubeMapImages(const QString& path, int layers);
+	bool loadCubeMapImages(const QString& path);
 	void saveCubeMapImages(const QString& path);
 	void saveBRDFTableImage(const QString& path);
 	void generateBRDFTable(int size);
@@ -52,8 +53,9 @@ public:
 	QSize getBRDFTableSize()const { return brdfTableSize; }
 private:
 	static float D(const QVector3D& h, const QVector3D& n, float alpha);
-	static float G1(float roughness, const QVector3D& n, const QVector3D& v);
+	static float G1(float k, const QVector3D& n, const QVector3D& v);
 	static float G(float roughness, const QVector3D& n, const QVector3D& v, const QVector3D& l);
+	static float GIBL(float roughness, const QVector3D& n, const QVector3D& v, const QVector3D& l);
 	static float F(float f0, const QVector3D& h, const QVector3D& v);
 	static float cookTorranceBRDF(const QVector3D& n, const QVector3D& l, const QVector3D& v, float roughness, float f0);
 

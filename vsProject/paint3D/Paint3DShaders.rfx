@@ -919,7 +919,7 @@
        <RmRegistryBranch NAME="Effect Workspace.Default_OpenGL_Effect" API="" XML_VERSION="RenderMonkey 1.71">
         <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
         <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
-        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="564" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="336" MIN="-10" MAX="10" CLAMP="FALSE"/>
         <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="350" MIN="-10" MAX="10" CLAMP="FALSE"/>
         <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
         <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
@@ -998,7 +998,7 @@ Pass 0]]></RmTextDataBlock></RmStringVariable>
     </RmRegistryBranch>
     <RmRegistryBranch NAME="WORKSPACE" API="" XML_VERSION="RenderMonkey 1.71">
      <RmStringVariable NAME="LAST_SAVE" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
-18/6/2018 2:28:43]]></RmTextDataBlock></RmStringVariable>
+18/6/2018 10:58:31]]></RmTextDataBlock></RmStringVariable>
      <RmStringVariable NAME="VERSION" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
 RenderMonkey Version 1.82 (build 322)]]></RmTextDataBlock></RmStringVariable>
      <RmStringVariable NAME="XML_VERSION" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
@@ -1044,15 +1044,13 @@ void main(void)
     <RmGLShader NAME="Fragment Program" API="OpenGL"><RmShaderCode TYPE="TEXT"><![CDATA[]]></RmShaderCode>
     </RmGLShader>
     <RmStreamMapReference NAME="Stream Mapping" API=""/>
-    <RmMatrixVariable NAME="viewMatrixTranspose" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewTranspose" VALUE_0="0.800808" VALUE_1="-0.470300" VALUE_2="-0.370843" VALUE_3="0.000000" VALUE_4="0.563662" VALUE_5="0.801125" VALUE_6="0.201206" VALUE_7="0.000000" VALUE_8="0.202465" VALUE_9="-0.370158" VALUE_10="0.906638" VALUE_11="0.000000" VALUE_12="0.000004" VALUE_13="0.000069" VALUE_14="-200.000076" VALUE_15="1.000000"/>
+    <RmMatrixVariable NAME="viewMatrixTranspose" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewTranspose" VALUE_0="0.858714" VALUE_1="-0.512451" VALUE_2="0.002209" VALUE_3="0.000000" VALUE_4="0.463775" VALUE_5="0.775300" VALUE_6="-0.428746" VALUE_7="0.000000" VALUE_8="0.217999" VALUE_9="0.369195" VALUE_10="0.903422" VALUE_11="0.000000" VALUE_12="0.000002" VALUE_13="-0.000031" VALUE_14="-103.744911" VALUE_15="1.000000"/>
     <RmFloatVariable NAME="finalAlpha" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1.000000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
     <Rm2DTextureVariable NAME="my2DTexture" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME=".\brdf.png" ORIGIN="0"/>
     <Rm2DTextureVariable NAME="1" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME=".\1.bmp" ORIGIN="0"/>
     <Rm2DTextureVariable NAME="color" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME=".\color.bmp" ORIGIN="0"/>
     <RmCubemapVariable NAME="Earth" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="D:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\Earth.dds" ORIGIN="0"/>
-    <RmTextureObject NAME="colorTex" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
-     <RmTextureReference NAME="1" API=""/>
-    </RmTextureObject>
+    <RmCubemapVariable NAME="Earth_1" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="D:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\Earth.dds" ORIGIN="0"/>
     <RmTextureObject NAME="brdfLUT" API="OpenGL" STATE_INDEX="4" VERTEX_TEXTURE="FALSE">
      <RmTextureReference NAME="my2DTexture" API=""/>
     </RmTextureObject>
@@ -1065,13 +1063,16 @@ void main(void)
     <RmTextureObject NAME="envTex" API="OpenGL" STATE_INDEX="3" VERTEX_TEXTURE="FALSE">
      <RmTextureReference NAME="Earth" API=""/>
     </RmTextureObject>
-    <RmSampler NAME="thickTex" API="" REGISTER="-1"/>
+    <RmTextureObject NAME="colorTex" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
+     <RmTextureReference NAME="1" API=""/>
+    </RmTextureObject>
     <RmSampler NAME="colorTex" API="" REGISTER="-1"/>
     <RmSampler NAME="surfTex" API="" REGISTER="-1"/>
     <RmSampler NAME="envTex" API="" REGISTER="-1"/>
     <RmSampler NAME="brdfLUT" API="" REGISTER="-1"/>
-    <RmShaderConstant NAME="viewMatrixTranspose" API="" REGISTER="-1"/>
+    <RmSampler NAME="thickTex" API="" REGISTER="-1"/>
     <RmShaderConstant NAME="finalAlpha" API="" REGISTER="-1"/>
+    <RmShaderConstant NAME="viewMatrixTranspose" API="" REGISTER="-1"/>
    </RmGLPass>
   </RmOpenGLEffect>
  </RmEffectWorkspace>
