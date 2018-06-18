@@ -1,6 +1,6 @@
 #pragma once
 
-#define ENV_MIP_LEVELS 5
+#define ENV_MIP_LEVELS 7
 class CubeMapLayer
 {
 public:

@@ -13,6 +13,7 @@ varying vec3 tangentF;
 varying vec3 bitangentF;
 varying vec4 texCoordF;
 
+#define ENV_MIP_LEVELS 7
 vec3 fresnelSchlickRoughness(float cosTheta, vec3 F0, float roughness)
 {
 	return F0 + (max(vec3(1.0 - roughness), F0) - F0) * pow(1.0 - cosTheta, 5.0);
@@ -67,11 +68,13 @@ void main(void)
 
 	vec3 cubeMapDir = reflect(viewDir, finalNormal);
 	vec3 cubeMapDirWorld = (viewMatrixTranspose * vec4(cubeMapDir, 0.0)).xyz;
-	vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, roughness * 5.0);
+	vec4 cubeMapClr = textureCubeLod(envTex, -cubeMapDirWorld, roughness * ENV_MIP_LEVELS);
 	vec2 envBRDF = textureLod(brdfLUT, vec2(NDotV, roughness), 0).rg;
 	vec3 specularClr = cubeMapClr.rgb *(F0 * envBRDF.r + envBRDF.g);
 
 	// diffuse color
+	vec3 cubeMapNormalDirWorld = (viewMatrixTranspose * vec4(finalNormal, 0.0)).xyz;
+	vec4 irradiance = textureCubeLod(envTex, -cubeMapNormalDirWorld, 5.0);
 	vec3 diffuseClr = color.rgb * NDotL;
 	vec3 finalRGB = kD * diffuseClr + specularClr;
 	gl_FragColor = vec4(finalRGB, finalAlpha);
