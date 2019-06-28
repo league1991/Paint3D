@@ -1,6 +1,6 @@
 # Paint3D
 A program allowing painting textures of different channels SIMULTANEOUSLY on a 3d model.<br/>
-You can also see this page: http://www.cnblogs.com/dydx/p/6445845.html<br/>
+You can also see this page: https://www.cnblogs.com/dydx/p/6446298.html<br/>
 
 ### Preliminary
 Qt 5.3 32bit<br/>
