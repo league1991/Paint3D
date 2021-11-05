@@ -83,11 +83,7 @@
     <Link>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5OpenGLd.lib;Qt5Widgetsd.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-<<<<<<< HEAD
       <AdditionalLibraryDirectories>$(QTDIR5)\lib;D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\lib\GL\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-=======
-      <AdditionalLibraryDirectories>$(QTDIR5)\lib;D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\lib\;D:\Code\Paint3D\vsProject\paint3D\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
->>>>>>> 0f57de1 (Add glew library)
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
