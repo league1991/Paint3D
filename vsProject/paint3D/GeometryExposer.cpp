@@ -118,7 +118,8 @@ void GeometryExposer::exposeGeometry()
 	glClearColor(CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT,CLEAR_COLOR_FLOAT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glDrawBuffers(2, renderTargets);
+	//glDrawBuffers(2, renderTargets);
+	glDrawBuffersARB(2, renderTargets);
 	int i = 0;
 
 	QSharedPointer<QGLShaderProgram>meshShader = Mesh::getGeometryShader();
