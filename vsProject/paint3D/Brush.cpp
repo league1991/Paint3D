@@ -646,7 +646,7 @@ int Brush::getPlacerObjectID()
 {
 	// 若当前画笔采用纯色，则对象ID为要画的物体的ID，即画笔附着在物体表面画
 	// 否则若采用各种几何形体的PaintPicker，对象ID为该PaintPicker的Mesh对象的ID
-	if (curPaintPicker == purePaintPicker.toWeakRef())
+	if (curPaintPicker == purePaintPicker)
 	{
 		if (curObj)
 		{
